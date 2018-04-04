@@ -377,6 +377,11 @@ body {
     .segmented-button__button:hover {
       background: linear-gradient(#fff, #f3f3f3);
       color: #333; }
+    .segmented-button__button:active {
+      background: linear-gradient(#f9f9f9, #ededed);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+      border-top-color: #bababa;
+      border-bottom-color: #d6d6d6; }
     .segmented-button__button--build {
       background: #AA4422;
       color: white;
@@ -388,6 +393,10 @@ body {
       .segmented-button__button--build:hover {
         background: #80331a;
         color: white; }
+      .segmented-button__button--build:active {
+        background: #80331a;
+        border-top-color: #80331a;
+        border-bottom-color: #80331a; }
 
 .popper {
   z-index: 10;
