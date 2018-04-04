@@ -500,21 +500,26 @@ body {
   transition: color 0.2s ease-in-out; }
   .selectable-item__header {
     display: flex;
-    align-items: center;
-    justify-content: space-between; }
+    align-items: center; }
   .selectable-item__name {
     font-size: 13px;
     font-weight: 600; }
+  .selectable-item__description {
+    padding-left: 2em; }
   .selectable-item:hover {
     color: #428bca; }
   .selectable-item--selected {
     font-weight: 600;
     color: #428bca; }
   .selectable-item__checkmark {
+    position: relative;
+    top: 1px;
+    margin-right: 0.5em;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out; }
+    transition: opacity 0.15s ease-in-out; }
   .selectable-item:hover .selectable-item__checkmark {
-    opacity: 0.5; }
+    opacity: 0.5;
+    color: #428bca; }
   .selectable-item--selected .selectable-item__checkmark,
   .selectable-item--selected:hover .selectable-item__checkmark {
     opacity: 1; }
