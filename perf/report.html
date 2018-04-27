@@ -748,9 +748,9 @@
             if (pct > 1) {
                 return `${pct.toFixed(1)}`;
             } else if (pct < -1) {
-                return `${pct.toFixed(1)}`;
+                return `${pct.toFixed(1)}`.replace("-", "&ndash;");
             } else {
-                return `${pct.toFixed(1)}`;
+                return `${pct.toFixed(1)}`.replace("-", "&ndash;");
             }
         } else {
             return "&mdash;";
@@ -773,7 +773,7 @@
 
     function toDatum(datum) {
         if (datum) {
-            return datum.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 2});
+            return datum.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 2}).replace("-", "&ndash;");
         } else {
             return "mdash;";
         }

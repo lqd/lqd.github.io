@@ -20,6 +20,20 @@ body.reversed {
   padding-bottom: 20px;
 }
 
+.report-header .dashboard, .report-intro .dashboard {
+  max-width: 1165px;
+  margin: 0 auto !important;
+}
+
+.report-body {
+  max-width: 1200px;
+  margin: 0 auto !important;
+}
+
+.reversed .report-header {
+  border-top: none;
+}
+
 .report > * {
   padding: 20px 40px;
 }
@@ -36,7 +50,8 @@ body.reversed {
 .report-header {
 /*  margin-top: 15px;*/
   border-top: 1px solid #ccc;
-  padding-top: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 
   background: hsl(0, 0%, 97%);
 }
@@ -262,4 +277,8 @@ body.reversed {
 
 .project.is-expanded .project-name .dashboard-title::before {
   transform: rotate(90deg);
+}
+
+.project-summary .benchmark-kind-count.black {
+  opacity: 0.5;
 }
