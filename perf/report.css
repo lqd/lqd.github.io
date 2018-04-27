@@ -282,3 +282,11 @@ body.reversed {
 .project-summary .benchmark-kind-count.black {
   opacity: 0.5;
 }
+
+.benchmarks .dashboard.red .main-item .dashboard-value {
+  color: #eb0c00;
+}
+
+.benchmarks .dashboard.green .main-item .dashboard-value {
+  color: #3D9970;
+}

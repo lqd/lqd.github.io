@@ -867,7 +867,7 @@
                   </span>
                 </span>
               </div>
-              <div class="dashboard-item type-benchmark-gain project-benchmark-range">
+              <div class="dashboard-item type-benchmark-gain project-benchmark-range" _style="width: 190px">
                 <span class="dashboard-title">Range of change</span>
                 <span class="dashboard-value">
                   <span class="benchmark-kind-count ${bestImprovement}">${best} %</span>
@@ -910,9 +910,6 @@
                   <span class="dashboard-title">Difference</span>
                   <span class="dashboard-value">
                     <span class="benchmark-kind-count ${toImprovement(bench.percent)}">
-                      <svg style="width:16px;height:16px" viewBox="0 0 24 24">
-                          <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
-                      </svg>
                       ${toDatum(bench.datum_b - bench.datum_a)}
                     </span>
                   </span>
