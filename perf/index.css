@@ -1,0 +1,308 @@
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+src: url('./fonts/OpenSans-Regular-400.eot'); /* IE9 Compat Modes */
+src: url('./fonts/OpenSans-Regular-400.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+     url('./fonts/OpenSans-Regular-400.woff') format('woff'), /* Modern Browsers */
+     url('./fonts/OpenSans-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+src: url('./fonts/OpenSans-Semibold-600.eot'); /* IE9 Compat Modes */
+src: url('./fonts/OpenSans-Semibold-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+     url('./fonts/OpenSans-Semibold-600.woff') format('woff'), /* Modern Browsers */
+     url('./fonts/OpenSans-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+src: url('./fonts/OpenSans-Bold-700.eot'); /* IE9 Compat Modes */
+src: url('./fonts/OpenSans-Bold-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+     url('./fonts/OpenSans-Bold-700.woff') format('woff'), /* Modern Browsers */
+     url('./fonts/OpenSans-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  background: hsl(0, 0%, 97%);
+  background: #fff;
+  font-size: 14px;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+svg {
+  fill: currentColor;
+}
+
+/* dashboard */
+
+.dashboard {
+    display: flex;
+    padding: 20px;
+/*    transition: all 0.2s ease-in-out;*/
+}
+
+.dashboard a {
+    color: currentColor;
+}
+
+.dashboard a.home-link:hover {
+    text-decoration: none;
+}
+
+.dashboard-item {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.dashboard-item + .dashboard-item {
+    margin-left: 25px;
+    border-left: 1px solid transparent;
+    padding-left: 25px;
+}
+
+.dashboard-title {
+    text-align: right;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.dashboard-value {
+    font-size: 25px;
+    text-align: right;
+    color: currentColor;
+    margin-top: 3px;
+}
+
+.dashboard-item.main-item .dashboard-title,
+.dashboard-item.main-item .dashboard-value {
+    text-align: left;
+}
+
+.dashboard-item.dashboard-contact {
+    flex: 1;
+    border-left: 0;
+    justify-content: center;
+}
+
+.dashboard-item.dashboard-user {
+    padding-left: 5px;
+    border-left: 0;
+    justify-content: center;
+}
+
+.dashboard-contact .dashboard-value,
+.dashboard-user .dashboard-value {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.dashboard-button .dashboard-value {
+    flex: 1;
+    margin: 0;
+}
+
+.dashboard-button a {
+    padding: 3px 8px;
+
+    border: 1px solid currentColor;
+    border-radius: 4px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+
+    color: currentColor;
+    transition: all 0.2s ease-in-out;
+}
+
+.dashboard-button a:hover {
+    text-decoration: none;
+}
+
+/* dashboard - end */
+
+.dashboard-item .dashboard-value {
+    font-size: 18px;
+/*    text-transform: lowercase;*/
+}
+
+.dashboard {
+    padding: 0;
+}
+
+.dashboard-title {
+    font-weight: 600;
+}
+
+.history-month-issues {
+    flex: 1;
+    border-left: 0 !important;
+}
+
+.dashboard-item + .dashboard-item {
+    border-color: #ccc;
+}
+
+.dashboard + .dashboard {
+  margin-top: 15px;
+}
+
+.sort-indicator {
+  text-transform: none;
+  font-weight: 400;
+  font-size: 12px;
+  color: #666;
+}
+
+.dashboard-item.type-benchmark-kind .dashboard-value {
+  color: #d8d8d8;
+  white-space: nowrap;
+  
+}
+
+.dashboard-item.type-benchmark-kind .benchmark-kind-count:first-child,
+.dashboard-item.type-benchmark-gain .red {
+  color: #eb0c00;
+}
+
+.dashboard-item.type-benchmark-kind .benchmark-kind-count,
+.dashboard-item.type-benchmark-gain .black {
+  color: #000;
+}
+
+.dashboard-item.type-benchmark-kind .benchmark-kind-count:last-child ,
+.dashboard-item.type-benchmark-gain .green {
+  color: #2ECC40;
+  color: #3D9970;
+}
+
+.dashboard:not(:first-child) .history-month-issues {
+  border-left: none;
+}
+
+.benchmarks {
+  counter-reset: bench;
+  margin-top: 10px;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}
+
+/*
+.benchmarks .dashboard + .dashboard {
+  margin-top: 0;
+  padding-top: 15px;
+}
+
+.dashboard.type-dashboard-benchmark {
+  border-left: 3px solid #000;
+  padding-left: 20px;
+}
+*/
+
+.dashboard.type-dashboard-benchmark::before {
+  counter-increment: bench;
+  content: counter(bench);
+  display: flex;
+  background: #000;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  width: 15px;
+  height: 15px;
+  margin: auto 0;
+  margin-right: 20px;
+  
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+/*  opacity: 0.7;*/
+}
+
+/*
+.dashboard.type-dashboard-benchmark.type-benchmark-gain,
+.dashboard.type-dashboard-benchmark.green {
+  border-left-color: #3D9970;
+}
+
+.dashboard.type-dashboard-benchmark.type-benchmark-loss,
+.dashboard.type-dashboard-benchmark.red {
+  border-left-color: #eb0c00;
+}
+*/
+
+.dashboard.type-dashboard-benchmark.type-benchmark-gain::before,
+.dashboard.type-dashboard-benchmark.green::before {
+  background: #3D9970;
+}
+
+.dashboard.type-dashboard-benchmark.type-benchmark-loss::before,
+.dashboard.type-dashboard-benchmark.red::before {
+  background: #eb0c00;
+}
+
+.type-benchmark-gain .benchmark-kind-count + .benchmark-kind-count {
+  margin-left: 10px;
+}
+
+.type-benchmark-gain .benchmark-kind-count {
+}
+
+.type-benchmark-gain .benchmark-kind-count svg {
+  position: relative;
+  top: 3px;
+}
+
+.type-benchmark-gain .benchmark-kind-count.black {
+  color: #888;
+}
+
+.benchmark-list {
+  margin-top: 25px;
+}
+
+.benchmark-list > .dashboard > .main-item {
+  width: 250px;
+}
+
+.benchmark-list > .dashboard > .history-month-issues + .type-benchmark-gain {
+/*  background: yellow;*/
+  width: 170px;
+}
+
+.benchmark-list > .dashboard:not(:first-child) + .benchmarks {
+/*  background: red;*/
+/*  display: none;*/
+}
+
+.benchmark-list .benchmarks + .dashboard {
+  margin-top: 30px;
+}
+
+.benchmark-list .benchmarks + .dashboard {
+  margin-top: 15px;
+}
+
+.type-dashboard-benchmark .main-item .dashboard-value {
+  font-size: 15px;
+  font-weight: 400;
+}

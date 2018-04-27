@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Perf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Benchmark report for</span>
+      <span class="dashboard-value">PR #50567</span>
+    </div>
+    <div class="dashboard-item history-month-issues">
+      <span class="dashboard-title">Baseline commit</span>
+      <span class="dashboard-value">25749ad6 from 2018/04/25</span>
+    </div>
+    <div class="dashboard-item type-maintenance">
+      <span class="dashboard-title">Benchmarked commit</span>
+      <span class="dashboard-value">303d989a</span>
+    </div>
+    <div class="dashboard-item type-maintenance">
+      <span class="dashboard-title">Stat</span>
+      <span class="dashboard-value">instructions:u</span>
+    </div>
+  </div>
+
+<!--
+  <div class="dashboard">
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Benchmarks <span class="sort-indicator">&mdash; Sorted by improvement DESC</span></span>
+      <span class="dashboard-value">363 total, 69 projects, 5 families</span>
+    </div>
+    <div class="dashboard-item history-month-issues type-benchmark-kind">
+      <span class="dashboard-title">Clean</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">1</span> /
+        <span class="benchmark-kind-count">4</span> /
+        <span class="benchmark-kind-count">19</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-kind">
+      <span class="dashboard-title">Optimized</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">5</span> /
+        <span class="benchmark-kind-count">42</span> /
+        <span class="benchmark-kind-count">3</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-kind">
+      <span class="dashboard-title">Incremental</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">5</span> /
+        <span class="benchmark-kind-count">42</span> /
+        <span class="benchmark-kind-count">3</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-kind">
+      <span class="dashboard-title">Check</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">5</span> /
+        <span class="benchmark-kind-count">42</span> /
+        <span class="benchmark-kind-count">3</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-kind">
+      <span class="dashboard-title">NLL</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">5</span> /
+        <span class="benchmark-kind-count">42</span> /
+        <span class="benchmark-kind-count">3</span>
+      </span>
+    </div>
+  </div>
+-->
+
+  <div class="dashboard">
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Benchmarks <span class="sort-indicator">&mdash; Sorted by Improvement DESC, grouped by Project</span></span>
+      <span class="dashboard-value">363 total, 69 projects</span>
+    </div>
+<!--
+    <div class="dashboard-item">
+      <canvas id="canvas" width="100" height="75" style="background: #fff">
+      </canvas>
+      <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.imageSmoothingEnabled = false;
+
+        var i = 0
+        for (var y = 0; y < 75; y += 3) {
+          for (var x = 0; x < 100; x += 3) {
+            if (i < 27) {
+              ctx.fillStyle = 'hsl(3, 100%, 46%)';
+            } else if (i < 27 + 59) {
+              ctx.fillStyle = '#000';
+            } else if (i < 363) {
+              ctx.fillStyle = '#3D9970';
+            } else {
+              break;
+            }
+
+            ctx.fillRect(x, y, 3, 3);
+
+            i++;
+            x++;
+
+
+          }
+
+          y++;
+        }
+
+      </script>
+    </div>
+-->
+    <div class="dashboard-item history-month-issues type-benchmark-gain ">
+      <span class="dashboard-title red">Regressed > 1%</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count red">
+          27
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+          </svg>
+        </span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title black">Inconclusive +/- 1%</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count black">
+          59
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+          </svg>
+        </span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title green">Improved > 1%</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count green">
+          277
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+          </svg>
+        </span>
+      </span>
+    </div>
+  </div>
+
+<!--
+  <div class="dashboard">
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Project</span>
+      <span class="dashboard-value">helloworld-check</span>
+    </div>
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Benchmarks</span>
+      <span class="dashboard-value">6</span>
+    </div>
+    <div class="dashboard-item history-month-issues type-benchmark-gain">
+      <span class="dashboard-title">Summary</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count black">
+          <span>0</span>
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+          </svg>
+        </span>
+        <span class="benchmark-kind-count black">
+          0
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+          </svg>
+        </span>
+        <span class="benchmark-kind-count green">
+          6
+          <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+            <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+          </svg>
+        </span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title green">Average change</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count green">-27.7 %</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title green">Best change</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count green">-30.4 %</span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title green">Worst change</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count green">-25.8 %</span>
+      </span>
+    </div>
+  </div>
+-->
+
+<!--
+  <div class="dashboard">
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Project</span>
+      <span class="dashboard-value">helloworld-check</span>
+    </div>
+    <div class="dashboard-item main-item">
+      <span class="dashboard-title">Benchmark</span>
+      <span class="dashboard-value">clean-check</span>
+    </div>
+    <div class="dashboard-item history-month-issues type-benchmark-gain">
+      <span class="dashboard-title">instructions:u</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count">336 448 128 <span class="green">→ 242 006 920</span></span>
+      </span>
+    </div>
+    <div class="dashboard-item type-benchmark-gain">
+      <span class="dashboard-title green">Relative change</span>
+      <span class="dashboard-value">
+        <span class="benchmark-kind-count green">-27.7 %</span>
+      </span>
+    </div>
+  </div>
+-->
+
+<!--
+  <div class="benchmarks">
+    <div class="dashboard type-dashboard-benchmark type-benchmark-gain">
+      <div class="dashboard-item main-item">
+        <span class="dashboard-title">helloworld-check</span>
+        <span class="dashboard-value">clean-check</span>
+      </div>
+      <div class="dashboard-item history-month-issues type-benchmark-gain">
+        <span class="dashboard-title">instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count">336 448 128 <span class="green">→ 242 006 920</span></span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title green">Relative change</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">-28.1 %</span>
+        </span>
+      </div>
+    </div>
+    
+    <div class="dashboard type-dashboard-benchmark">
+      <div class="dashboard-item main-item">
+        <span class="dashboard-title">helloworld-check</span>
+        <span class="dashboard-value">nll-check</span>
+      </div>
+      <div class="dashboard-item history-month-issues type-benchmark-gain">
+        <span class="dashboard-title">instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count">337 523 542 <span class="green">→ 242 006 920</span></span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title green">Relative change</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">-28.0 %</span>
+        </span>
+      </div>
+    </div>
+    
+    <div class="dashboard type-dashboard-benchmark type-benchmark-loss">
+      <div class="dashboard-item main-item">
+        <span class="dashboard-title">helloworld-check</span>
+        <span class="dashboard-value">baseline incremental-check</span>
+      </div>
+      <div class="dashboard-item history-month-issues type-benchmark-gain">
+        <span class="dashboard-title">instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count">365 299 710 <span class="green">→ 242 006 920</span></span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title green">Relative change</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">-25.8 %</span>
+        </span>
+      </div>
+    </div>
+    
+    <div class="dashboard type-dashboard-benchmark type-benchmark-loss">
+      <div class="dashboard-item main-item">
+        <span class="dashboard-title">benchmark</span>
+        <span class="dashboard-value">clean incremental-check</span>
+      </div>
+      <div class="dashboard-item history-month-issues type-benchmark-gain">
+        <span class="dashboard-title">instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count">365 299 710 <span class="green">→ 242 006 920</span></span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title green">Relative change</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">-30.4 %</span>
+        </span>
+      </div>
+    </div>
+    
+    <div class="dashboard type-dashboard-benchmark type-benchmark-gain">
+      <div class="dashboard-item main-item">
+        <span class="dashboard-title">benchmark</span>
+        <span class="dashboard-value">patched incremental: println-check</span>
+      </div>
+      <div class="dashboard-item history-month-issues">
+        <span class="dashboard-title">Baseline instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count">313 076 407</span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title">Benchmarked instructions:u</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">
+            <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+            </svg>
+            242 006 920
+          </span>
+        </span>
+      </div>
+      <div class="dashboard-item type-benchmark-gain">
+        <span class="dashboard-title green">Relative change</span>
+        <span class="dashboard-value">
+          <span class="benchmark-kind-count green">-26.3 %</span>
+        </span>
+      </div>
+    </div>
+  </div>
+-->
+  
+  <div class="benchmark-list">    
+  </div>
+  
+  <script src="data.js"></script>
+  <script>
+    function unique(arr) {
+        return arr.filter((value, idx) => arr.indexOf(value) == idx);
+    }
+    
+    function percent_chg(a, b) {
+        if (a && b) {
+            return 100 * (b - a) / a;
+        } else {
+            return null;
+        }
+    }
+    
+    function to_fields(data, name) {
+        let source = data.a.data[name] || data.b.data[name];
+        let fields = [];
+        if (source && source.length > 0) {
+            let offset_b = 0;
+            for (let i = 0; i < source.length; i++) {
+                let casename;
+                let datum_a;
+                let datum_b;
+                if (data.a.data[name] !== undefined && data.b.data[name] !== undefined &&
+                    data.a.data[name][i] !== undefined &&
+                    data.b.data[name][i + offset_b] !== undefined) {
+                    let a = data.a.data[name][i];
+                    let b = data.b.data[name][i + offset_b];
+                    casename = a[0];
+                    datum_a = a[2];
+                    if (b[0] != casename) {
+                        offset_b -= 1;
+                        datum_b = null;
+                    } else {
+                        datum_b = b[2];
+                    }
+                } else if (data.a.data[name] === undefined) {
+                    let b = data.b.data[name][i + offset_b];
+                    casename = b[0];
+                    datum_a = null;
+                    datum_b = b[2];
+                } else {
+                    let a = data.a.data[name][i];
+                    casename = a[0];
+                    datum_a = a[2];
+                    datum_b = null;
+                }
+                fields.push({
+                    casename,
+                    datum_a,
+                    datum_b,
+                    percent: percent_chg(datum_a, datum_b),
+                });
+            }
+        }
+        return fields;
+    }
+    function toPct(pct) {
+      if (pct && pct != Infinity && pct != -Infinity) {
+            if (pct > 1) {
+                return `${pct.toFixed(1)}`;
+            } else if (pct < -1) {
+                return `${pct.toFixed(1)}`;
+            } else {
+                return `${pct.toFixed(1)}`;
+            }
+        } else {
+            return "&mdash;";
+        }
+    }
+    
+    function toImprovement(pct) {
+      if (pct && pct != Infinity && pct != -Infinity) {
+            if (pct > 1) {
+                return "red";
+            } else if (pct < -1) {
+                return "green";
+            } else {
+                return "";
+            }
+        } else {
+            return "";
+        }
+    }
+    
+    function toDatum(datum) {
+        if (datum) {
+            return datum.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 2});
+        } else {
+            return "mdash;";
+        }
+    }
+    
+    function populateData(data) {
+      let test_names = unique([...Object.keys(data.a.data), ...Object.keys(data.b.data)]);
+      let fields = test_names.map(name => ({name, fields: to_fields(data, name)}));
+      
+      for (let field of fields) {
+            let pcts = field.fields.map(field => field.percent)
+                .filter(p => p != undefined && p != null);
+            field.max_pct = Math.max(...pcts);
+            field.min_pct = Math.min(...pcts);
+            field.farthest_pct = Math.max(...pcts.map(p => Math.abs(p)));
+            let sum = pcts.reduce((a, b) => a + b, 0);
+            let avg = sum / pcts.length;
+            field.avg_pct = avg;
+            field.max_casename_len = Math.max(...field.fields.map(f => f.casename.length));
+        }
+
+        fields.sort((a, b) => {
+            return b.farthest_pct - a.farthest_pct;
+        });
+      
+//        fields.sort((a, b) => {
+//            return a.name.localeCompare(b.name);
+//        });
+
+        let max_name_width = Math.max(...fields.map(f => f.max_casename_len));
+        
+        for (let i = 0; i < fields.length; ++i) {
+          const field = fields[i];
+          
+          const name = field.name;
+          const benchmarks = field.fields.length;
+          
+          const avg = toPct(field.avg_pct);
+          const best = toPct(field.min_pct);
+          const worst = toPct(field.max_pct);
+          
+          const avgImprovement = toImprovement(field.avg_pct);
+          const bestImprovement = toImprovement(field.min_pct);
+          const worstImprovement = toImprovement(field.max_pct);
+          
+          let summary = [0, 0, 0];
+          for (let bench of field.fields) {
+            const pct = bench.percent;
+            if (pct > 1) {
+              summary[0]++;
+            } else if (pct < -1) {
+              summary[2]++;
+            } else {
+              summary[1]++;
+            }
+          }
+          
+          let summaryText = `
+            <span class="benchmark-kind-count ${summary[0] === 0 ? "black" : "red"}">
+              <span>${summary[0]}</span>
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+              </svg>
+            </span>
+            <span class="benchmark-kind-count ${summary[1] === 0 ? "black" : ""}">
+              ${summary[1]}
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+              </svg>
+            </span>
+            <span class="benchmark-kind-count ${summary[2] === 0 ? "black" : "green"}">
+              ${summary[2]}
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+              </svg>
+            </span>
+          `;
+          
+          
+          let x = `<div class="dashboard">
+            <div class="dashboard-item main-item">
+              <span class="dashboard-title">Project</span>
+              <span class="dashboard-value">${name}</span>
+            </div>
+            <!--<div class="dashboard-item history-month-issues">
+              <span class="dashboard-title">Benchmarks</span>
+              <span class="dashboard-value">${benchmarks}</span>
+            </div>-->
+            <div class="dashboard-item type-benchmark-gain history-month-issues">
+              <span class="dashboard-title">Summary</span>
+              <span class="dashboard-value">${summaryText}</span>
+            </div>
+            <div class="dashboard-item type-benchmark-gain">
+              <span class="dashboard-title ${avgImprovement}">Average change</span>
+              <span class="dashboard-value">
+                <span class="benchmark-kind-count ${avgImprovement}">${avg}%</span>
+              </span>
+            </div>
+            <div class="dashboard-item type-benchmark-gain">
+              <span class="dashboard-title ${bestImprovement}">Best change</span>
+              <span class="dashboard-value">
+                <span class="benchmark-kind-count ${bestImprovement}">${best} %</span>
+              </span>
+            </div>
+            <div class="dashboard-item type-benchmark-gain">
+              <span class="dashboard-title ${worstImprovement}">Worst change</span>
+              <span class="dashboard-value">
+                <span class="benchmark-kind-count ${worstImprovement}">${worst} %</span>
+              </span>
+            </div>
+          </div>`;
+          
+          let xx = '<div class="benchmarks">';
+          for (let bench of field.fields) {
+            const pct = toPct(bench.percent);
+            xx += `
+              <div class="dashboard type-dashboard-benchmark ${toImprovement(bench.percent)}">
+                <div class="dashboard-item main-item">
+                  <span class="dashboard-title">benchmark</span>
+                  <span class="dashboard-value">${bench.casename}</span>
+                </div>
+                <div class="dashboard-item history-month-issues">
+                  <span class="dashboard-title">Baseline instructions:u</span>
+                  <span class="dashboard-value">
+                    <span class="benchmark-kind-count">${toDatum(bench.datum_a)}</span>
+                  </span>
+                </div>
+                <div class="dashboard-item type-benchmark-gain">
+                  <span class="dashboard-title">Benchmarked instructions:u</span>
+                  <span class="dashboard-value">
+                    <span class="benchmark-kind-count ${toImprovement(bench.percent)}">
+                      <svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                          <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                      </svg>
+                      ${toDatum(bench.datum_b)}
+                    </span>
+                  </span>
+                </div>
+                <div class="dashboard-item type-benchmark-gain">
+                  <span class="dashboard-title ${toImprovement(bench.percent)}">Relative change</span>
+                  <span class="dashboard-value">
+                    <span class="benchmark-kind-count ${toImprovement(bench.percent)}">${pct} %</span>
+                  </span>
+                </div>
+              </div>`;
+          }
+          xx += '</div>';
+          
+//          console.log(x);
+          
+          document.querySelector(".benchmark-list").innerHTML += x + xx;
+          
+          if (i < 5) {
+//            break;
+            console.log(field);
+          }
+        }
+    }
+    populateData(benchmarkData);
+  </script>
+</body>
+</html>
+

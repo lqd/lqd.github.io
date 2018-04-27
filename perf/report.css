@@ -1,0 +1,265 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: hsl(0, 0%, 97%);
+/*  background: red;*/
+  min-height: 100vh;
+}
+
+body.reversed {
+  background: #444;
+}
+
+.report {
+/*  padding: 20px;*/
+/*  margin: 0 20px;*/
+/*  background: yellow;*/
+  padding-bottom: 20px;
+}
+
+.report > * {
+  padding: 20px 40px;
+}
+
+.report-intro {
+/*  background: red;*/
+  background: hsl(0, 0%, 97%);
+}
+
+.report-intro a {
+  text-decoration: underline;
+}
+
+.report-header {
+/*  margin-top: 15px;*/
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+
+  background: hsl(0, 0%, 97%);
+}
+
+.reversed .report-header {
+  background: #444;
+  color: #fff;
+}
+
+.reversed .sort-indicator {
+  color: #ccc;;
+}
+
+.reversed .header-summary-stat .black {
+  color: #fff;
+}
+
+.reversed .header-summary-stat .red {
+/*
+  color: #eb0c00;
+  color: hsl(3, 100%, 46%);
+*/
+  color: #f0251b;
+}
+
+.report-body {
+/*  margin-top: 10px;*/
+  background: #fff;
+/*  margin: 0 20px;*/
+
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  border-radius: 3px;
+  border: 1px solid #dedede;
+
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.reversed .report-body {
+  border: none;
+}
+
+.report-item {
+/*  background: yellow;*/
+}
+
+.report-item .benchmarks {
+/*  padding: 0 20px;*/
+/*  margin-left: 3px;*/
+
+/*  border-top: 1px solid #ccc;*/
+  display: none;
+/*  background: yellow;*/
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.project-header {
+/*
+  padding-bottom: 13px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 25px;
+*/
+
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.project + .project .project-header {
+
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+.project.is-expanded + .project {
+/*  padding-top: 15px;*/
+  border-top: 1px solid #ccc;
+}
+
+
+.project.is-expanded + .project.is-expanded {
+  padding-top: 0;
+}
+
+.project.is-expanded + .project .project-header {
+  border-top: none;
+  padding-top: 15px;
+}
+
+.project-name {
+  position: relative;
+}
+
+.project.is-expanded .project-name::before {
+  content: "";
+  position: absolute;
+
+
+  width: calc(100% + 5px);
+/*  width: calc(100% + 0px);*/
+  height: 3px;
+
+  left: 0;
+/*  left: 0;*/
+  bottom: -17px;
+
+  background: currentColor;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.project.is-expanded .project-name::after {
+  content: "";
+  position: absolute;
+
+  left: calc(50% - 3px);
+  bottom: -22px;
+
+  width: 0;
+  height: 0;
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+
+  border-top: 6px solid currentColor;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.project.project-gain .project-name::before,
+.project.project-gain .project-name::after,
+.project.project-gain .project-name .dashboard-value {
+  color: #3D9970;
+}
+
+.project-benchmark-range svg {
+  margin: 0 3px;
+}
+
+.project.is-expanded .benchmarks {
+  display: block;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+  margin-top: -5px;
+}
+
+.project-header {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  border-radius: 3px 3px 0;
+}
+
+.project.is-expanded .project-header {
+  background: hsl(0, 0%, 98%);
+}
+
+.project .benchmarks {
+  background: hsl(0, 0%, 100%);
+  border-left: 0;
+/*  margin-left: 20px;*/
+  position: relative;
+  padding-left: 40px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.project .benchmarks::before {
+  content: "";
+  width: 1px;
+  height: calc(100% - 15px - 10px);
+  position: absolute;
+  left: 20px;
+  top: 15px;
+/*  background: #ccc;*/
+}
+
+.project.is-expanded:last-child .benchmarks {
+  border-radius: 0 0 3px 3px;
+}
+
+.project:not(.is-expanded) .project-header:hover {
+  background: hsl(0, 0%, 98%);
+}
+
+.report-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.project-name .dashboard-title {
+  position: relative;
+  margin-left: 12px;
+}
+
+.project-name .dashboard-title::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+
+  border-left: 5px solid #666;
+
+  position: absolute;
+  top: 5px;
+  left: -11px;
+
+  transition: transform 0.15s ease-in-out;
+}
+
+.project.is-expanded .project-name .dashboard-title::before {
+  transform: rotate(90deg);
+}
