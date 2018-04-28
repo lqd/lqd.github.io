@@ -91,6 +91,12 @@ svg {
     margin: 0;
 }
 
+.dashboard-button .dashboard-value {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .dashboard-button a {
     padding: 3px 8px;
 

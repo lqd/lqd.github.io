@@ -43,7 +43,7 @@ body.reversed {
   background: hsl(0, 0%, 97%);
 }
 
-.report-intro a {
+.report-intro .dashboard-item:not(.dashboard-button) a {
   text-decoration: underline;
 }
 
@@ -188,7 +188,8 @@ body.reversed {
 
 .project.project-gain .project-name::before,
 .project.project-gain .project-name::after,
-.project.project-gain .project-name .dashboard-value {
+.project.project-gain .project-name .dashboard-value
+/*, .project.project-gain .project-benchmark-range .dashboard-title */ {
   color: #3D9970;
 }
 
@@ -211,7 +212,9 @@ body.reversed {
 
   padding-top: 20px;
   padding-bottom: 20px;
+}
 
+.project:first-child .project-header {
   border-radius: 3px 3px 0;
 }
 
@@ -289,4 +292,103 @@ body.reversed {
 
 .benchmarks .dashboard.green .main-item .dashboard-value {
   color: #3D9970;
+}
+
+.report-header .report-filters {
+  transition: margin-top 0.15s ease-in-out,
+    padding-top 0.15s ease-in-out,
+    opacity 0.15s ease-in-out,
+    visibility 0.15s ease-in-out,
+    max-height 0.2s ease-in-out,
+    border-top-color 0.1s ease-in-out;
+  overflow: hidden;
+  border-top: 1px solid transparent;
+  transition-delay: 0.03s;
+}
+
+.report-header.is-expanded .report-filters {
+  margin-top: 20px !important;
+  border-top-color: #888;
+  padding-top: 20px;
+}
+
+.report-filters .dashboard-item {
+  flex: 1;
+  cursor: pointer;
+}
+
+.report-filters .dashboard-value {
+  display: flex;
+/*  justify-content: space-between;*/
+  margin-left: 21px;
+  white-space: nowrap;
+}
+
+.report-header input {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.report-filters .benchmark-kind-count + .benchmark-kind-count {
+  margin-left: 15px;
+}
+
+.report-filters {
+/*  display: none;*/
+  max-height: 0;
+/*  visibility: hidden;*/
+  opacity: 0;
+}
+
+.report-header.is-expanded .report-filters {
+/*  display: flex;*/
+  max-height: 70px;
+/*  visibility: visible;*/
+  opacity: 1;
+}
+
+.report-summary .dashboard-item {
+  height: 45px;
+  position: relative;
+}
+
+.report-summary input {
+  display: none;
+/*  position: absolute;*/
+  transition: all 0.15s ease-in-out;
+  transition-delay: 0.05s;
+}
+
+.report-summary .main-item input {
+  display: inline-block;
+  left: 0;
+  position: absolute;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.report-summary .main-item .dashboard-title,
+.report-summary .main-item .dashboard-value {
+  transition: margin-left 0.15s ease-in-out;
+  transition-delay: 0.06s;
+}
+
+.report-header.is-expanded .report-summary .main-item .dashboard-title {
+  margin-left: 20px;
+  transition-delay: 0s;
+}
+
+.report-header.is-expanded .report-summary .main-item .dashboard-value {
+  margin-left: 21px;
+  transition-delay: 0s;
+}
+
+.report-header.is-expanded .report-summary input {
+  display: inline-block;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition-delay: 0s;
 }
