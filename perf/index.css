@@ -131,8 +131,8 @@ svg {
 }
 
 .history-month-issues {
-    flex: 1;
-    border-left: 0 !important;
+/*    flex: 1;*/
+    border-left: 0 !important;  
 }
 
 .dashboard-item + .dashboard-item {

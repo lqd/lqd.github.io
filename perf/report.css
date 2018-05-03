@@ -5,7 +5,6 @@ html, body {
 
 body {
   background: hsl(0, 0%, 97%);
-/*  background: red;*/
   min-height: 100vh;
 }
 
@@ -56,25 +55,21 @@ body.reversed {
   background: hsl(0, 0%, 97%);
 }
 
-.reversed .report-header {
+.report-header {
   background: #444;
   color: #fff;
 }
 
-.reversed .sort-indicator {
+.sort-indicator {
   color: #ccc;;
 }
 
-.reversed .header-summary-stat .black {
-  color: #fff;
+.stat-regression {
+  color: #f0251b;
 }
 
-.reversed .header-summary-stat .red {
-/*
-  color: #eb0c00;
-  color: hsl(3, 100%, 46%);
-*/
-  color: #f0251b;
+.stat-improvement {
+  color: #3D9970;
 }
 
 .report-body {
@@ -193,6 +188,14 @@ body.reversed {
   color: #3D9970;
 }
 
+.project.project-loss .project-name::before,
+.project.project-loss .project-name::after,
+.project.project-loss .project-name .dashboard-value
+/*, .project.project-loss .project-benchmark-range .dashboard-title */ {
+  color: #eb0c00;
+}
+
+
 .project-benchmark-range svg {
   margin: 0 3px;
 }
@@ -286,35 +289,48 @@ body.reversed {
   opacity: 0.5;
 }
 
-.benchmarks .dashboard.red .main-item .dashboard-value {
+.benchmarks .dashboard.red .main-item .dashboard-value,
+.report-intro .intro-summary .red {
   color: #eb0c00;
 }
 
-.benchmarks .dashboard.green .main-item .dashboard-value {
+.benchmarks .dashboard.green .main-item .dashboard-value,
+.report-intro .intro-summary .green {
   color: #3D9970;
 }
 
 .report-header .report-filters {
-  transition: margin-top 0.15s ease-in-out,
-    padding-top 0.15s ease-in-out,
-    opacity 0.15s ease-in-out,
-    visibility 0.15s ease-in-out,
-    max-height 0.2s ease-in-out,
-    border-top-color 0.1s ease-in-out;
+  transition:
+    max-height 0.15s ease-in-out,
+    margin-top 0.15s ease-in-out,
+    padding-top 0.1s ease-in-out,
+
+    opacity 0.1s ease-in-out,
+    visibility 0.07s ease-in-out,
+    border-top-color 0.07s ease-in-out;
   overflow: hidden;
   border-top: 1px solid transparent;
-  transition-delay: 0.03s;
+  transition-delay: 0.00s; /* sliding back up */
 }
 
 .report-header.is-expanded .report-filters {
   margin-top: 20px !important;
   border-top-color: #888;
   padding-top: 20px;
+  transition-delay: 0.03s; /* sliding down */
+
+  transition: max-height 0.15s ease-in-out,
+    margin-top 0.15s ease-in-out,
+    padding-top 0.15s ease-in-out,
+
+    opacity 0.12s ease-in-out 0.08s,
+    visibility 0.07s ease-in-out,
+    border-top-color 0.07s ease-in-out;
 }
 
 .report-filters .dashboard-item {
   flex: 1;
-  cursor: pointer;
+/*  cursor: pointer;*/
 }
 
 .report-filters .dashboard-value {
@@ -322,11 +338,6 @@ body.reversed {
 /*  justify-content: space-between;*/
   margin-left: 21px;
   white-space: nowrap;
-}
-
-.report-header input {
-  margin-left: 0;
-  margin-right: 5px;
 }
 
 .report-filters .benchmark-kind-count + .benchmark-kind-count {
@@ -347,48 +358,244 @@ body.reversed {
   opacity: 1;
 }
 
-.report-summary .dashboard-item {
+.report-header .dashboard-item {
   height: 45px;
+}
+
+.report-header input {
+/*  margin: 0 5px 0 0;*/
+
+/*  position: relative;*/
+/*  top: 3px;*/
+  margin: 0;
+}
+
+.report-summary input {
+/*  display: none;*/
+/*  position: absolute;*/
+  transition: all 0.15s ease-in-out;
+/*  transition-delay: 1s;*/
+}
+
+.report-filters .dashboard-title {
+  display: flex;
+  align-items: center;
+}
+
+.report-filters input {
+  margin: 0 7px 0 0;
+}
+
+.report-summary .dashboard-title {
   position: relative;
 }
 
 .report-summary input {
-  display: none;
-/*  position: absolute;*/
-  transition: all 0.15s ease-in-out;
-  transition-delay: 0.05s;
-}
-
-.report-summary .main-item input {
-  display: inline-block;
-  left: 0;
   position: absolute;
+
+  top: 3px;
+  left: 0;
 
   opacity: 0;
   visibility: hidden;
 }
 
-.report-summary .main-item .dashboard-title,
-.report-summary .main-item .dashboard-value {
-  transition: margin-left 0.15s ease-in-out;
-  transition-delay: 0.06s;
+.report-summary .dashboard-title,
+.report-summary .dashboard-value {
+  transition: padding-left 0.1s ease-in-out; /* sliding right */
+  transition-delay: 0.06s; /* item going back left */
 }
 
-.report-header.is-expanded .report-summary .main-item .dashboard-title {
-  margin-left: 20px;
-  transition-delay: 0s;
+.report-header.is-expanded .report-summary .dashboard-title {
+  padding-left: 20px;
 }
 
 .report-header.is-expanded .report-summary .main-item .dashboard-value {
-  margin-left: 21px;
-  transition-delay: 0s;
+  padding-left: 21px;
 }
 
 .report-header.is-expanded .report-summary input {
-  display: inline-block;
-
   opacity: 1;
   visibility: visible;
 
-  transition-delay: 0s;
+  transition-delay: 0.05s; /* input fading in */
+}
+
+.dashboard-button a {
+  position: relative;
+}
+
+.report-intro .dashboard-button a {
+  padding-left: 29px;
+  padding-right: 10px;
+}
+
+.report-intro .dashboard-button svg {
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  color: #666;
+}
+
+.report-summary .dashboard-button a {
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+.report-summary .dashboard-button svg {
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  color: #dedede;
+}
+
+.dashboard-button,
+.report-body .main-item,
+.report-intro .intro-summary .main-item {
+  margin-right: auto;
+}
+
+.dashboard-button a {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.report-intro .dashboard-button a:hover {
+  background: hsl(0, 0%, 94%);
+}
+
+.report-summary .dashboard-button a:hover {
+  background: hsl(0, 0%, 35%);
+}
+
+.filterable:not(.is-expanded) .filter-text {
+  display: none;
+}
+
+.report-summary .dashboard-button.is-expanded .button-text {
+  display: none;
+}
+
+/**/
+
+.report-stat.is-filtering * {
+  color: #8f8f8f;
+}
+
+/**/
+
+/*
+inline svg transformed with
+1) data:uri generator
+2) processed with:
+"".replace(";charset=utf-8", "").replace(/%20/g, " ").replace(/%3D/g, "=").replace(/%27/g, "'").replace(/%2C/g, ",").replace(/%2F/g, "/")
+3) then added fill + xmlns
+*/
+
+.benchmarks .type-dashboard-benchmark.green::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23fff' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z'/%3E%3C/svg%3E");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+}
+
+.benchmarks .type-dashboard-benchmark::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23fff' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22,12L18,8V11H3V13H18V16L22,12Z'/%3E%3C/svg%3E");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+}
+
+.benchmarks .type-dashboard-benchmark.red::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23fff' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z'/%3E%3C/svg%3E");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+}
+
+.benchmarks .type-dashboard-benchmark .main-item .dashboard-title::after {
+  content: " " counter(bench);
+}
+
+.type-dashboard-benchmark:hover {
+  background: hsl(0, 0%, 98%);
+}
+
+.type-dashboard-benchmark.green:hover {
+  background: rgba(61, 153, 112, 0.05);
+}
+
+.type-dashboard-benchmark.red:hover {
+  background: rgba(235, 12, 0, 0.04);
+}
+
+
+.project .benchmarks {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px !important;
+  padding-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.type-dashboard-benchmark {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.benchmarks .type-dashboard-benchmark + .type-dashboard-benchmark {
+  margin-top: 5px;
+}
+
+.benchmarks .type-dashboard-benchmark:last-child {
+/*  margin-bottom: 5px;*/
+}
+
+.project.is-expanded .project-name::after {
+  left: 27px;
+}
+
+.report-intro .intro-summary {
+  border-top: 1px solid #ccc;
+  margin-top: 20px !important;
+  padding-top: 20px;
+}
+
+.report-intro .intro-summary svg {
+  position: relative;
+  top: 3px;
+}
+
+.report-intro {
+  background:
+    linear-gradient(
+      to bottom, 
+      hsl(0, 0%, 95%),
+      hsl(0, 0%, 97%) 50%,
+      hsl(0, 0%, 97%)
+    );
+}
+
+.report-intro .intro-summary .sort-indicator {
+  color: #333;
+}
+
+.report-intro .intro-summary .sort-indicator a {
+  text-decoration: none;
+}
+
+.report-intro .intro-summary .sort-indicator a:hover {
+  text-decoration: underline;
 }

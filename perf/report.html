@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Perf</title>
+  <title>Perf Report Prototype</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="report.css" />
@@ -19,7 +19,12 @@
         </div>
         <div class="dashboard-item dashboard-button">
           <div class="dashboard-value">
-            <a href="https://github.com/rust-lang/rust/compare/25749ad66de71ffb46e6b04fb0cccf1ae4fc5ed5...303d989cdce60b2a5981765d43726baf868cbe95">Compare on github</a>
+            <a href="https://github.com/rust-lang/rust/compare/25749ad66de71ffb46e6b04fb0cccf1ae4fc5ed5...303d989cdce60b2a5981765d43726baf868cbe95">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              Compare on github
+            </a>
           </div>
         </div>
         <div class="dashboard-item history-month-issues">
@@ -35,197 +40,254 @@
           <span class="dashboard-value">instructions:u</span>
         </div>
       </div>
+      <div class="dashboard intro-summary">
+        <div class="dashboard-item main-item green">
+          <span class="dashboard-title">
+            Report Summary
+            <span class="sort-indicator">&mdash; <a href="" title="Switch to a different aggregate">Average</a></span>
+          </span>
+          <span class="dashboard-value">
+            &ndash;20.2 %
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+            </svg>
+          </span>
+        </div>
+        <div class="dashboard-item history-month-issues">
+          <span class="dashboard-title">Check: suite summary</span>
+          <span class="dashboard-value">
+            0.8 %
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+            </svg>
+          </span>
+        </div>
+        <div class="dashboard-item red">
+          <span class="dashboard-title">Clean: suite summary</span>
+          <span class="dashboard-value">
+            10.9 %
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+            </svg>
+          </span>
+        </div>
+        <div class="dashboard-item green">
+          <span class="dashboard-title">Opt: suite summary</span>
+          <span class="dashboard-value ">
+            &ndash;5.6 %
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+              <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+            </svg>
+          </span>
+        </div>
+      </div>
     </div>
-
     <div class="report-header">
+<!--
       <div class="dashboard report-summary">
-        <div class="dashboard-item main-item">
+        <label class="dashboard-item main-item filterable">
           <span class="dashboard-title">
             <input type="checkbox" checked />
-            Benchmarks <span class="sort-indicator">&mdash;
-            <a href="">Sorted by Improvement DESC</a></span>
+            <span class="filter-text">Filtered </span> benchmarks
+            <span class="sort-indicator">&mdash; Sorted by <a href="">Amplitude DESC</a></span>
           </span>
-          <span class="dashboard-value">363 total, 69 projects</span>
-        </div>
-        <div class="dashboard-item dashboard-button">
+          <span class="dashboard-value">
+            <span class="total-benchmarks">
+              <span class="filter-text">363 / </span>
+              363 total</span>,
+            <span class="total-projects"> in
+              <span class="filter-text">69 / </span>
+              69 projects</span>
+          </span>
+        </label>
+        <div class="dashboard-item dashboard-button filterable">
           <div class="dashboard-value">
-            <a href="" class="action-show-filters">Show filters</a>
+            <a href="" class="action-show-filters">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path d="M6,13H18V11H6M3,6V8H21V6M10,18H14V16H10V18Z" />
+              </svg>
+              <span class="filter-text">Hide</span>
+              <span class="button-text">Show</span>
+              filters
+            </a>
           </div>
         </div>
-        <div class="dashboard-item history-month-issues type-benchmark-gain header-summary-stat">
-          <span class="dashboard-title red">
+        <label class="dashboard-item history-month-issues type-benchmark-gain header-summary-stat report-stat filterable stat-regression">
+          <span class="dashboard-title">
             <input type="checkbox" checked />
             Regressed > 1%
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
-              27
+            <span class="benchmark-kind-count">
+              <span class="filter-text">27 / </span> 27
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item type-benchmark-gain header-summary-stat">
-          <span class="dashboard-title black">
+        </label>
+        <label class="dashboard-item type-benchmark-gain header-summary-stat report-stat filterable stat-inconclusive">
+          <span class="dashboard-title">
             <input type="checkbox" checked />
             Inconclusive +/- 1%
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count black">
-              59
+            <span class="benchmark-kind-count">
+              <span class="filter-text">59 / </span> 59
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item type-benchmark-gain header-summary-stat">
-          <span class="dashboard-title green">
+        </label>
+        <label class="dashboard-item type-benchmark-gain header-summary-stat filterable report-stat stat-improvement">
+          <span class="dashboard-title">
             <input type="checkbox" checked />
             Improved > 1%
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count green">
-              277
+            <span class="benchmark-kind-count">
+              <span class="filter-text">277 / </span> 277
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
+        </label>
       </div>
       <div class="dashboard report-filters">
-        <div class="dashboard-item main-item type history-month-issuesx type-benchmark-gain header-summary-stat">
+        <label class="dashboard-item main-item type history-month-issuesx type-benchmark-gain header-summary-stat report-stat">
           <span class="dashboard-title">
             <input type="checkbox" checked />
-            Check: 121 results</span>
+            Check: 121 results
+          </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
+            <span class="benchmark-kind-count stat-regression">
               21
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count black">
+            <span class="benchmark-kind-count stat-inconclusive">
               33
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count green">
+            <span class="benchmark-kind-count stat-improvement">
               67
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item main-item type-benchmark-gain header-summary-stat">
-          <span class="dashboard-title black">
+        </label>
+        <label class="dashboard-item main-item type-benchmark-gain header-summary-stat report-stat">
+          <span class="dashboard-title stat-inconclusive">
             <input type="checkbox" checked />
             Clean: 69 results
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
+            <span class="benchmark-kind-count stat-regression">
               8
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count black">
+            <span class="benchmark-kind-count stat-inconclusive">
               12
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count green">
+            <span class="benchmark-kind-count stat-improvement">
               49
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item main-item type type-benchmark-gain header-summary-stat">
+        </label>
+        <label class="dashboard-item main-item type type-benchmark-gain header-summary-stat report-stat">
           <span class="dashboard-title">
             <input type="checkbox" checked />
             Incr: 240 results
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
+            <span class="benchmark-kind-count stat-regression">
               11
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count black">
+            <span class="benchmark-kind-count stat-inconclusive">
               40
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count green">
+            <span class="benchmark-kind-count stat-improvement">
               189
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item main-item type type-benchmark-gain header-summary-stat">
+        </label>
+        <label class="dashboard-item main-item type type-benchmark-gain header-summary-stat report-stat">
           <span class="dashboard-title">
             <input type="checkbox" checked />
             NLL: 54 results
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
+            <span class="benchmark-kind-count stat-regression">
               8
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count black">
+            <span class="benchmark-kind-count stat-inconclusive">
               7
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count green">
+            <span class="benchmark-kind-count stat-improvement">
               39
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
-        <div class="dashboard-item main-item type type-benchmark-gain header-summary-stat">
+        </label>
+        <label class="dashboard-item main-item type type-benchmark-gain header-summary-stat report-stat">
           <span class="dashboard-title">
             <input type="checkbox" checked />
             Opt: 121 results
           </span>
           <span class="dashboard-value">
-            <span class="benchmark-kind-count red">
+            <span class="benchmark-kind-count stat-regression">
               3
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count black">
+            <span class="benchmark-kind-count stat-inconclusive">
               9
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
               </svg>
             </span>
-            <span class="benchmark-kind-count green">
+            <span class="benchmark-kind-count stat-improvement">
               109
               <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
               </svg>
             </span>
           </span>
-        </div>
+        </label>
       </div>
+-->
     </div>
 
     <div class="report-body">
@@ -273,7 +335,7 @@
         <div class="benchmarks">
         <div class="dashboard type-dashboard-benchmark green">
           <div class="dashboard-item main-item">
-            <span class="dashboard-title">instructions:u benchmark</span>
+            <span class="dashboard-title">instructions:u benchmark 1</span>
             <span class="dashboard-value">clean-check</span>
           </div>
           <div class="dashboard-item history-month-issues">
@@ -302,7 +364,7 @@
         </div>
         <div class="dashboard type-dashboard-benchmark green">
           <div class="dashboard-item main-item">
-            <span class="dashboard-title">instructions:u benchmark</span>
+            <span class="dashboard-title">instructions:u benchmark 2</span>
             <span class="dashboard-value">nll-check</span>
           </div>
           <div class="dashboard-item history-month-issues">
@@ -851,7 +913,6 @@
 
     function to_fields(data, name) {
         let source = data.a.data[name] || data.b.data[name];
-//        console.log(source);
         let fields = [];
         if (source && source.length > 0) {
             let offset_b = 0;
@@ -952,20 +1013,38 @@
         }
     }
 
-    function populateData(data) {
+    function computeFields(data) {
       let test_names = unique([...Object.keys(data.a.data), ...Object.keys(data.b.data)]);
       let fields = test_names.map(name => ({name, fields: to_fields(data, name)}));
+      return fields;
+    }
+    
+    function filterData(data, filters) {
+      const filtered = data.map(f => {
+        const fields = f.fields.filter(ff => {
 
-      let count = 0;
-      let groups = {
-        check: { count: 0, summary: [0, 0, 0]},
-        clean: { count: 0, summary: [0, 0, 0]},
-        incremental: { count: 0, summary: [0, 0, 0]},
-        nll: { count: 0, summary: [0, 0, 0]},
-        release: { count: 0, summary: [0, 0, 0]}
-      };
+          if (ff.percent > 1) {
+            if (!filters.regressed) return false;
+          } else if (ff.percent < -1) {
+            if (!filters.improved) return false;
+          } else {
+            if (!filters.inconclusive) return false;
+          }
 
-      for (let field of fields) {
+          for (let group in filters.groups) {
+            if (!filters.groups[group]) {
+              if (ff.groups[group]) {
+                return false;
+              }
+            }
+          }
+
+          return true;
+        });
+        return Object.assign({}, f, { fields });
+      }).filter (f => f.fields.length > 0);
+
+      for (let field of filtered) {
           let pcts = field.fields.map(field => field.percent)
               .filter(p => p != undefined && p != null);
           field.max_pct = Math.max(...pcts);
@@ -974,125 +1053,339 @@
           let sum = pcts.reduce((a, b) => a + b, 0);
           let avg = sum / pcts.length;
           field.avg_pct = avg;
-          field.max_casename_len = Math.max(...field.fields.map(f => f.casename.length));
-
-        field.fields.forEach (f => {
-          if (f.groups.check) groups.check.count++;
-          if (f.groups.clean) groups.clean.count++;
-          if (f.groups.incremental) groups.incremental.count++;
-          if (f.groups.nll) groups.nll.count++;
-          if (f.groups.release) groups.release.count++;
-          count++;
-        });
       }
 
-//      console.log(`summary: ${count} tests`);
-//      console.log(groups);
+      return filtered;
+    }
+    
+    function computeStats(fields) {
+      let stats = {
+        total: 0,
+        projects: 0,
 
+        regressed: 0,
+        inconclusive: 0,
+        improved: 0,
+
+        groups: {
+          check:       { total: 0, regressed: 0, inconclusive: 0, improved: 0 },
+          clean:       { total: 0, regressed: 0, inconclusive: 0, improved: 0 },
+          incremental: { total: 0, regressed: 0, inconclusive: 0, improved: 0 },
+          nll:         { total: 0, regressed: 0, inconclusive: 0, improved: 0 },
+          release:     { total: 0, regressed: 0, inconclusive: 0, improved: 0 }
+        }
+      };
+
+      stats.projects = fields.length;
+
+      let summary = {
+        total: { count: 0, value: 0},
+        check: { count: 0, value: 0},
+        clean: { count: 0, value: 0},
+        opt: { count: 0, value: 0},
+      };
+      
+      for (let field of fields) {
+        for (let bench of field.fields) {
+          const pct = bench.percent;
+          let stat;
+          if (pct > 1) {
+            stat = "regressed";
+          } else if (pct < -1) {
+            stat = "improved";
+          } else {
+            stat = "inconclusive";
+          }
+
+          stats.total++;
+          stats[stat]++;
+
+          for (let group in bench.groups) {
+            if (bench.groups[group]) {
+              stats.groups[group].total++;
+              stats.groups[group][stat]++;
+            }
+          }
+        }
+      }
+      
+      for (let field of fields) {
+        let pcts = field.fields.map(field => field.percent)
+              .filter(p => p != undefined && p != null);
+        let sum = pcts.reduce((a, b) => a + b, 0);
+        
+        summary.total.count++;
+        summary.total.value += sum;
+        
+        let checks = field.fields.filter(field => field.groups.check)
+                          .map(field => field.percent)
+                          .filter(p => p != undefined && p != null);
+        summary.check.count += checks.length;
+        summary.check.value += checks.reduce((a, b) => a + b, 0);
+        
+        let cleans = field.fields.filter(field => field.groups.clean)
+                          .map(field => field.percent)
+                          .filter(p => p != undefined && p != null);
+        summary.clean.count += cleans.length;
+        summary.clean.value += cleans.reduce((a, b) => a + b, 0);
+        
+        let opts = field.fields.filter(field => field.groups.release)
+                          .map(field => field.percent)
+                          .filter(p => p != undefined && p != null);
+        summary.opt.count += opts.length;
+        summary.opt.value += opts.reduce((a, b) => a + b, 0);
+      }
+
+      summary.total.value /= summary.total.count;
+      summary.check.value /= summary.check.count;
+      summary.clean.value /= summary.clean.count;
+      summary.opt.value /= summary.opt.count;
+      
+      
+      console.log(summary);
+      
+
+      return stats;
+    }
+    
+    function computeSummary(stats, report) {
+      let reportStats = report ? report.stats : stats;
+
+      let summary = `
+        <div class="dashboard report-summary">
+          <label class="dashboard-item main-item filterable">
+            <span class="dashboard-title">
+              <input type="checkbox" checked />
+              <span class="filter-text">Filtered </span> benchmarks
+              <span class="sort-indicator">&mdash; Sorted by <a href="">Amplitude DESC</a></span>
+            </span>
+            <span class="dashboard-value">
+              <span class="total-benchmarks">
+                <span class="filter-text">${stats.total} / </span>
+                ${reportStats.total} total</span>,
+              <span class="total-projects"> in
+                <span class="filter-text">${stats.projects} / </span>
+                ${reportStats.projects} projects</span>
+            </span>
+          </label>
+          <div class="dashboard-item dashboard-button filterable">
+            <div class="dashboard-value">
+              <a href="" class="action-show-filters">
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M6,13H18V11H6M3,6V8H21V6M10,18H14V16H10V18Z" />
+                </svg>
+                <span class="filter-text">Hide</span>
+                <span class="button-text">Show</span>
+                filters
+              </a>
+            </div>
+          </div>
+          <label class="dashboard-item history-month-issues type-benchmark-gain header-summary-stat report-stat filterable stat-regression ${report.filters.regressed ? "" : "is-filtering"}">
+            <span class="dashboard-title">
+              <input type="checkbox" ${report.filters.regressed ? "checked" : ""} />
+              Regressed > 1%
+            </span>
+            <span class="dashboard-value">
+              <span class="benchmark-kind-count">
+                <span class="filter-text">${stats.regressed} / </span> ${reportStats.regressed}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+                </svg>
+              </span>
+            </span>
+          </label>
+          <label class="dashboard-item type-benchmark-gain header-summary-stat report-stat filterable stat-inconclusive  ${report.filters.inconclusive ? "" : "is-filtering"}">
+            <span class="dashboard-title">
+              <input type="checkbox" ${report.filters.inconclusive ? "checked" : ""} />
+              Inconclusive +/- 1%
+            </span>
+            <span class="dashboard-value">
+              <span class="benchmark-kind-count">
+                <span class="filter-text">${stats.inconclusive} / </span> ${reportStats.inconclusive}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+                </svg>
+              </span>
+            </span>
+          </label>
+          <label class="dashboard-item type-benchmark-gain header-summary-stat filterable report-stat stat-improvement ${report.filters.improved ? "" : "is-filtering"}">
+            <span class="dashboard-title">
+              <input type="checkbox" ${report.filters.improved ? "checked" : ""} />
+              Improved > 1%
+            </span>
+            <span class="dashboard-value">
+              <span class="benchmark-kind-count">
+                <span class="filter-text">${stats.improved} / </span> ${reportStats.improved}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+                </svg>
+              </span>
+            </span>
+          </label>
+        </div>
+      `;
+
+      return summary;
+    }
+
+    function computeFilters(stats, filters, report) {
+      let reportFilters = "";
+
+      const labels = {
+        check: "Check",
+        clean: "Clean",
+        incremental: "Incr",
+        nll: "NLL",
+        release: "Opt",
+      };
+
+      for (let key in stats.groups) {
+        const label = labels[key];
+        const group = stats.groups[key];
+        const isAccepted = filters.groups[key];
+        const groupTotal = report.stats.groups[key].total;
+        let filter = `
+          <label class="dashboard-item main-item type history-month-issuesx type-benchmark-gain header-summary-stat report-stat ${isAccepted ? "" : "is-filtering"} suite-stat-${key}">
+            <span class="dashboard-title">
+              <input type="checkbox" ${isAccepted ? "checked" : ""} />
+              ${label}:<span class="filter-text">&nbsp; ${group.total} / </span>&nbsp;${groupTotal} results
+            </span>
+            <span class="dashboard-value">
+              <span class="benchmark-kind-count stat-regression">
+                ${group.regressed}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+                </svg>
+              </span>
+              <span class="benchmark-kind-count stat-inconclusive">
+                ${group.inconclusive}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+                </svg>
+              </span>
+              <span class="benchmark-kind-count stat-improvement">
+                ${group.improved}
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                  <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+                </svg>
+              </span>
+            </span>
+          </label>
+        `;
+
+        reportFilters += filter;
+      }
+
+      return `<div class="dashboard report-filters">${reportFilters}</div>`;
+    }
+
+    function populateData(fields, report) {
+      // handle sorting elsewhere
       fields.sort((a, b) => {
           return b.farthest_pct - a.farthest_pct;
       });
 
-//        fields.sort((a, b) => {
-//            return a.name.localeCompare(b.name);
-//        });
+//      fields.sort((a, b) => {
+//          return a.name.localeCompare(b.name);
+//      });
 
-        let max_name_width = Math.max(...fields.map(f => f.max_casename_len));
+      const stats = computeStats(fields);
 
-        for (let i = 0; i < fields.length; ++i) {
-          const field = fields[i];
+      // generate header summary and filter controls
+      const header = document.querySelector(".report-header");
+      let summary = computeSummary(stats, report);
+      header.innerHTML = summary;
 
-          const name = field.name;
-          const benchmarks = field.fields.length;
+      let filters = computeFilters(stats, report.filters, report);
+      header.innerHTML += filters;
 
-          const avg = toPct(field.avg_pct);
-          const best = toPct(field.min_pct);
-          const worst = toPct(field.max_pct);
+      // generate report body
+      document.querySelector(".report-body").innerHTML = "";
+      
+      for (let i = 0; i < fields.length; ++i) {
+        const field = fields[i];
+        const benchmarks = field.fields;
 
-          const avgImprovement = toImprovement(field.avg_pct);
-          const bestImprovement = toImprovement(field.min_pct);
-          const worstImprovement = toImprovement(field.max_pct);
+        if (benchmarks.length === 0) {
+          continue;
+        }
 
-          let summary = [0, 0, 0];
-          for (let bench of field.fields) {
-            const pct = bench.percent;
-            if (pct > 1) {
-              summary[0]++;
-              if (bench.groups.check) groups.check.summary[0]++;
-              if (bench.groups.clean) groups.clean.summary[0]++;
-              if (bench.groups.incremental) groups.incremental.summary[0]++;
-              if (bench.groups.nll) groups.nll.summary[0]++;
-              if (bench.groups.release) groups.release.summary[0]++;
-            } else if (pct < -1) {
-              summary[2]++;
-              if (bench.groups.check) groups.check.summary[2]++;
-              if (bench.groups.clean) groups.clean.summary[2]++;
-              if (bench.groups.incremental) groups.incremental.summary[2]++;
-              if (bench.groups.nll) groups.nll.summary[2]++;
-              if (bench.groups.release) groups.release.summary[2]++;
-            } else {
-              summary[1]++;
-              if (bench.groups.check) groups.check.summary[1]++;
-              if (bench.groups.clean) groups.clean.summary[1]++;
-              if (bench.groups.incremental) groups.incremental.summary[1]++;
-              if (bench.groups.nll) groups.nll.summary[1]++;
-              if (bench.groups.release) groups.release.summary[1]++;
-            }
+        const name = field.name;
+
+        const avg = toPct(field.avg_pct);
+        const best = toPct(field.min_pct);
+        const worst = toPct(field.max_pct);
+
+        const avgImprovement = toImprovement(field.avg_pct);
+        const bestImprovement = toImprovement(field.min_pct);
+        const worstImprovement = toImprovement(field.max_pct);
+
+        let projectStats = { regressed: 0, inconclusive: 0, improved: 0 };
+        for (let bench of benchmarks) {
+          const pct = bench.percent;
+          if (pct > 1) {
+            projectStats.regressed++;
+          } else if (pct < -1) {
+            projectStats.improved++;
+          } else {
+            projectStats.inconclusive++;
           }
+        }
 
-          let projectGain = "";
-          if (summary[2] === field.fields.length) {
-            projectGain = "project-gain";
-          } else if (summary[0] === field.fields.length) {
-            projectGain = "project-loss";
-          }
+        let projectGain = "";
+        if (projectStats.improved === benchmarks.length) {
+          projectGain = "project-gain";
+        } else if (projectStats.regressed === benchmarks.length) {
+          projectGain = "project-loss";
+        }
 
-          let x = `<div class="report-item project ${projectGain}">
-            <div class="dashboard project-header">
-              <div class="dashboard-item main-item project-name">
-                <span class="dashboard-title">Project</span>
-                <span class="dashboard-value">${name}</span>
-              </div>
-              <div class="dashboard-item history-month-issues type-benchmark-gain project-summary">
-                <span class="dashboard-title">Benchmark summary</span>
-                <span class="dashboard-value">
-                  <span class="benchmark-kind-count ${summary[0] === 0 ? "black" : "red"}">
-                    ${summary[0]}
-                    <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                      <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
-                    </svg>
-                  </span>
-                  <span class="benchmark-kind-count ${summary[1] === 0 ? "black" : ""}">
-                    ${summary[1]}
-                    <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                      <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
-                    </svg>
-                  </span>
-                  <span class="benchmark-kind-count ${summary[2] === 0 ? "black" : "green"}">
-                    ${summary[2]}
-                    <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                      <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
-                    </svg>
-                  </span>
-                </span>
-              </div>
-              <div class="dashboard-item type-benchmark-gain project-benchmark-range" _style="width: 190px">
-                <span class="dashboard-title">Range of change</span>
-                <span class="dashboard-value">
-                  <span class="benchmark-kind-count ${bestImprovement}">${best} %</span>
-                  <svg style="width:18px;height:18px; position: relative; top: 3px; color: #666;" viewBox="0 0 24 24">
-                      <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
-                  </svg>
-                  <span class="benchmark-kind-count ${worstImprovement}">${worst} %</span>
-                </span>
-              </div>
+        let x = `
+          <div class="dashboard project-header">
+            <div class="dashboard-item main-item project-name">
+              <span class="dashboard-title">Project</span>
+              <span class="dashboard-value">${name}</span>
             </div>
-          `;
+            <div class="dashboard-item history-month-issues type-benchmark-gain project-summary">
+              <span class="dashboard-title">Benchmark summary</span>
+              <span class="dashboard-value">
+                <span class="benchmark-kind-count ${projectStats.regressed === 0 ? "black" : "red"}">
+                  ${projectStats.regressed}
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path d="M16,18L18.29,15.71L13.41,10.83L9.41,14.83L2,7.41L3.41,6L9.41,12L13.41,8L19.71,14.29L22,12V18H16Z" />
+                  </svg>
+                </span>
+                <span class="benchmark-kind-count ${projectStats.inconclusive === 0 ? "black" : ""}">
+                  ${projectStats.inconclusive}
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path d="M22,12L18,8V11H3V13H18V16L22,12Z" />
+                  </svg>
+                </span>
+                <span class="benchmark-kind-count ${projectStats.improved === 0 ? "black" : "green"}">
+                  ${projectStats.improved}
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                    <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+                  </svg>
+                </span>
+              </span>
+            </div>
+            <div class="dashboard-item type-benchmark-gain project-benchmark-range" _style="width: 190px">
+              <span class="dashboard-title">Range of change</span>
+              <span class="dashboard-value">
+                <span class="benchmark-kind-count ${bestImprovement}">${best} %</span>
+                <svg style="width:18px;height:18px; position: relative; top: 3px; color: #666;" viewBox="0 0 24 24">
+                    <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
+                </svg>
+                <span class="benchmark-kind-count ${worstImprovement}">${worst} %</span>
+              </span>
+            </div>
+          </div>
+        `;
 
-          let xx = '<div class="benchmarks">';
-          for (let bench of field.fields) {
+
+          x += '<div class="benchmarks">';
+          for (let bench of benchmarks) {
             const pct = toPct(bench.percent);
-            xx += `
+            x += `
               <div class="dashboard type-dashboard-benchmark ${toImprovement(bench.percent)}">
                 <div class="dashboard-item main-item">
                   <span class="dashboard-title">instructions:u benchmark</span>
@@ -1131,58 +1424,166 @@
                 </div>
               </div>`;
           }
-          xx += '</div>';
+          x += '</div>';
 
-//          console.log(x);
 
-          document.querySelector(".report-body").innerHTML += x + xx + "</div>";
-
-          if (i >= 10) {
-//            break;
-//            console.log(field);
-          }
-        }
-
-//      console.log(groups);
+        document.querySelector(".report-body").innerHTML +=
+          `<div class="report-item project ${projectGain}">
+             ${x}
+           </div>`;
+      }
     }
-    populateData(benchmarkData);
+
+    var report = {
+      filters: {
+        regressed: true,
+        inconclusive: true,
+        improved: true,
+
+        groups: {
+          check: true,
+          clean: true,
+          incremental: true,
+          nll: true,
+          release: true,
+        }
+      }
+    };
+
+    report.benchmarkData = computeFields(benchmarkData);
+    report.data = filterData(report.benchmarkData, report.filters);
+    report.stats = computeStats(report.data);
+
+//    report.filters.improved = false;
+//    report.filters.inconclusive = false;
+//    report.filters.groups.nll = false;
+
+    populateData(report.data, report);
   </script>
 
   <script>
-    const projects = document.querySelectorAll(".project-header");
-    for (let header of projects) {
-      header.addEventListener("click", e => {
-        e.preventDefault();
-        const project = header.parentNode;
-        project.classList.toggle("is-expanded");
+    function init() {
+      // project expanding
+      const projects = document.querySelectorAll(".project-header");
+      for (let header of projects) {
+        header.addEventListener("click", e => {
+          e.preventDefault();
+          const project = header.parentNode;
+          project.classList.toggle("is-expanded");
 
-        if (project.classList.contains("is-expanded")) {
-          let benches = project.querySelectorAll(".benchmarks");
+          if (project.classList.contains("is-expanded")) {
+            let benches = project.querySelectorAll(".benchmarks");
 
-          for (let i = 3; i <= 5; ++i) {
-            for (let row of benches) {
-              let a = row.querySelectorAll(".dashboard-item:nth-child(" + i + ") .dashboard-value");
-              let max = Math.max.apply (Math, Array.from(a).map(o => o.clientWidth + 5));
-              Array.from(a).forEach(o => o.style.width = max + "px");
+            for (let i = 3; i <= 5; ++i) {
+              for (let row of benches) {
+                let a = row.querySelectorAll(".dashboard-item:nth-child(" + i + ") .dashboard-value");
+                let max = Math.max.apply (Math, Array.from(a).map(o => o.clientWidth + 5));
+                Array.from(a).forEach(o => o.style.width = max + "px");
+              }
             }
           }
+        });
+      }
+      
+      // toggling filters
+      const showFilters = document.querySelector(".action-show-filters");
+      showFilters.addEventListener("click", e => {
+        e.preventDefault();
+
+        const header = document.querySelector(".report-header");
+        const filterables = Array.from(header.querySelectorAll(".filterable"));
+
+        const buttonText = showFilters.querySelector(".button-text");
+
+        if (!header.classList.contains("is-expanded")) {
+          header.classList.add("is-expanded");
+
+          setTimeout(() => {
+            filterables.forEach(n => n.classList.toggle("is-expanded"));
+          }, 100);
+        } else {
+          header.classList.remove("is-expanded");
+
+          setTimeout(() => {
+            filterables.forEach(n => n.classList.toggle("is-expanded"));
+          }, 100);
         }
+      }, false);
+      
+      // 1st input = toggle everything on/off
+      document.querySelector(".report-summary .main-item input").addEventListener("change", e => {
+        const target = e.target;
+
+        if (!document.querySelector(".report-header.is-expanded")) {
+          e.preventDefault();
+          target.checked = !target.checked;
+          return;
+        }
+
+//        console.log(e, this);
+      });
+
+      // next 3 = toggle improvement type
+      Array.from(document.querySelectorAll(".report-header .report-stat input")).forEach(i => {
+        i.addEventListener("change", e => {
+          const target = e.target;
+
+          if (!document.querySelector(".report-header.is-expanded")) {
+            e.preventDefault();
+            target.checked = !target.checked;
+            return;
+          }
+
+          const filterable = target.parentNode.parentNode;
+          filterable.classList.toggle("is-filtering");
+
+          if (filterable.classList.contains("stat-regression")) {
+            report.filters.regressed = !report.filters.regressed;
+          } else if (filterable.classList.contains("stat-inconclusive")) {
+            report.filters.inconclusive = !report.filters.inconclusive;
+          } else if (filterable.classList.contains("stat-improvement")) {
+            report.filters.improved = !report.filters.improved;
+          } else {
+            // 5 following = filtering "groups"
+            for (let k of filterable.classList) {
+              if (k.startsWith("suite-stat-")) {
+                const stat = k.substring("suite-stat-".length);
+                report.filters.groups[stat] = !report.filters.groups[stat];
+              }
+            }
+          }
+
+          setTimeout(() => {
+            report.data = filterData(report.benchmarkData, report.filters);
+            populateData(report.data, report);
+
+            const header = document.querySelector(".report-header");
+            const filterables = Array.from(header.querySelectorAll(".filterable"));
+            filterables.forEach(n => n.classList.toggle("is-expanded", true));  
+            init();
+          }, 0);
+        }, false);
       });
     }
-
-    const showFilters = document.querySelector(".action-show-filters");
-    showFilters.addEventListener("click", e => {
-      e.preventDefault();
-      const header = document.querySelector(".report-header");
-      if (!header.classList.contains("is-expanded")) {
-        header.classList.add("is-expanded");
-        setTimeout(() => { showFilters.innerHTML = "Hide Filters"; }, 50);
-      } else {
-        header.classList.remove("is-expanded");
-//        showFilters.innerHTML = "Show Filters";
-        setTimeout(() => { showFilters.innerHTML = "Show Filters"; }, 50);
-      }
-    });
+    
+    init();
+    
+//    const values = [4, 8, 3, 9, 17];
+//    const sum = values.map(n => Math.log10(n)).reduce((a, b) => a + b, 0);
+//    console.log(sum);
+//    
+//    const avg = sum / values.length;
+//    console.log(avg);
+//    
+//    const antilog = Math.pow(10, avg);
+//    console.log(antilog);
+    
+//    const values = [4, 8, 3, 9, 17];
+//    const mul = values.reduce((a, b) => a * b, 1);
+//    console.log(mul);
+//    
+//    const geomean = Math.pow(mul, 1 / values.length);
+//    console.log(geomean);
   </script>
 </body>
 </html>
