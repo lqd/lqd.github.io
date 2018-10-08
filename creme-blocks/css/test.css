@@ -1,0 +1,1881 @@
+/* global Creme overrides */
+html, body {
+    font-family: 'Open Sans', 'Verdana', sans-serif;
+}
+
+/* bg gradient where possible */
+html {
+    background: #fcfcfc;
+    background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#fff), to(#fcfcfc));
+    background: -moz-linear-gradient(top, #fff 0%, #fcfcfc 15%);
+    background-repeat: repeat-x;
+}
+
+body {
+    background: none;
+}
+
+html.is_deleted {
+    background: #eee;
+}
+
+body.is_deleted {
+    background: #eee;
+    background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#eee), to(#fcfcfc));
+    background: -moz-linear-gradient(top, #eee 0%, #fcfcfc 15%);
+}
+
+/* login page overrides */
+
+html.central_panel {
+    min-height: 100%;
+    background-color: transparent;
+}
+
+body.central_panel {
+    background-color: transparent;
+    font-family: 'Open Sans', 'Verdana', sans-serif;
+}
+
+/* login page overrides - end */
+
+.north, .west, .south, .east {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.north:not(:empty) {
+    margin-bottom: 15px;
+}
+
+.south:not(:empty) {
+    margin-top: 15px;
+}
+
+.east.column.last {
+    padding-left: 13px;
+}
+
+#content {
+    height: auto;
+    padding-top: 0;
+
+    /* 289px = 269px footer + 20px margin-top; 24px = page decoration, 50px #top margin-top, 10px = weird margin between content and the page decoration - wtf ?! 5px ds IE, 0px dans IE; et dépend de la page */
+    min-height: calc(100vh - 289px - 24px - 50px - 10px); /* TODO: vérifier si on peut enlever enlever ces 10px, au pire en js ? */
+}
+
+#sub_content .table_header {
+    border-top: none;
+}
+
+#sub_content .detailview .table_header {
+    border-top: 1px solid #ccc;
+}
+
+/* list views */
+
+/* creme wtf */
+a.lv-action-toggle, a.lv-action-toggle:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* creme wtf */
+.list_view.list_view {
+    border: none;
+    margin-top: 0;
+}
+
+.list_view > thead .title h2 {
+    margin-top: 0;
+}
+
+.in-popup .list_view > thead .title h2 {
+    margin-top: 10px;
+}
+
+.list_view > thead tr.columns_top,
+.list_view > thead tr.columns_bottom,
+.list_view .columns_top th.sorted,
+.list_view .columns_bottom th.sorted,
+.list_view > tbody tr:not(.odd) {
+    background: #fcfcfc;
+}
+
+.list_view > tbody tr.odd {
+    background: #fff;
+}
+
+.list_view tr#list_thead_toolbar th {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.list_view tr#list_thead_toolbar a,
+.list_view tr#list_thead_toolbar button {
+    display: inline-block;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+
+    border: 1px solid #d7d7d7;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0px white;
+    -webkit-box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+    background: linear-gradient(#fcfcfc, #f0f0f0);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+
+    margin-right: 5px;
+}
+
+.list_view tr#list_thead_toolbar a.with-icon,
+.list_view tr#list_thead_toolbar button.with-icon {
+    padding-left: 35px;
+    position: relative;
+}
+
+.list_view tr#list_thead_toolbar a.with-icon img,
+.list_view tr#list_thead_toolbar button.with-icon img {
+    position: absolute;
+    top: calc(50% - 7px);
+    left: 13px;
+}
+
+.list_view tr#list_thead_toolbar a:enabled:hover,
+.list_view tr#list_thead_toolbar button:enabled:hover {
+    background: linear-gradient(#ffffff, #f3f3f3);
+    color: #4d4d4d;
+}
+
+.list_view tr#list_thead_toolbar a:enabled:active,
+.list_view tr#list_thead_toolbar button:enabled:active {
+    background: linear-gradient(#f9f9f9, #ededed);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-bottom-color: #d7d7d7;
+    border-top-color: #bdbdbd;
+    color: #1a1a1a;
+}
+
+.list_view tr#list_thead_toolbar a img,
+.list_view tr#list_thead_toolbar button img {
+    height: 15px;
+/*    top: 3px;*/
+}
+
+.list_view tr#list_thead_toolbar button.clear-search {
+    height: auto;
+    padding: 7px 20px;
+}
+
+.list_view tr#list_thead_toolbar button.do-search {
+    top: 0;
+}
+
+.list_view tr#list_thead_toolbar a:disabled,
+.list_view tr#list_thead_toolbar button:disabled {
+    opacity: 0.5;
+}
+
+/* forms */
+#editforms .submit_buttons {
+    margin-top: 20px;
+}
+
+#editforms form .table_detail_view {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-bottom: 0; /* distribute the existing 1px border into the last row to prevent a Chrome bug (dual column form, rightmost form: the border at the bottom of the last cell is hidden) */
+}
+
+#editforms form .table_detail_view tbody tr:last-child {
+    border-bottom: 1px solid #ccc; /* table border distributed in the last row */
+}
+
+#editforms form .table_detail_view .block_header_line_light,
+#editforms form .table_detail_view .block_line_light {
+    background: #fff;
+}
+
+#editforms form .table_detail_view .block_header_line_dark,
+#editforms form .table_detail_view .block_line_dark {
+    background: #fcfcfc;
+
+}
+
+#editforms form .table_detail_view tbody tr:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+/* creme wtf */
+#editforms form .table_detail_view#billing_table tbody > tr:first-child,
+#editforms form .table_detail_view#shipping_table tbody > tr:first-child {
+    border-bottom: none;
+}
+
+/* creme wtf */
+input:not([type="submit"]):not([type="file"]), select, textarea {
+    border-radius: 0;
+    border: 1px solid #a9a9a9;
+}
+
+input, textarea {
+    padding-left: 5px;
+}
+
+select {
+    padding-left: 3px;
+}
+
+/* creme wtf */
+form .table_detail_view.dual_column .td_info > input, form .table_detail_view.dual_column .td_info > select, form .table_detail_view.dual_column .td_info > textarea, .in-popup form .table_detail_view .td_info > input, .in-popup form .table_detail_view .td_info > select, .in-popup form .table_detail_view .td_info span > select, .in-popup form .table_detail_view .td_info > textarea {
+    width: 98.5%;
+}
+
+/* creme wtf */
+.block-form td button {
+    padding: 0 6px;
+}
+
+input, textarea, select, textarea, .ui-widget input, .ui-widget select, .ui-widget textarea, label {
+    font-family: 'Open Sans', 'Verdana', sans-serif;
+    font-size: 13px;
+}
+
+.ui-creme-entityselector > button[type="button"], button, .ui-widget button, input[type='submit'] {
+    font-family: 'Open Sans', 'Verdana', sans-serif;
+    font-size: 12.5px;
+}
+
+#sub_content > .table_header td:first-child { /* editview headers... */
+    width: 5%; /* backwards compatiblity - 5% is hardcoded in the form 'generics/blockform/base.html' template */
+}
+
+.in-popup .table_header td:first-child {
+    width: 30px;
+}
+
+/* dialogs */
+
+.ui-widget {
+    font-family: 'Open Sans', 'Verdana', sans-serif;
+}
+
+.ui-dialog.ui-widget-content {
+    border-radius: 0;
+}
+
+/* jquery ui + creme wtf */
+.ui-widget-content,
+.ui-widget-content.ui-widget-content,
+.ui-dialog,
+.ui-dialog.ui-widget-content,
+.ui-dialog .ui-widget-content {
+    background: #fff;
+}
+
+.ui-dialog-content .ui-creme-overlay {
+    background-color: #fff;
+}
+
+/*
+.ui-dialog .ui-dialog-buttonset button:focus {
+  outline: none;
+}
+*/
+
+.ui-dialog .ui-dialog-buttonset button {
+    border: 1px solid #d7d7d7;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0px white;
+    -webkit-box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+    background: linear-gradient(#fcfcfc, #f0f0f0);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ui-dialog .ui-dialog-buttonset button:hover {
+    background: linear-gradient(#ffffff, #f3f3f3);
+    color: #4d4d4d;
+}
+
+.ui-dialog .ui-dialog-buttonset button:active {
+    background: linear-gradient(#f9f9f9, #ededed);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-bottom-color: #d7d7d7;
+    border-top-color: #bdbdbd;
+    color: #1a1a1a;
+}
+
+.ui-dialog .ui-dialog-buttonset button + button {
+    margin-left: 10px;
+}
+
+.ui-dialog .ui-dialog-buttonset button .ui-button-text {
+    padding: 0;
+}
+
+.in-popup .table_header h1 {
+    font-size: 15px;
+}
+
+.in-popup .table_header td:first-child img {
+    height: 20px;
+    position: relative;
+    top: 2px;
+}
+
+.in-popup .table_detail_view thead,
+.in-popup form .table_detail_view .th_info {
+    font-size: 13px;
+}
+
+/* menu_buttons */
+
+.menu_button {
+    display: inline-block;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+
+    border: 1px solid #d7d7d7;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0px white;
+    -webkit-box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+    background: linear-gradient(#fcfcfc, #f0f0f0);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.menu_button.menu-button-icon {
+    padding-left: 35px;
+    position: relative;
+}
+
+.menu_button.menu-button-icon img {
+    position: absolute;
+    top: calc(50% - 7px);
+    left: 13px;
+}
+
+.menu_button.forbidden {
+    cursor: default;
+}
+
+.menu_button:not(.forbidden):hover {
+    background: linear-gradient(#ffffff, #f3f3f3);
+    color: #4d4d4d;
+}
+
+.menu_button:not(.forbidden):active {
+    background: linear-gradient(#f9f9f9, #ededed);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-bottom-color: #d7d7d7;
+    border-top-color: #bdbdbd;
+    color: #1a1a1a;
+}
+
+.menu_button img {
+    height: 15px;
+    top: 3px;
+}
+
+.file_buttons .button_list {
+    margin-top: -10px;
+}
+
+.file_buttons .button_list .menu_button {
+    margin-top: 10px;
+}
+
+.file_buttons + .zone_spacer_5px {
+    margin-top: 10px;
+}
+
+.file_buttons ul.button_list.hbox,
+.model_buttons ul.button_list.hbox,
+#sub_content > .zone_spacer_5px > ul.button_list.hbox {
+    line-height: normal;
+}
+
+.file_buttons .menu_button,
+.model_buttons .menu_button {
+    margin-right: 5px;
+}
+
+
+/* global Creme overrides - end */
+
+/* apply a natural box layout model to all elements */
+.brick * {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* creme wtf */
+.brick a img {
+    transition: none;
+}
+
+.brick a img:hover {
+    opacity: 1;
+}
+/* creme wtf - end */
+
+/* blocks */
+
+.brick {
+    background: white;
+    border-left: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+
+    display: inline-block;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+
+    width: 100%;
+
+/*
+    overflow-y: auto;
+    overflow-x: hidden;
+*/
+}
+
+.brick + .brick {
+    margin-top: 15px;
+}
+
+/* TODO: some blocks have script tags defined before them, making sibling selection impossible. Eg. Geoolocation map block.
+Those templates need to be cleaned up */
+.brick + table.table_detail_view,
+.brick + script + table.table_detail_view {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+table.table_detail_view + .brick,
+table.table_detail_view + table.table_detail_view {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.brick .brick-header {
+    background: #f5f5f5;
+    display: inline-block;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #666;
+    font-weight: 600;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    height: 26px;
+
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.brick .brick-content {
+    padding: 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.brick .brick-content.is-paginated {
+    padding-bottom: 0;
+}
+
+.brick .brick-title-container {
+    flex: 1;
+    padding-left: 10px;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #dedede;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+
+    min-width: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+}
+
+.brick .brick-header-menu:not(.is-disabled):hover {
+    cursor: pointer;
+}
+
+.brick .brick-action.is-disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* blocks end */
+
+/* block menu */
+
+.brick-menu-buttons {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-direction: column;
+}
+
+.brick-menu-buttons .brick-menu-action {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px 0px;
+
+    color: #666;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.brick-menu-buttons .brick-menu-action.is-disabled {
+    color: #aaa;
+    cursor: default;
+}
+
+.brick-menu-buttons .brick-menu-action + hr:not(last-child) {
+    margin-top: 2px;
+    border-top: 1px solid #dedede;
+}
+
+.brick-menu-action img.brick-menu-icon {
+    height: 16px;
+    min-width: 16px;
+    max-width: 16px;
+}
+
+.brick-menu-action.is-disabled img.brick-menu-icon {
+    opacity: 0.6;
+}
+
+
+.brick-menu-action .brick-menu-button-title {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+/* block menu end */
+
+/* block header */
+
+/*
+.brick .brick-header-icon {
+    height: 10px;
+    min-width: 10px;
+    max-width: 10px;
+}
+*/
+
+/* tmp: svg tests*/
+.brick img.brick-header-icon {
+    height: 16px;
+    min-width: 16px;
+    max-width: 16px;
+}
+
+.brick .brick-title-container .brick-header-icon {
+    margin-right: 5px;
+}
+
+.brick .brick-title-container .brick-loading-indicator {
+    display: none;
+}
+
+.brick.is-loading .brick-title-container .brick-loading-indicator {
+    display: inline-block;
+    font-weight: 700;
+}
+
+.brick.is-loading .brick-title-container .brick-header-icon:not(.brick-loading-indicator) {
+    display: none;
+}
+
+.brick .brick-header-buttons {
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: -1px;
+}
+
+.brick .brick-header-button {
+    display: inline-flex;
+    align-items: center;
+
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #dedede;
+
+    padding: 0 15px;
+    text-decoration: none;
+
+    position: relative;
+    margin-left: -1px;
+
+    cursor: pointer;
+
+    color: #666;
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    transition: all 0.15s ease-in-out;
+}
+
+.brick .brick-header-button.is-disabled {
+    cursor: default;
+}
+
+.brick .brick-header-button:first-child {
+    margin-left: 0;
+}
+
+.brick .brick-header-button:last-child {
+    border-right: 1px solid #d9d9d9;
+}
+
+.brick .brick-header-button:before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+    top: -1px;
+    width: 1px;
+    background: -webkit-linear-gradient(transparent, #aaa);
+    background:    -moz-linear-gradient(transparent, #aaa);
+    background:      -o-linear-gradient(transparent, #aaa);
+    background:         linear-gradient(transparent, #aaa);
+}
+
+.brick .brick-header-buttons img.brick-header-icon {
+    height: 10px;
+    min-width: 10px;
+    max-width: 10px;
+}
+
+.brick .brick-header-button-title {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.brick .brick-header-button:not(.is-disabled):hover {
+    color: #414141;
+    background: currentColor;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    z-index: 1;
+}
+
+.brick .brick-header-button:last-child:hover {
+    border-right: 1px solid currentColor;
+}
+
+.brick .brick-header-button:not(.is-disabled):hover:before {
+    display: none;
+}
+
+.brick .brick-header-button:not(.is-disabled):hover .brick-header-button-title {
+    color: white;
+}
+
+.brick .brick-header-button:not(.is-disabled):hover .brick-header-icon {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+}
+
+.brick .brick-menu-buttons {
+    display: none;
+}
+
+/* block header - end */
+
+/* buttons - action types test */
+/* todo: find better name/namespace for enums like this ? creme-actions-* ? is-action-link ? */
+.brick .brick-header-button.action-type-add {
+    color: #3bab07; /* hsl(101, 92%, 35%) */
+}
+
+.brick .brick-header-button.action-type-add:hover {
+    color: #44c408; /* hsl(101, 92%, 40%) */
+}
+
+.brick .brick-header-button.action-type-link,
+.brick .brick-header-button.action-type-link:hover {
+    color: #479ef5; /* hsl(210, 90%, 62%) */
+}
+
+.brick .brick-header-button.action-type-delete,
+.brick .brick-header-button.action-type-delete:hover {
+    color: #fa4242; /* hsl(0, 95%, 62%) */
+}
+
+/* buttons - action types test - end */
+
+/* button icon alignment/image hijacking test */
+
+.brick .brick-title-container .brick-header-icon[src*='add'] {
+    margin-left: -3px;
+}
+
+.brick .brick-header-icon[src*='add'] {
+    position: relative;
+    top: 1px;
+}
+
+.brick .brick-header-icon[src*='link'] {
+    position: relative;
+    top: 1px;
+}
+
+.brick .brick-header-button.action-type-delete .brick-header-icon {
+    transform: rotate(45deg);
+}
+
+/* button icon alignment/image hijacking test - end */
+
+/* block menu test */
+
+/*
+.brick .brick-title {
+    cursor: pointer;
+}
+
+.brick .brick-title:hover {
+    text-decoration: underline;
+}
+*/
+
+/* block menu test - end */
+
+/* block types - table type */
+
+.brick.brick-table .brick-content {
+    padding: 0;
+    _border-left: 0; /* reset left border of the block */
+    _border-right: 0; /* reset right border of the block */
+}
+
+/* .brick-content padding and block left border distributed into the table's first column */
+.brick-table .brick-table-content > tbody > tr > :first-child,
+.brick-table .brick-table-content > thead > tr > :first-child {
+    padding-left: 10px;
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+}
+
+/* distribute block right border into the table's last column */
+.brick-table .brick-table-content > tbody > tr > :last-child,
+.brick-table .brick-table-content > thead > tr > :last-child {
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+    padding-right: 10px;
+}
+
+/* todo: find out if it's necessary/useful to prefix all rules by .brick.brick-table or just use .brick-table ? */
+
+.brick-table table.brick-table-content {
+    width: 100%;
+
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.brick-table .brick-content:not(.is-empty) .brick-table-content > thead > tr {
+    color: #666;
+/*
+    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid #dedede;
+*/
+    background: #fcfcfc;
+}
+
+.brick-table .brick-table-content > thead > tr > th {
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: default;
+    color: #777;
+}
+
+.brick-table .brick-table-content > tbody > tr {
+    font-size: 13px;
+    vertical-align: top;
+    border-bottom: 1px solid #ededed;
+}
+
+/* thead tr's border-bottom distributed in here to allow overrides */
+.brick-table .brick-table-content > thead + tbody > tr:first-child {
+    border-top: 1px solid #ededed;
+    border-top: 1px solid #dedede;
+}
+
+.brick-table .brick-table-content > tbody > tr:nth-child(2n) {
+    background: #fcfcfc;
+}
+
+.brick-table .brick-table-content > tbody > tr:last-child {
+    border-bottom: none;
+}
+
+.brick-table .brick-content.is-paginated .brick-table-content > tbody > tr:last-child {
+    border-bottom: 1px solid #dedede;
+}
+
+.brick-table .brick-table-content > thead > tr > th,
+.brick-table .brick-table-content > tbody > tr > td {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sortable {
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    color: #222;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sortable.brick-table-sorted {
+    font-weight: 700;
+    color: #666;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sortable::after {
+    content: '';
+    display: none;
+    position: absolute;
+
+    color: #999;
+
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+
+    bottom: 3px;
+    left: 100%;
+
+    margin-bottom: 2px;
+    margin-left: 4px;
+
+    border-top: 0;
+    border-bottom: 4px solid currentColor;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sortable.brick-table-sorted::after {
+    display: block;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sorted[data-sort-order='asc']::after {
+    border-top: 0;
+    border-bottom: 4px solid currentColor;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sorted[data-sort-order='desc']::after {
+    border-top: 4px solid currentColor;
+    border-bottom: 0;
+}
+
+.brick-table .brick-table-content > thead .brick-table-sortable:hover::after {
+    display: inline-block;
+}
+
+.brick-table .brick-table-content > thead .brick-table-nowrap {
+    whitespace: no-wrap
+}
+
+/* block types - table type - end */
+
+/* action buttons in tables */
+
+.brick-table .brick-table-content [data-table-action-column] {
+    text-align: center;
+    padding: 0;
+}
+
+.brick-table .brick-table-content > tbody > tr [data-table-action-column]:last-child {
+    padding-right: 10px;
+}
+
+.brick-table .brick-table-content > tbody [data-table-action-column] {
+    width: 25px;
+}
+
+.brick-table .brick-table-content .brick-table-action {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 10px 3px 10px;
+}
+
+.brick-table .brick-table-content .brick-table-action.is-disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.brick-table .brick-table-content .brick-table-icon {
+    display: inline-block;
+    padding: 6px 10px 3px 10px;
+}
+
+/* action buttons in tables - end */
+
+/* exemples de hijacking de rendu dans les blocs tables: 1) pour les types de données des champs, 2) pour les champs/colonnes principales */
+
+.brick-table .brick-table-content > thead > tr > [data-type='currency'],
+.brick-table .brick-table-content > tbody > tr > [data-type='currency'] {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.brick-table .brick-table-content tr > [data-type='currency'] .data-type-currency-symbol {
+    color: #666;
+}
+
+.brick-table .brick-table-content [data-type='date'] {
+    min-width: 80px;
+}
+
+.brick-table .brick-table-content [data-type='date'] .data-type-date-separator {
+    color: #888;
+}
+
+.brick-table .brick-table-content [data-type='list'] ul {
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+
+.brick-table .brick-table-content [data-table-primary-column] {
+    font-weight: 600;
+}
+
+.brick-table .brick-table-content > thead [data-table-primary-column],
+.brick-table .brick-table-content > thead [data-table-primary-column] .brick-table-sortable {
+    font-weight: 700;
+    color: #666;
+}
+
+.brick-table .brick-table-content > thead [data-table-nowrap-column] {
+    white-space: nowrap;
+}
+
+/* exemples de hijacking de rendu de types de données - end */
+
+/* block content types - pagination */
+
+.brick .brick-footer {
+    padding: 5px 10px;
+
+    _border-left: 1px solid #d9d9d9; /* right border of the block */
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.brick .brick-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid #dedede;
+    padding-top: 7px;
+    padding-bottom: 2px;
+}
+
+.brick-table .brick-pagination {
+    padding-top: 2px;
+    border: 0;
+}
+
+.brick .brick-pagination > a,
+.brick .brick-pagination > span {
+    margin-left: -1px;
+    padding: 3px 10px;
+    border: 1px solid #dedede;
+
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+
+    cursor: pointer;
+}
+
+.brick-pagination > :first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.brick-pagination > :last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.brick .brick-pagination .brick-pagination-current {
+    font-weight: 700;
+    background: #ededed;
+    cursor: default;
+    z-index: 1;
+}
+
+.brick .brick-pagination .brick-pagination-previous.is-disabled,
+.brick .brick-pagination .brick-pagination-next.is-disabled {
+    color: #ccc;
+    background: #fcfcfc;
+    cursor: default;
+    border: 1px solid #dedede;
+}
+
+.brick .brick-pagination a:hover {
+    color: #fff;
+    background: #414141;
+    border-color: #414141;
+    z-index: 1;
+}
+
+.brick .brick-pagination .brick-pagination-choose span {
+    padding: 3px 10px;
+}
+
+.brick .brick-pagination .brick-pagination-choose input {
+    display: none;
+
+    font-weight: 700;
+    padding: 0px 0px;
+    width: 40px;
+    color: black;
+    text-align: center;
+    background-color: transparent;
+    margin: -1px 0 0 0;
+    border: 0px;
+
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+
+    outline: 0px;
+}
+
+.brick .brick-pagination .brick-pagination-choose.active span {
+    display: none;
+}
+
+.brick .brick-pagination .brick-pagination-choose.active input {
+    display: inline-block;
+}
+
+.brick .brick-pagination .brick-pagination-choose.active .invalid-page {
+    color: #FF851B;
+}
+
+/* block content types - pagination - end */
+
+/* block indicator */
+
+.brick .brick-indicator {
+    display: inline-block;
+    color: #fff;
+    font-weight: 700;
+    background: #6a9af5;
+    border-radius: 4px;
+    padding: 2px 10px;
+    text-align: center;
+}
+
+.brick .brick-indicator.-warning-indicator {
+    background: #ff6a6a;
+}
+
+.brick .brick-indicator.-disabled-indicator {
+    background: #414141;
+}
+
+/* block indicator - end */
+
+/* block types - tiles type */
+
+.brick-tiles .brick-tile {
+    display: inline-block;
+    width: 33.33%;
+
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-left: -3px;
+
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.brick-tiles.brick-full-width .brick-tile:not(.brick-tile-multiline-value) {
+    width: 14.28%; /* 100% ÷ 7 */
+    width: 16.66%; /* 100% ÷ 6 */
+    width: calc(100% / 6);
+}
+
+.brick-tiles .brick-tile:last-child {
+  margin-right: 0;
+}
+
+.brick-tiles .brick-tile-name {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #777;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/*
+.brick-tiles .brick-tile[data-field-editable] .brick-tile-name {
+    color: #222;
+}
+*/
+
+.is-content-reduced .brick-tile.brick-tile-empty-value {
+    display: none;
+}
+
+.brick-tiles .brick-tile-value {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 1px;
+
+    word-wrap: break-word;
+}
+
+.brick-tiles .brick-tile-action {
+    opacity: 0;
+    visibility: hidden;
+    padding: 0px 7px 0px 5px;
+    background: #fafafa;
+    margin-left: 5px;
+    outline: 1px solid #ccc;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.1s ease-in;
+    white-space: nowrap;
+    max-height: 16px;
+}
+
+.brick-tiles .brick-tile:hover .brick-tile-action {
+    opacity: 1;
+    visibility: visible;
+}
+
+.brick-tiles .brick-tile-action-title {
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+}
+
+.brick-tiles .brick-tile-action img {
+    margin-bottom: -1px;
+    height: 10px;
+    min-width: 10px;
+    max-width: 10px;
+}
+
+/*
+.modify-button {
+    min-width: 80px;
+    padding: 1px 7px 1px 5px;
+    position: absolute;
+    top: -2px;
+    right: 0;
+    transform: translateX(calc(15px + 100%));
+    z-index: 1;
+    background: #fafafa;
+    outline: 1px solid #ccc;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.1s ease-in;
+}
+*/
+
+
+.brick-tiles .brick-tile-multiline-value .brick-tile-value {
+    font-weight: 400;
+}
+
+.brick-tiles .brick-tile-multiline-value {
+    display: block;
+    width: 100%;
+
+    margin-top: 3px;
+    border-top: 1px solid #dedede;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+.brick-tiles .brick-tile-value input {
+    margin-left: 0;
+}
+
+.brick-tiles .brick-tile-value input + span {
+    vertical-align: top;
+}
+
+/* block types - tiles type - end */
+
+/* block types - key/value list */
+
+.brick-kv-list .brick-content {
+    display: flex;
+    padding: 0;
+}
+
+.brick-kv-list .brick-kv-group {
+    flex: 1;
+}
+
+.brick-kv-list .brick-kv-group .brick-kv-group-title {
+    height: 28px;
+    padding: 7px 10px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #777;
+
+    background: #fcfcfc;
+    border-bottom: 1px solid #ededed;
+}
+
+.brick-kv-list .brick-kv-item {
+    display: flex;
+    align-items: center;
+
+    min-height: 28px;
+
+    padding: 0 10px;
+    border-bottom: 1px solid #ededed;
+}
+
+.brick-kv-list .brick-content .brick-kv-item:nth-child(2n),
+.brick-kv-group .brick-kv-item:nth-child(2n) {
+    background: #fcfcfc;
+}
+
+.brick-kv-list .brick-content .brick-kv-item:last-child,
+.brick-kv-group .brick-kv-item:last-child {
+    border-bottom: none;
+}
+
+.brick-kv-list .brick-kv-key {
+    width: 300px;
+}
+
+.brick-kv-list .brick-kv-value {
+    flex: 1;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+
+    text-align: right;
+}
+
+.brick-kv-list .brick-kv-group:not(:first-child) .brick-kv-group-title,
+.brick-kv-list .brick-kv-group:not(:first-child) .brick-kv-item {
+    border-left: 1px solid #ccc;
+}
+
+/* key/value list variation: compact keys for high number of rows */
+
+.brick-kv-list .brick-kv-group.-ui-compact .brick-kv-key {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* key/value list variation: full width groups, laid out in a column */
+
+.brick-kv-list .brick-content.-kv-full-width-groups {
+    display: block;
+}
+
+.brick-kv-list .brick-content.-kv-full-width-groups .brick-kv-group + .brick-kv-group {
+    border-top: 1px solid #ccc;
+}
+
+.brick-kv-list .brick-content.-kv-full-width-groups .brick-kv-group-title,
+.brick-kv-list .brick-content.-kv-full-width-groups .brick-kv-item {
+    border-left: 0;
+}
+
+/* block types - key/value list - end */
+
+/* block states - is loading */
+
+.brick .brick-title .brick-loading-indicator {
+    display: none;
+}
+
+.brick.is-loading .brick-title .brick-loading-indicator {
+    display: inline-block;
+}
+
+.brick .brick-loading-indicator {
+    font-weight: 700;
+}
+
+.brick.is-loading .brick-content {
+/*    opacity: 0.6;*/
+}
+
+.brick.is-collapsed .brick-content,
+.brick.is-collapsed .brick-footer {
+    display: none;
+}
+
+/* tmp: icon alignment */
+.brick.is-loading .brick-header-icon[src*='wait'] {
+    position: relative;
+    top: 1px;
+}
+
+/* block states - is loading - end */
+
+/* block states - is loading - tests */
+/* if any of those tests are interesting, find real class names of value, and encode this feature in the block component class instead of its state is-loading class */
+
+/* using the block header background as a progress bar indicator */
+.brick.is-loading.is-loading-bar .brick-header {
+    position: relative;
+}
+
+.brick.is-loading.is-loading-bar .brick-header::before {
+    content: ' ';
+    position: absolute;
+    top: 1px;
+    width: 20%;
+    height: calc(100% - 2px);
+    background: hsla(210, 90%, 62%, 0.15);
+
+    transition: width 0.3s ease-in-out;
+}
+
+.brick.is-loading .brick-header[data-loading-progress="20"]::before {
+    width: 20%
+}
+
+.brick.is-loading .brick-header[data-loading-progress="40"]::before {
+    width: 40%
+}
+
+.brick.is-loading .brick-header[data-loading-progress="60"]::before {
+    width: 60%
+}
+
+.brick.is-loading .brick-header[data-loading-progress="80"]::before {
+    width: 80%
+}
+
+.brick.is-loading .brick-header[data-loading-progress="100"]::before {
+    width: 100%
+}
+
+/* using the block header border as a progress indicator */
+/* the block's left border collides with this background like everything else, if this experiment is interesting, distribute the left border inside the components so the progress loading border can be drawn over it */
+.brick.is-loading.is-loading-border {
+    position: relative;
+}
+
+/*
+.brick.is-loading.is-loading-border .brick-loading-indicator {
+    color: hsl(210, 90%, 62%);
+    color: hsl(210, 90%, 45%);
+}
+*/
+
+.brick.is-loading.is-loading-border::before {
+    content: ' ';
+    position: absolute;
+
+    width: 20%;
+    height: 2px;
+
+    top: 25px; /* at the top of the block content */
+    top: 24px; /* at the bottom of the block header */
+
+    background: #479ef5; /* hsl(210, 90%, 62%) */
+    z-index: 1;
+
+
+    /* shadow: With or without you, I can't live © U2 1987 */
+/*
+    -webkit-box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+       -moz-box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+            box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+*/
+
+    transition: width 0.3s ease-in-out;
+}
+
+/* block states - is loading - tests - end */
+
+
+/* block types - list type */
+.brick-list .brick-list-empty {
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: default;
+    color: #777;
+    padding: 5px 10px;
+}
+
+.brick-list .brick-footer {
+    padding: 0px 0px 5px 0px;
+}
+
+/* block types - list type - end */
+
+/* block types - scrollable type */
+
+.brick-scrollable .brick-scrollable-container {
+    /*a default max-height: 200px could be added here to limit every block's height, but block by block overrides would actually be added to the container's style attribute in the html template */
+}
+
+/* when the header is fixed, the bottom border (which is normally distributed into the first row) needs to be specified */
+.brick-table.brick-scrollable .brick-table-content > thead > tr {
+    border-bottom: 1px solid #dedede;
+}
+
+.brick-table .brick-scrollable-container {
+    max-height: 200px;
+}
+
+.brick-table .brick-scrollable-container .brick-table-content > thead > tr > th {
+    background: #fcfcfc;
+}
+
+/* block types - scrollable type - end */
+
+/* block types - selectable type */
+
+.brick-selectable .brick-selection-indicator {
+    font-weight: 700;
+    color: #5799db; /* hsl(210, 65%, 60%) */
+    display: none;
+}
+
+.brick-selectable .brick-selection-indicator.has-selection {
+    display: inline;
+}
+
+/* todo: use an attribute selector or a class for this kind of things ? */
+.brick-table.brick-selectable [data-selectable-selector-column] {
+    width: 15px;
+}
+
+.brick-table.brick-selectable .brick-table-content > thead [data-selectable-selector-column] {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.brick-table.brick-selectable .brick-table-content > tbody > tr.is-selected > td {
+    border-top: 1px solid #5cadff; /* hsl(210, 100%, 68%) */
+    border-bottom: 1px solid #5cadff; /* hsl(210, 100%, 68%) */
+
+    background: rgba(71, 158, 245, 0.07); /* hsla(210, 90%, 62%, 0.07) */
+}
+
+.brick-table.brick-selectable .brick-table-content > tbody > tr:nth-child(2n):last-child {
+    border-bottom: 1px solid #fcfcfc;
+}
+
+.brick-table.brick-selectable .brick-table-content > tbody > tr:last-child {
+    border-bottom: 1px solid transparent;
+}
+
+/* block types - selectable type - end */
+
+/* block types - reorderable type */
+
+/* todo: naming ? block-reorderable-handle-icon, icon-reorderable-handle ? */
+
+.icon.brick-reorderable-handle-icon {
+    width: 15px;
+    height: 15px;
+
+    top: 2px;
+    color: #888;
+}
+
+/* tmp: to show the icon in the title. useless in production */
+.brick-reorderable .brick-title .brick-reorderable-handle-icon {
+    top: 3px;
+    left: 2px;
+}
+
+.brick-reorderable [data-reorderable-handle-column] {
+    width: 15px;
+    cursor: move;
+}
+
+.brick-table.brick-reorderable .brick-table-content > tbody > tr.brick-reorderable-placeholder {
+    background: #f2f2f2;
+    outline: 1px dashed #bbb;
+    font-size: 1px;
+}
+
+.brick-table.brick-reorderable .brick-table-content > tbody > tr.is-dragging,
+.brick-table.brick-reorderable .brick-table-content > thead > tr.is-dragging {
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+/* counter experiment
+.brick-reorderable {
+    counter-reset: reorderable-items-counter;
+}
+
+.brick-table.brick-reorderable .brick-reorderable-items tr {
+    counter-increment: reorderable-items-counter;
+}
+
+.brick-reorderable [data-reorderable-handle-column] {
+    cursor: move;
+
+    width: 35px;
+    padding-right: 0;
+}
+
+.brick-table.brick-reorderable [data-reorderable-handle-column]::after {
+    content: counter(reorderable-items-counter);
+
+    position: relative;
+    top: -1px;
+    left: 3px;
+
+    font-size: 11px;
+    color: #666;
+}
+
+.brick-table.brick-reorderable tr.is-dragging [data-reorderable-handle-column]::after {
+    display: none;
+}
+
+*/
+
+/* block types - reorderable type - end */
+
+/* block types - list of cards */
+/* block types - list of cards - end */
+
+
+/* hack: uppercase punctuation characters alignment ... */
+
+.brick .brick-title .typography-mdash {
+    position: relative;
+    top: -1px;
+}
+
+.brick .brick-title .typography-hyphen {
+    position: relative;
+    top: -1px;
+}
+
+.brick-graph .brick-graph-header .typography-colon {
+    position: relative;
+    top: -1px;
+}
+
+.activity-list-brick .typography-mdash {
+    position: relative;
+    top: -1px;
+}
+
+/* uppercase punctuation characters alignment ... - end */
+
+
+/* clearfix */
+
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* clearfix - end */
+
+/* generic icons experiments */
+
+svg.icon {
+    position: relative;
+    fill: currentColor;
+}
+
+.icon.icon-telephone {
+    width: 14px;
+    height: 14px;
+
+    top: 2px;
+}
+
+.footer .footer-column-client .icon-telephone {
+    margin-left: 5px;
+}
+
+.footer .footer-column-hybird .icon-telephone {
+    margin-right: 2px;
+}
+
+.icon.icon-email {
+    width: 14px;
+    height: 14px;
+
+    top: 3px;
+    opacity: 0.92;
+}
+
+.footer .footer-column-hybird .icon-email {
+    margin-right: 2px;
+}
+
+.icon.icon-telephone:hover {
+    animation: shake 0.1s steps(2) 5 5s,
+               shake 0.1s steps(2) 8 6.5s,
+               shake 0.1s steps(2) 5 8s;
+}
+
+@keyframes shake {
+  from { transform: translateX(-1px); }
+  to   { transform: translateX(1px); }
+}
+
+/* generic icons experiments - end */
+
+/* end of page decoration */
+
+.icon-hybird {
+    width: 22px;
+    height: 20px;
+
+    fill: currentColor;
+    position: relative;
+    top: 2px;
+
+    transition: transform 0.5s ease-in-out 5s;
+}
+
+.icon-hybird:hover {
+    transform: rotate(720deg);
+}
+
+.page-decoration {
+    margin: 15px 15px 0 15px;
+    color: #bbb;
+}
+
+.page-decoration > * {
+    display: inline-block;
+}
+
+.page-decoration div {
+    width: calc(50% - 20px);
+    border-top: 1px solid currentColor;
+    height: 7px;
+}
+
+.page-decoration .icon-hybird {
+    margin: 0 5px;
+}
+
+/* end of page decoration - end */
+
+/* giant footer */
+
+.footer {
+    margin-top: 15px;
+
+    padding-top: 30px;
+    padding-bottom: 25px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    color: #fff;
+    font-weight: 600;
+
+/*    background-color: #414141;*/
+    background-color: #333;
+    background-image: url(icecream/images/footer-pattern.png);
+    background-position: left -30px;
+
+/*    transition: background-color 0.2s ease-in-out;*/
+}
+
+/*
+.footer:hover {
+    background-color: #333;
+}
+*/
+
+.footer .footer-baseline strong {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #479ef5;
+}
+
+.footer .footer-baseline-version {
+/*    float: right;*/
+
+    margin-left: 10px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer .footer-baseline a {
+    color: inherit;
+}
+
+.footer a:hover {
+    color: #479ef5;
+}
+
+.footer ul {
+    list-style: none;
+    margin: 5px 0;
+    padding: 0;
+}
+
+.footer-columns {
+    margin-top: 40px;
+}
+
+.footer-columns .footer-column {
+    float: left;
+    width: 25%;
+}
+
+.footer-columns .footer-column-client {
+    width: 50%;
+}
+
+.footer-columns .column-content {
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.footer-columns .footer-column-creme .column-content {
+    margin: 0;
+}
+
+.footer .column-content::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: #bfbfbf;
+    top: -10px;
+}
+
+.footer .footer-column-title {
+    display: inline-block;
+    position: relative;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.footer .footer-column-title .icon-hybird {
+    position: absolute;
+    right: -25px;
+    top: -5px;
+}
+
+.footer .footer-column-creme li,
+.footer .footer-column-client li {
+    margin-top: 5px;
+}
+
+.footer .footer-client-logo {
+    max-height: 40px;
+    margin: 10px 0;
+}
+
+.footer .footer-client-logo img {
+    max-height: 40px;
+    background: white;
+}
+
+.footer .hybird-phone {
+    margin-top: 10px;
+}
+
+.footer .hybird-address {
+    margin-top: 10px;
+}
+
+/* giant footer - end */
+
+.brick td p {
+    margin: 0px;
+}
+
+.brick hr {
+    display: block;
+    height: 1px;
+
+    margin: 5px 0;
+
+    border: 0;
+    border-top: 1px solid currentColor;
+    padding: 0;
+
+    color: #ccc;
+}
+
+.brick hr {
+    color: #dedede;
+    margin: 0 0 10px 0;
+}

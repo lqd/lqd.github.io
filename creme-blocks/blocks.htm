@@ -1,0 +1,3563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Creme CRM - Hybird</title>
+    <script type="text/javascript">
+        var THEME_NAME = "icecream";
+    </script>
+<!--    <link rel="stylesheet" type="text/css" href="css/icecreammain-d4f3eacf027bfc4aa2e53d37eda28a1dedcd50e9.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/icecreammain-12b0d5f74b227ea521f27bbd4f17108980a6ea69.css" />
+    <link rel="stylesheet" type="text/css" href="css/creme-blocks.css" />
+    <link rel="stylesheet" type="text/css" href="css/searchnpick.css" />
+    <link rel="stylesheet" type="text/css" href="css/test.css" />
+<script type="text/javascript">
+    var creme = {};
+    if(!window.console) {
+        window.console = {};
+        window.console.log = function(){};
+    }
+</script>
+<!--
+<script type="text/javascript" src="js/l10n--fr-e3b79c42a6a9824ff961204117e7a383066d6f64.js"></script>
+<script type="text/javascript" src="js/main-9ef61ea60a62f36f69ff7d926b675e624944803d.js"></script>
+-->
+
+<script type="text/javascript" src="js/l10n--fr-f5d14b9fc902daaf9f1e391211447af7b8280b56.js"></script>
+<script type="text/javascript" src="js/main-8180f9e8b6a9c9338b70f10b0558cdebdc9eeee9.js"></script>
+
+<!--<script src="js/jquery-1.11.3.min.js"></script>-->
+<script src="js/jquery.floatThead.min.js"></script>
+
+<style type="text/css">
+.fg-menu-container { z-index: 100; }
+
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/OpenSans-Regular-400.eot'); /* IE9 Compat Modes */
+  src: url('fonts/OpenSans-Regular-400.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/OpenSans-Regular-400.woff') format('woff'), /* Modern Browsers */
+       url('fonts/OpenSans-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('fonts/OpenSans-Semibold-600.eot'); /* IE9 Compat Modes */
+  src: url('fonts/OpenSans-Semibold-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/OpenSans-Semibold-600.woff') format('woff'), /* Modern Browsers */
+       url('fonts/OpenSans-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/OpenSans-Bold-700.eot'); /* IE9 Compat Modes */
+  src: url('fonts/OpenSans-Bold-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/OpenSans-Bold-700.woff') format('woff'), /* Modern Browsers */
+       url('fonts/OpenSans-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+#top {
+    margin-top: 25px;
+}
+
+.header-menu * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* header */
+.header-menu {
+
+  font: 12px 'Open Sans', sans-serif;
+
+  height: 35px;
+  background: white;
+  top: 0;
+
+  -webkit-box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
+     -moz-box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
+          box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
+
+  border-bottom: 1px #ddd;
+  position: fixed;
+  width: 100%;
+
+/*  z-index: 100;*/
+  z-index: 2000; /* tmp: the floatThead header is defined in js at 10001 ... */
+}
+
+#logo {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  z-index: 101;
+}
+
+.header-menu img, .header-menu a {
+    -webkit-transition: none;
+       -moz-transition: none;
+            transition: none;
+}
+
+#logo img:hover {
+    opacity: 1;
+}
+
+.accessories-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+
+/*  padding-right: 50px;*/
+    padding-right: 5px;
+}
+
+.search-box {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  vertical-align: top;
+/*  height: 35px;*/
+/*
+  border-right:  1px solid #ddd;
+  border-left:   1px solid #ddd;
+  _border-bottom: 1px solid #ddd;
+*/
+  margin-top: 8px;
+  margin-right: 15px;
+/*  background: yellow;*/
+}
+
+.search-box input[type="text"] {
+  font: 12px 'Open Sans', sans-serif;
+  height: auto;
+/*  padding: 5px 5px;*/
+  padding-left: 5px;
+/*  width: 120px;*/
+  width: 150px;
+  height: 100%;
+
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+/* header end */
+
+/* menu - basé sur http://handy-html.com/wp-content/themes/handyhtmlv2/uploads/tutorial-files/cross-browser-compatible-dropdown-menu.html */
+/* menu root */
+.ui-creme-navigation {
+  list-style: none;
+
+  margin: 0;
+
+  position: relative;
+  float: left;
+
+  font-size: 11px;
+  color: #646464;
+  font-weight: 600;
+
+  height: 100%;
+  left: 40px;
+  padding: 7px 0 0 0;
+}
+
+ /* menus and their entries */
+.ui-creme-navigation li {
+    float: left;
+    position: relative;
+
+    line-height: 1.3em;
+    vertical-align: middle;
+
+    zoom: 1;
+    height: 100%;
+}
+.ui-creme-navigation > li { text-transform: uppercase; padding: 5px 10px; }  /* menus */
+
+ /* menu entries root */
+.ui-creme-navigation ul {
+  list-style: none;
+
+  margin: 0;
+
+/*  display: none;*/
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 230px; /* figure out a good default width, possibly overridable in html classes, or computed in js */
+
+  max-height: 90vh; /* for weird old browsers */
+  max-height: calc(95vh - 35px); /* where 35px = .header-menu height */
+  overflow-y: auto;
+
+  font-size: 13px;
+
+  background: #414141;
+  padding: 0 0 3px 0;
+
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+          box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+/* todo: investigate shadow techniques - this one shows up over the dark menu item. Using one for each of the 3 sides make the corners unshadowed instead, etc. */
+  z-index: 1; /* so it shows up over the search results */
+}
+
+.ui-creme-navigation ul li { float: none; text-transform: none;}  /* menu entries */
+.ui-creme-navigation a, .ui-creme-navigation .ui-creme-navigation-text-entry { display: block; text-decoration: none; text-shadow: none; padding: 5px 10px; color: #ebebeb;} /* menu entries */
+
+.ui-creme-navigation li:hover { cursor: default; background: #414141; } /* hover on menus and their entries */
+.ui-creme-navigation li:hover > ul { /*display: block;*/ visibility: visible; opacity: 1; font-weight: 600;} /* menu entries root when hovering over menus */
+
+.ui-creme-navigation li:hover {color: white;} /* hover on menus */
+.ui-creme-navigation li.ui-creme-navigation-icon-menu:hover {color: #bfbfbf;} /* hover on icon menus */
+
+.ui-creme-navigation li:hover li:hover {background: #595959;} /* hover on menu entries */
+.ui-creme-navigation li:hover ul a:hover {color: white;} /* hover on menu entries */
+
+.ui-creme-navigation > li:hover, .ui-creme-navigation li:hover > ul, .ui-creme-navigation li:hover li:hover {transition: none;} /* animated transitions into the hover state */
+.ui-creme-navigation li, .ui-creme-navigation ul {transition: all 150ms ease-in;} /* animated transitions out of the hover state */
+
+
+/* menu separators */
+.ui-creme-navigation-separated-menu {
+    position: relative;
+}
+
+.ui-creme-navigation-separated-menu:before {
+    content: "";
+    width: 1px;
+
+    position: absolute;
+    top: 1px;
+    bottom: 5px;
+
+    background: #bbb;
+    pointer-events: none;
+}
+
+.ui-creme-navigation-left-separated-menu {
+    margin-left: 11px;
+}
+
+.ui-creme-navigation-left-separated-menu:before {
+    left: -6px;
+}
+
+.ui-creme-navigation-right-separated-menu {
+    margin-right: 11px;
+}
+
+.ui-creme-navigation-right-separated-menu:before {
+    right: -6px;
+}
+/* menu separators - end */
+
+/* menu entries separators */
+.ui-creme-navigation .ui-creme-navigation-separator {
+   display: block;
+   height: 1px;
+   border: 0;
+
+/*   margin: 1em 0;*/
+   margin: 5px 0;
+   padding: 0;
+
+   border-top: 1px solid #a29d9d;
+}
+
+.ui-creme-navigation  .ui-creme-navigation-title-separator {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 400;
+    color: #fafafa;
+/*  letter-spacing: 0.3px; */ /* légibilité - support des fractional metrics à tester un peu partout */
+/*  word-spacing: 1px; */ /* légibilité - tweak possible à tester un peu partout (en 1px ou 2px) */
+}
+
+.ui-creme-navigation-space-separated {
+    margin-bottom: 7px;
+}
+
+.ui-creme-navigation-punctuation {
+    font-weight: 400;
+}
+/* menu entries separators - end */
+
+/* menu end */
+
+/* display or hide elements depending on screen width */
+@media (max-width: 1100px) {
+    .screens-over-1100 {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1101px) {
+    .screens-under-1100 {
+        display: none !important;
+    }
+}
+
+
+.ui-creme-navigation .horizontal-ruler {
+   border-top: 1px solid #a29d9d;
+}
+</style>
+
+
+<!--
+<script type="text/javascript">
+$(document).ready(function() {
+    creme.utils.bindShowHideTbody();
+});
+</script>
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style='display: none'>
+    <defs>
+        <g id="icon-edit">
+            <path d="M3 17.25v3.75h3.75l11.06-11.06-3.75-3.75-11.06 11.06zm17.71-10.21c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+            <path d="M0 0h24v24h-24z" fill="none"/>
+        </g>
+    </defs>
+</svg>
+
+</head>
+<body>
+
+        <div class="header-menu">
+
+           <a id="logo" href="http://localhost:8000/" alt="Accueil Crème">
+               <img src="img/creme_256-0784a542ab59a63a92ca3355595e8fbafd82da71.png" height="30" width="30" alt="Accueil Crème">
+           </a>
+
+          <ul class="ui-creme-navigation">
+            <li class="ui-creme-navigation-separated-menu ui-creme-navigation-right-separated-menu">Crème
+                <ul>
+                    <li><a href="http://localhost:8000/">Accueil</a></li>
+                    <li><a href="http://localhost:8000/creme_core/entity/trash">Corbeille <span class="ui-creme-navigation-punctuation">(</span>42 fiches<span class="punctuation">)</span></a></li>
+
+                    <!-- xscreens-over-1100 plutôt que screens-over-1100 pour tester voir si les menus rapides sont dans le menu, la page, les deux ou selon la largeur de la page -->
+                    <hr class="ui-creme-navigation-separator xscreens-over-1100"/>
+                    <li class='xscreens-over-1100'><span class='ui-creme-navigation-text-entry ui-creme-navigation-title-separator'>Menus rapides</span></li>
+                    <li class='xscreens-over-1100'><a href="/opportunities/opportunities">Lister les opportunités</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/contacts">Lister les contacts</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/organisation/add">Ajouter une société</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/contact/add">Ajouter un contact</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/organisations">Lister les sociétés</a></li>
+                    <li class='xscreens-over-1100'><a href="/billing/invoices">Lister les factures</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/organisation/add">Ajouter une société</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/contact/add">Ajouter un contact</a></li>
+                    <li class='xscreens-over-1100'><a href="/persons/organisations">Lister les sociétés</a></li>
+                    <li class='xscreens-over-1100'><a href="/billing/invoices">Lister les factures</a></li>
+
+                    <hr class="ui-creme-navigation-separator"/>
+                    <li><span class="ui-creme-navigation-text-entry ui-creme-navigation-title-separator">Utilisateur</span></li>
+                    <li><a href="http://localhost:8000/persons/laFicheABibi">Rémy R.</a></li>
+                    <li class="ui-creme-navigation-space-separated"><a href="http://localhost:8000/creme_config/my_settings/">Time zone: Europe/Paris</a></li>
+
+                    <li><a href="http://localhost:8000/my_page">Ma page</a></li>
+                    <li><a href="http://localhost:8000/creme_config/my_settings/">Ma configuration</a></li>
+
+                    <hr class="ui-creme-navigation-separator">
+                    <li><a href="http://localhost:8000/creme_logout/">Se déconnecter</a></li>
+                </ul>
+            </li>
+
+            <li>Activités
+                <ul>
+                  <li><a href="/activities/calendar/user">Calendrier</a></li>
+                  <li><a href="/activities/activities">Activités</a></li>
+                  <li><a href="/activities/phone_calls">Appels téléphoniques</a></li>
+                  <li><a href="/activities/meetings">Rendez-vous</a></li>
+                </ul>
+            </li>
+
+            <li>Annuaire
+              <ul>
+                <li><a href="/persons/organisations">Sociétés</a></li>
+                <li><a href="/persons/contacts">Contacts</a></li>
+                <li><a href="/persons/leads_customers">Mes clients, prospects et suspects</a></li>
+                <li><a href="/commercial/salesmen">Commerciaux</a></li>
+                <li><a href="/vcfs/vcf">Importer depuis un fichier VCF</a></li>
+                <li><a href="/activesync/sync">Synchronisation de contacts</a></li>
+              </ul>
+            </li>
+
+            <li>Commercial
+              <ul>
+                <li><a href="/opportunities/opportunities">Opportunités</a></li>
+                <li><a href="/billing/quotes">Devis</a></li>
+                <li><a href="/commercial/acts">Actions commerciales</a></li>
+                <li><a href="/commercial/strategies">Plans commerciaux</a></li>
+                <li><a href="/commercial/market_segments">Segments de marché</a></li>
+                <li><a href="/commercial/objective_patterns">Modèles d'objectif</a></li>
+              </ul>
+            </li>
+
+            <li>Gestion
+              <ul>
+                <li><a href="/billing/quotes">Devis</a></li>
+                <li><a href="/billing/invoices">Factures</a></li>
+                <li><a href="/products/products">Produits</a></li>
+                <li><a href="/products/services">Services</a></li>
+                <li><a href="/billing/credit_note">Avoirs</a></li>
+                <li><a href="/billing/sales_orders">Bons de commande</a></li>
+                <li><a href="/recurrents/generators">Générateurs récurrents</a></li>
+                <li><a href="/billing/product_lines">Lignes produit</a></li>
+                <li><a href="/billing/service_lines">Lignes service</a></li>
+                <li><a href="/expense_reports/expense_reports">Notes de frais</a></li>
+              </ul>
+            </li>
+
+            <li>Outils
+              <ul>
+                <li><a href="/documents/documents">Documents</a></li>
+                <li><a href="/documents/folders">Classeurs</a></li>
+                <li><a href="/projects/projects">Projets</a></li>
+                <li><a href="/tickets/tickets">Tickets</a></li>
+                <li><a href="/events/events">Évènements</a></li>
+                <li><a href="/crudity/waiting_actions">Actions en attente pour les emails</a></li>
+                <li><a href="/crudity/history">Historique</a></li>
+              </ul>
+            </li>
+
+            <li>Marketing
+              <ul>
+                <li><a href="/emails/campaigns">Campagnes d'emails</a></li>
+                <li><a href="/emails/mailing_lists">Listes de diffusion d'emails</a></li>
+                <li><a href="/emails/templates">Patrons de courriel</a></li>
+                <li><a href="/emails/mails">Courriels</a></li>
+                <li><a href="/emails/synchronization">Synchronisation des emails externes</a></li>
+                <li><a href="/sms/campaigns">Campagnes SMS</a></li>
+                <li><a href="/sms/messaging_lists">Listes de diffusion SMS</a></li>
+                <li><a href="/sms/templates">Patrons de message SMS</a></li>
+              </ul>
+            </li>
+
+            <li>Analyse
+              <ul>
+                <li><a href="/graphs/graphs">Graphes</a></li>
+                <li><a href="/reports/reports">Rapports</a></li>
+              </ul>
+            </li>
+
+<!--
+            <li>Neo Telecoms Catalogue
+              <ul>
+                 <li><a href="/nt_core/export/catalog_sheet">Exporter la liste des produits</a></li>
+                  <li><a href="/nt_catalog/">Portail du catalogue</a></li>
+                  <li><a href="/nt_catalog/hostings">Hébergements</a></li>
+                  <li><a href="/nt_catalog/fons">FON</a></li>
+                  <li><a href="/nt_catalog/neomans">NeoMAN</a></li>
+                  <li><a href="/nt_catalog/neowans">NeoWAN</a></li>
+                  <li><a href="/nt_catalog/neowdms">NeoWDM</a></li>
+                  <li><a href="/nt_catalog/transitips">Transit IP</a></li>
+                  <li><a href="/nt_catalog/ports">Ports</a></li>
+                  <li><a href="/nt_catalog/rocades">Rocades</a></li>
+                  <li><a href="/nt_catalog/iptbpaps">IPTB Point à Point</a></li>
+                  <li><a href="/nt_catalog/iptbsecures">IPTB Sécurisé</a></li>
+                  <li><a href="/nt_catalog/ipdefenders">IP Defender</a></li>
+                  <li><a href="/nt_catalog/privatecenters">Private Center</a></li>
+                  <li><a href="/nt_catalog/privatecenterextensions">==&gt; Extensions</a></li>
+                  <li><a href="/nt_catalog/privatecenterextrams">==&gt; Extensions RAM</a></li>
+                  <li><a href="/nt_catalog/privatecenterlvmwares">==&gt; Licences Vmware</a></li>
+                  <li><a href="/nt_catalog/privatecenterbackups">==&gt; Backup</a></li>
+                  <li><a href="/nt_catalog/virtualcenters">Virtual Center</a></li>
+                  <li><a href="/nt_catalog/vcextsram">==&gt; Extensions RAM</a></li>
+                  <li><a href="/nt_catalog/vcextsvcpu">==&gt; Extensions VCPU</a></li>
+                  <li><a href="/nt_catalog/vcbackups">==&gt; Backup</a></li>
+                  <li><a href="/nt_catalog/storagecenters">Storage Center</a></li>
+                  <li><a href="/nt_catalog/storagegbs">Storage Gateway Box</a></li>
+                  <li><a href="/nt_catalog/securitycenters">Security Center</a></li>
+                  <li><a href="/nt_catalog/connects">Connect</a></li>
+                </ul>
+            </li>
+-->
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <!-- http://google.github.io/material-design-icons/action/svg/ic_settings_24px.svg -->
+              <defs>
+                <g id="icon-cog">
+                  <path d="M0 0h24v24h-24z" fill="none"/>
+                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65c-.03-.24-.24-.42-.49-.42h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-7.43 2.52c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                </g>
+              </defs>
+          </svg>
+
+            <li class='ui-creme-navigation-icon-menu'>
+              <svg viewBox="0 0 24 24" style='fill: currentColor; width: 11px; height: 11px; margin-top: 1px'><use xlink:href="#icon-cog" /></svg>
+
+              <ul>
+                <li><a href="/creme_config/">Configuration générale</a></li>
+
+                <hr class="ui-creme-navigation-separator"/>
+                <li><a href="/creme_config/blocks/portal/">Blocs</a></li>
+                <li><a href="/creme_config/custom_fields/portal/">Champs personnalisés</a></li>
+                <li><a href="/creme_config/history/portal/">Historique</a></li>
+                <li><a href="/creme_config/button_menu/portal/">Menu bouton</a></li>
+                <li><a href="/creme_config/prefered_menu/edit/">Menu rapide par défaut</a></li>
+                <li><a href="/creme_config/search/portal/">Recherche</a></li>
+                <li><a href="/creme_config/role/portal/">Rôles et droits</a></li>
+                <li><a href="/creme_config/property_type/portal/">Types de propriété</a></li>
+                <li><a href="/creme_config/relation_type/portal/">Types de relation</a></li>
+                <li><a href="/creme_config/user/portal/">Utilisateurs</a></li>
+              </ul>
+            </li>
+
+            <li class='ui-creme-navigation-separated-menu ui-creme-navigation-left-separated-menu'>+ Création
+                <ul>
+                  <!-- séparateur certainement utile seulement s'il y a le bloc dynamique décrit après -->
+                  <li><span class='ui-creme-navigation-text-entry ui-creme-navigation-title-separator'>Fiches principales</span></li>
+                  <li><a href="/persons/organisation/add">Société</a></li>
+                  <li><a href="/persons/contact/add">Contact</a></li>
+                  <li><a href="/opportunities/opportunity/add">Opportunité</a></li>
+
+                  <!-- A tester pour voir si c'est bien ou pas
+                       - partie dynamique: CTs de l'app / menu associé, et/ou CTs intéressant à créer pour cette fiche / ce type de fiche ?
+                       - nom générique ou nom de l'app ?
+                       - pb de menu qui change tout le temps ? si oui, est-ce-que le problème n'existe pas déjà sur le menu actuel qui affiche les entrées de l'app ?
+                  -->
+                  <hr class="ui-creme-navigation-separator"/>
+                  <li><span class='ui-creme-navigation-text-entry ui-creme-navigation-title-separator'>Fiches comptes & contacts</span></li>
+                  <li><a href="/persons/organisation/add">Société</a></li>
+                  <li><a href="/persons/contact/add">Contact</a></li>
+
+                  <hr class="ui-creme-navigation-separator"/>
+                  <li><a href="">Autre type de fiche</a></li>
+                </ul>
+            </li>
+
+            <li class='screens-over-1100'>Fiches récentes
+                <ul>
+                  <li><a class="item" href="/persons/organisation/260">Phidias</a></li>
+                  <li><a class="item" href="/billing/invoice/2758">Facture Septembre 2</a></li>
+                  <li><a class="item" href="/billing/invoice/3028">Phidias Novembre 1</a></li>
+                  <li><a class="item" href="/documents/document/228">Fichiers de jcaruana reçus par email - 0000d57aNone.txt (mail 227)</a></li>
+                  <li><a class="item" href="/documents/document/83">Fichiers de jcaruana reçus par email - 000018e7None.txt (mail 82)</a></li>
+                  <li><a class="item" href="/billing/invoice/2800">Phidias Octobre 2</a></li>
+                  <li><a class="item" href="/reports/report/3093">Toutes les factures payables de l'année précédente</a></li>
+                  <li><a class="item" href="/reports/graph/3094">Somme des totaux HT des factures de l'année précédente / mois</a></li>
+                  <li><a class="item" href="/persons/contact/7">Mélanie JUNG</a></li>
+                  <li><a class="item" href="/billing/invoice/3060">Phidias Decembre 1</a></li>
+                </ul>
+            </li>
+
+          </ul>
+            <script>
+                /* SearchBox example - code pour proto/dev, pas de prod (par exemple y a pas de debounce, et sûrement des problèmes dans la gestion des requêtes asynchrones) */
+                function SearchBox (element) {
+                    this.$element = $(element);
+
+                    this.$input = this.$element.find ('input');
+                    this.$input.bind ('input', this._onInput.bind (this)); // todo: debounce
+                    this.$input.bind ('focus focusout', this._onFocus.bind (this));
+                    this.$input.bind ('keydown', this._onKeyDown.bind (this));
+
+                    this.$resultsRoot = this.$element.find ('.inline-search-results');
+
+                    this.$icon = this.$element.find ('.search-box-icon');
+
+                    this.$allResultsGroup = this.$element.find ('.all-search-results');
+                    this.$allResultsLink  = this.$allResultsGroup.find ('a');
+
+                    this.state = 'default';
+                }
+
+                SearchBox.prototype._onKeyDown = function (e) {
+                    if (this.state != 'loaded')
+                        return;
+
+                    if (e.keyCode != 38 && e.keyCode != 40 && e.keyCode != 13)
+                        return;
+
+                    e.preventDefault();
+
+                    if (e.keyCode == 38) { // up
+                        var selected = (this.selected - 1) % this.resultCount;
+                        this._setSelectedResult (selected);
+                    }
+                    else if (e.keyCode == 40) { // down
+                        var selected = (this.selected + 1) % this.resultCount;
+                        this._setSelectedResult (selected);
+                    }
+                    else if (e.keyCode == 13) { // Enter
+                        this._goToSelection();
+                    }
+                };
+
+                SearchBox.prototype._onFocus = function(e) {
+                    this.$resultsRoot.toggleClass ('showing')
+                };
+
+                SearchBox.prototype._onInput = function (e) {
+                    var query = this.$input.val().trim();
+
+                    var isEmpty = query == '';
+
+                    if (this.state == 'default') {
+                        if (isEmpty == false) {
+                            this._switchToLoading (query);
+                        }
+                    }
+                    else if (this.state == 'loading') {
+                        if (isEmpty) {
+                            this._switchToDefault();
+                        }
+                        else {
+                            this._switchToLoading (query);
+                        }
+                    }
+                    else if (this.state == 'loaded') {
+                        if (isEmpty) {
+                            this._switchToDefault();
+                        }
+                        else if (this.query != query) {
+                            this._switchToLoading (query);
+                        }
+                    }
+                };
+
+                SearchBox.prototype._switchToLoading = function (query) {
+                    this.$icon.removeClass ('default').addClass ('loading');
+
+                    this.$allResultsLink.text ('Chargement...');
+                    // changer l'url vers la page de recherche des resultats de la query
+
+                    this._resetSelection();
+                    this.$allResultsGroup.siblings ().remove(); // laisser les anciens résultats visibles ?
+
+                    this._asynchronousRequest (query, new Date().getTime());
+                    this.state = 'loading';
+                };
+
+                SearchBox.prototype._asynchronousRequest = function (query, timestamp) {
+                    this.timestamp = timestamp; // record last request time to compare with the local timestamp parameter
+
+                    setTimeout (function () {
+                        var results = "<div class='search-results-group'>" +
+                                          "<span class='search-results-group-title'>Meilleur résultat</span>" +
+                                          "<ul class='search-results'>" +
+                                              "<li class='search-result'><a href=''>Jean-Michel Armand</a></li>" +
+                                          "</ul>" +
+                                      "</div>" +
+                                      "<div class='search-results-group'>" +
+                                          "<span class='search-results-group-title'><a href=''>Société</a></span>" +
+                                          "<ul class='search-results'>" +
+                                              "<li class='search-result'><a href=''>ARMAND ET FILS</a></li>" +
+                                              "<li class='search-result'><a href=''>HYBIRD <span class='search-result-reason'>&mdash; Salarié</span></a></li>" +
+                                          "</ul>" +
+                                      "</div>" +
+                                      "<div class='search-results-group'>" +
+                                          "<span class='search-results-group-title'><a href=''>Contact</a></span>" +
+                                          "<ul class='search-results'>" +
+                                              "<li class='search-result'><a href=''>Jean-Michel Armand</a></li>" +
+                                          "</ul>" +
+                                      "</div>" +
+                                      "<div class='search-results-group'>" +
+                                          "<span class='search-results-group-title'><a href=''>Content-type avec nom super long qui fait iech</a></span>" +
+                                          "<ul class='search-results'>" +
+                                              "<li class='search-result'><a href=''>Appel d'offre de la commune de Saint-Armand</a></li>" +
+                                          "</ul>" +
+                                      "</div>";
+
+                        this._onResultsReceived (query, timestamp, results);
+
+                    }.bind (this), 1000);
+                };
+
+                SearchBox.prototype._switchToDefault = function () {
+                    this.$icon.removeClass ('loading').addClass ('default');
+
+                    this.$allResultsLink.text ('Recherche avancée');
+                    // changer l'url vers la recherche avancée
+
+                    this._resetSelection();
+                    this.$allResultsGroup.siblings ().remove(); // laisser les anciens résultats visibles ?
+
+                    this.state = 'default';
+                    this.timestamp = null; // reset timestamp marker so that possible in-flight asynchronous responses are ignored when received
+                };
+
+                SearchBox.prototype._switchToLoaded = function() {
+                    this.$icon.removeClass ('loading').addClass ('default');
+                    this.state = 'loaded';
+                }
+
+                SearchBox.prototype._onResultsReceived = function (query, timestamp, resultsHtml) {
+//                    console.log ('received results from query ' + query + ' sent at ' + timestamp + ' - last known request timestamp: ' + this.timestamp);
+
+                    // filter results from older queries, and results from in-flight queries for unwanted requests
+                    if (this.timestamp == null || timestamp < this.timestamp)
+                        return;
+
+                    this.$allResultsLink.text ('Tous les résultats (' + query + ')');
+                    this.$allResultsGroup.after (resultsHtml);
+
+                    this.$results = this.$resultsRoot.find ('.search-result');
+                    this.resultCount = this.$results.size();
+
+                    this._setSelectedResult (1);
+                    this._switchToLoaded();
+                };
+
+                SearchBox.prototype._resetSelection = function() {
+                    this.$resultsRoot.find ('.search-result-selected').removeClass ('search-result-selected');
+                };
+
+                SearchBox.prototype._setSelectedResult = function (selected) {
+                    this._resetSelection();
+                    this.$results.eq (selected).addClass ('search-result-selected');
+
+                    this.selected = selected;
+                };
+
+                SearchBox.prototype._goToSelection = function() {
+                    var result = this.$results.eq (this.selected).find ('a');
+                    console.log ('go to: ', result.text());
+                };
+
+                $(function() {
+                    var search = new SearchBox ('.search-box');
+                });
+
+            </script>
+
+          <div class="accessories-box">
+
+<style>
+    .notification-box {
+        display: inline-block;
+        height: 100%;
+        transition: all 150ms ease-in;
+    }
+
+    .notification-box.has-notifications {
+        padding-right: 5px;
+        padding-left: 3px;
+    }
+
+    .notification-menu {
+        position: relative;
+
+        margin-top: 10px;
+        padding: 0 3px;
+
+        cursor: default;
+        color: #b5b5b5;
+    }
+
+    .notification-badge {
+        display: block;
+
+        position: absolute;
+        top: -6px;
+        right: -6px;
+
+        width: 17px;
+        height: 17px;
+
+        padding: 2px 0 0 6px;
+
+        background-color: red;
+        color: white;
+        font-weight: 700;
+        font-size: 9px;
+
+        border-radius: 72px;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .notification-menu svg {
+        position: relative;
+        top: -5px;
+
+        width: 18px;
+        height: 30px;
+
+        fill: currentColor;
+    }
+
+    .notification-container {
+       background: #414141;
+
+       font-size: 13px;
+       color: #fff;
+       font-weight: 600;
+
+/*        display: none;*/
+
+       visibility: hidden;
+       opacity: 0;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        position: fixed;
+        top: 35px;
+        right: 20px;
+
+        min-width: 350px;
+        max-width: 600px;
+
+        -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+           -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+                box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+
+        transition: all 150ms ease-in;
+   }
+
+    .notification-entry {
+        padding: 5px 10px;
+    }
+
+    .notification-title {
+        font-weight: 600;
+    }
+
+    .notification-content {
+        font-weight: 400;
+        color: #ededed;
+    }
+
+    .notification-entry strong {
+        font-weight: 600;
+        color: white;
+    }
+
+    .notification-entry a {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        font-weight: 600;
+        color: white;
+
+        text-decoration: underline;
+    }
+
+    .notification-entry + .notification-entry {
+        margin-top: 2px;
+    }
+
+   .notification-container .ui-creme-navigation-title-separator {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 400;
+        color: #fafafa;
+
+        display: block;
+        text-shadow: none;
+        padding: 5px 10px;
+    }
+
+    .notification-container .ui-creme-navigation-separator {
+        display: block;
+        height: 1px;
+        border: 0;
+        margin: 5px 0;
+        padding: 0;
+        border-top: 1px solid #a29d9d;
+    }
+
+    .notification-box.notification-container-visible {
+        background: #414141;
+/*        transition: none;*/
+    }
+
+    .notification-box.notification-container-visible .notification-container {
+        visibility: visible;
+        opacity: 1;
+/*        transition: none;*/
+    }
+
+    .notification-box.notification-container-visible .notification-menu {
+        color: #a6a6a6;
+    }
+</style>
+
+            <div class='notification-box has-notifications'>
+                <div class='notification-menu'>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class='notification-container'>
+                    <span class="ui-creme-navigation-text-entry ui-creme-navigation-title-separator">Tableau de bord rapide</span>
+                    <div class='notification-entry'>
+                        <div class="notification-title">23 cibles encore à valider</div>
+                        <div class='notification-content'>
+                            La <a href="#" title="Cible à valider: Société Hybird">plus vieille</a> est à valider depuis le <strong>12/12/2015</strong>, la <a href="#" title="Cible à valider: Société Bonduelle">plus récente</a> depuis le <strong>24/12/2015</strong>.
+                        </div>
+                    </div>
+                    <div class='notification-entry'>
+                        <div class="notification-title"><a href="#" title="Accéder au rapport «&nbsp;Objectif de CA annuel&nbsp;»">Objectif de CA — 730 000 € sur 1.5M€</a></div>
+                        <div class='notification-content'>
+                            Il reste <strong>770 000 €</strong> à réaliser avant le <strong>31/03/2016</strong>, soit <strong>223 333 € par mois</strong>.
+                            <div style='margin-top: 10px'>
+                                <a href="#" title="Accéder au graphique d'objectif «&nbsp;CA au 10/12/2015 et restant à effectuer&nbsp;»">                                       <img src='img/graph-mockup.png' height='100px' width="100%" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='notification-entry'>
+                        <div class="notification-title">10 devis envoyés ce mois ci</div>
+                        <div class='notification-content'>
+                            <a href="#" title="Accéder à la liste des 7 devis gagnés ce mois ci">7 gagnés</a> et <a href="#" title="Accéder à la liste des 2 devis perdus ce mois ci">2 perdus</a>. <br/>
+                            Le mois dernier, il y a eu <strong>17 devis envoyés</strong>, pour <strong>10 gagnés</strong> et <strong>3 perdus</strong>.
+                        </div>
+                    </div>
+
+                    <hr class="ui-creme-navigation-separator"/>
+                    <span class="ui-creme-navigation-text-entry ui-creme-navigation-title-separator">2 notifications</span>
+
+                    <div class='notification-entry'>
+                        <div class="notification-title">Alerte «&nbsp;Objectif journalier d'appels&nbsp;»</div>
+                        <div class='notification-content'>
+                            <a href="#" title="Accéder à la liste des 23 appels effectués aujourd'hui">23 appels effectués</a> sur l'objectif de <strong>50 appels journaliers</strong>.
+                        </div>
+                    </div>
+
+                    <div class='notification-entry'>
+                        <div class="notification-title">Alerte «&nbsp;ToDo Fiche <a href="#" title="Accéder à la fiche de la société Phidias">Phidias</a>&nbsp;»</div>
+                        <div class='notification-content'>
+                            Envoyer la facture du mois de Novembre <strong>avant 18h</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+    // tolerance on submenu mouse motion to open on hover, à la https://css-tricks.com/dropdown-menus-with-more-forgiving-mouse-movement-paths/ and http://bjk5.com/post/44698559168/breaking-down-amazons-mega-dropdown
+    $(function() {
+        var leftToleranceTriangle, rightToleranceTriangle;
+        var isHover, mouseLeaveTimeout, mouseMoveTimeout, mouseMoveListener;
+        var mouseLeaveDelay = 350, toleranceDelay = 300;
+
+        function isPointInTriangle(p, p0, p1, p2) {
+            var A = 1/2 * (-p1.y * p2.x + p0.y * (-p1.x + p2.x) + p0.x * (p1.y - p2.y) + p1.x * p2.y);
+            var sign = A < 0 ? -1 : 1;
+            var s = (p0.y * p2.x - p0.x * p2.y + (p2.y - p0.y) * p.x + (p0.x - p2.x) * p.y) * sign;
+            var t = (p0.x * p1.y - p0.y * p1.x + (p0.y - p1.y) * p.x + (p1.x - p0.x) * p.y) * sign;
+
+            return s > 0 && t > 0 && (s + t) < 2 * A * sign;
+        }
+
+        function activateNotificationMenu() {
+            $('.notification-box').addClass ('notification-container-visible');
+        }
+
+        function deactivateNotificationMenu() {
+            $('.notification-container-visible').removeClass ('notification-container-visible');
+        }
+
+        // for devices without hover:
+        $('.notification-menu').on ('click', function (e) {
+            $('.notification-box').toggleClass ('notification-container-visible');
+        });
+
+        $('.notification-box').on ('mouseenter', function (e) {
+            isHover = true;
+
+            if (mouseLeaveTimeout) {
+                clearTimeout (mouseLeaveTimeout);
+                mouseLeaveTimeout = false;
+            }
+            if (mouseMoveTimeout) {
+                clearTimeout (mouseMoveTimeout);
+                mouseMoveTimeout = false;
+            }
+            if (mouseMoveListener) {
+                $(document).off ('mousemove', mouseMoveListener);
+                mouseMoveListener = null;
+            }
+
+            activateNotificationMenu();
+
+            var $menu = $(this);
+            var $subMenu = $('.notification-container');
+
+            var menuPosition = $menu.offset();
+            var subMenuPosition = $subMenu.offset();
+
+            leftToleranceTriangle = {
+                top: menuPosition.top,
+                left: subMenuPosition.left,
+                right: menuPosition.left,
+                bottom: subMenuPosition.top,
+            };
+            leftToleranceTriangle.p0 = {x: leftToleranceTriangle.right, y: leftToleranceTriangle.top};
+            leftToleranceTriangle.p1 = {x: leftToleranceTriangle.right, y: leftToleranceTriangle.bottom};
+            leftToleranceTriangle.p2 = {x: leftToleranceTriangle.left, y: leftToleranceTriangle.bottom};
+
+            var menuRight = menuPosition.left + $menu.outerWidth();
+            var subMenuRight = subMenuPosition.left + $subMenu.outerWidth();
+
+            rightToleranceTriangle = {
+                top: leftToleranceTriangle.top,
+                left: menuRight,
+                right: subMenuRight,
+                bottom: leftToleranceTriangle.bottom,
+            }
+            rightToleranceTriangle.p0 = {x: rightToleranceTriangle.left, y: rightToleranceTriangle.top};
+            rightToleranceTriangle.p1 = {x: rightToleranceTriangle.left, y: rightToleranceTriangle.bottom};
+            rightToleranceTriangle.p2 = {x: rightToleranceTriangle.right, y: rightToleranceTriangle.bottom};
+
+            // tolerance triangle debug visualizations
+    //        $('<div>').addClass ('tolerance-triangle').css ({
+    //            'position': 'absolute',
+    //            'top': leftToleranceTriangle.top,
+    //            'left': leftToleranceTriangle.left,
+    //            'border-bottom': (leftToleranceTriangle.bottom - leftToleranceTriangle.top) + 'px solid red',
+    //            'border-left': (leftToleranceTriangle.right - leftToleranceTriangle.left) + 'px solid transparent',
+    //            'height': 0,
+    //            'width': 0,
+    //            'z-index': 10000
+    //        }).appendTo ("body");
+    //
+    //        $('<div>').addClass ('tolerance-triangle').css ({
+    //            'position': 'absolute',
+    //            'top': rightToleranceTriangle.top,
+    //            'left': rightToleranceTriangle.left,
+    //            'border-bottom': (rightToleranceTriangle.bottom - rightToleranceTriangle.top) + 'px solid green',
+    //            'border-right': (rightToleranceTriangle.right - rightToleranceTriangle.left) + 'px solid transparent',
+    //            'height': 0,
+    //            'width': 0,
+    //            'z-index': 10000
+    //        }).appendTo ("body");
+        });
+
+        $('.notification-box').on ('mouseleave', function (e) {
+            isHover = false;
+
+            var p = {x: e.pageX, y: e.pageY};
+            var isInLeftTriangle = isPointInTriangle (p, leftToleranceTriangle.p0, leftToleranceTriangle.p1, leftToleranceTriangle.p2);
+
+            if (!isInLeftTriangle) {
+                var isInRightTriangle = isPointInTriangle (p, rightToleranceTriangle.p0, rightToleranceTriangle.p1, rightToleranceTriangle.p2);
+            }
+
+            if (isInLeftTriangle || isInLeftTriangle) {
+                mouseMoveListener = function (e) {
+                    var p = {x: e.pageX, y: e.pageY};
+                    if (isInLeftTriangle) {
+                        var isStillInLeftTriangle = isPointInTriangle (p, leftToleranceTriangle.p0, leftToleranceTriangle.p1, leftToleranceTriangle.p2);
+                    }
+                    if (isInRightTriangle || !isStillInLeftTriangle) {
+                        var isStillInRightTriangle = isPointInTriangle (p, rightToleranceTriangle.p0, rightToleranceTriangle.p1, rightToleranceTriangle.p2);
+                    }
+
+                    if (isStillInLeftTriangle || isStillInRightTriangle) {
+                        clearTimeout (mouseMoveTimeout);
+
+                        mouseMoveTimeout = setTimeout (function () {
+                            if (!isHover) {
+                                deactivateNotificationMenu();
+                            }
+                            $(document).off ('mousemove', mouseMoveListener);
+                        }, toleranceDelay);
+                    }
+                    else {
+                        if (!isHover) {
+                            deactivateNotificationMenu();
+                        }
+                    }
+                };
+
+                $(document).on ('mousemove', mouseMoveListener);
+
+                mouseMoveTimeout = setTimeout (function () {
+                    $(document).off ('mousemove', mouseMoveListener);
+                }, toleranceDelay);
+            }
+            else {
+                mouseLeaveTimeout = setTimeout (function () {
+                    if (!isHover) {
+                        deactivateNotificationMenu();
+                    }
+                }, mouseLeaveDelay);
+            }
+        });
+    })
+</script>
+            <div class="search-box">
+
+              <input type="text" placeholder="Recherche">
+              <span class='search-box-icon default'>
+                <img class='search-icon-loading' src='img/wait-ea87c0883361a773d485428852b88e36291a63b2.gif' width='16' height='16' style='position: relative; top: 4px; left: 7px;' />
+                <img class='search-icon-default' src='img/search_22-8ce68c86d109ea8592fa8925d659f58367bbd34b.png' width='16' height='16' style='position: relative; top: 4px; left: 5px;' />
+              </span>
+
+              <style>
+                    .search-box-icon.loading .search-icon-default {
+                        display: none;
+                    }
+
+                    .search-box-icon.default .search-icon-loading {
+                        display: none;
+                    }
+
+                    .inline-search-results {
+                        position: absolute;
+                        top: 35px;
+                        right: 5px;
+
+                        width: 330px;
+
+                        border: 1px solid rgba(0,0,0,0.3);
+                        border-top: 1px solid rgba(0,0,0,0.1);
+
+                        background: white;
+                        box-shadow:  0   5px 4px -4px rgba(0,0,0,0.2),
+                                    -5px 0   4px -4px rgba(0,0,0,0.2),
+                                     5px 0   4px -4px rgba(0,0,0,0.2);
+
+                        /* fade out animation */
+                        opacity: 0;
+                        visibility: hidden;
+
+                        -webkit-transition: all 300ms ease-in;
+                                transition: all 300ms ease-in;
+                    }
+
+                    .inline-search-results.showing {
+                        /* fade in animation */
+                        opacity: 1;
+                        visibility: visible;
+
+                        -webkit-transition: all 180ms ease-out;
+                                transition: all 180ms ease-out;
+                    }
+
+                    .search-results-group /* prefixed with Autoprefixer */ {
+                        display: -webkit-box;
+                        display: -webkit-flex;
+                        display: -ms-flexbox;
+                        display: flex;
+
+                        -webkit-box-align: stretch;
+                        -webkit-align-items: stretch;
+                        -ms-flex-align: stretch;
+                        align-items: stretch;
+                    }
+
+                    .search-results-group-title {
+                        width: 42%;
+                        padding: 7px 16px 0 10px;
+
+                        text-align: right;
+                        cursor: default;
+                    }
+
+                    .search-results-group-title, .search-results-group-title a {color: #888888;}
+
+                    .search-results {
+                        list-style: none;
+
+                        margin: 0;
+
+                        width: 58%;
+                        /* real padding dimensions: 7px 7px 7px 12px */
+                        padding: 5px; /* split the padding between the list and the items to allow for a padded :hover bg */
+
+                        background: #fafafa;
+                        border-left: 1px solid rgba(0,0,0,0.1);
+
+                        font-weight: 600;
+                    }
+
+                    .search-results a {
+                        display: inline-block;
+
+                        width: 100%;
+                        height: 100%;
+
+                        padding: 2px 2px 2px 7px; /* difference between the list's real padding dimensions and its current padding of 5px */
+
+                        color: #666;
+                        text-decoration: none;
+                    }
+
+                    .search-result-reason {opacity: 0.8; font-weight: 400;}
+
+                    .search-result {margin-bottom: 7px;}
+                    .search-result:last-child {margin-bottom: 0;}
+
+                    .search-results-group:first-child .search-results {padding-top: 10px;}
+
+                    .search-results-group:last-child .search-results,
+                    .search-results-group:last-child .search-results-group-title {padding-bottom: 10px;} /* empty space at the bottom of the window, the tallest of the 2 variable-height elements will end up growing the window's height */
+
+                    .search-results-group-title:hover a {text-decoration: underline;}
+
+                    .search-result:hover, .search-result-selected {background: #7878f7;} /* todo: couleur de sélection à trouver */
+
+                    .search-result:hover a, .search-result:hover .search-result-reason,
+                    .search-result-selected a, .search-result-selected .search-result-reason {color: white;} /* todo: couleur de sélection à trouver */
+                </style>
+
+                <div class='inline-search-results'>
+                    <div class='search-results-group all-search-results'>
+                        <span class='search-results-group-title'></span>
+                        <ul class='search-results'>
+                            <li class='search-result'><a href=''>Recherche avancée</a></li>
+                        </ul>
+                    </div>
+<!--
+                    <div class='search-results-group'>
+                        <span class='search-results-group-title'>Meilleur résultat</span>
+                        <ul class='search-results'>
+                            <li class='search-result'><a href=''>Jean-Michel Armand</a></li>
+                        </ul>
+                    </div>
+                    <div class='search-results-group'>
+                        <span class='search-results-group-title'><a href=''>Société</a></span>
+                        <ul class='search-results'>
+                            <li class='search-result'><a href=''>ARMAND ET FILS</a></li>
+                            <li class='search-result'><a href=''>HYBIRD <span class='search-result-reason'>&mdash; Salarié</span></a></li>
+                        </ul>
+                    </div>
+                    <div class='search-results-group'>
+                        <span class='search-results-group-title'><a href=''>Contact</a></span>
+                        <ul class='search-results'>
+                            <li class='search-result'><a href=''>Jean-Michel Armand</a></li>
+                        </ul>
+                    </div>
+                    <div class='search-results-group'>
+                        <span class='search-results-group-title'><a href=''>Content-type avec nom super long qui fait iech</a></span>
+                        <ul class='search-results'>
+                            <li class='search-result'><a href=''>Appel d'offre de la commune de Saint-Armand</a></li>
+                        </ul>
+                    </div>
+-->
+                </div>
+            </div>
+
+<!--
+            <img width="35" height="35" src="/static_media/icecream/images/creme_256-0784a542ab59a63a92ca3355595e8fbafd82da71.png" alt="Mustapha Randole"/>
+            <div class="welcome-container">
+              <span class="welcome-message">Bienvenue, </span>
+              <span class="welcome-username">Fulbert</span>
+            </div>
+-->
+          </div>
+
+
+        </div>
+
+
+
+        <div id="top" class="header">
+<!--
+            <div class="widget">
+                Bienvenue,  <strong>Ad Min</strong> (Fuseau horaire : Europe/Paris) -
+
+                    <a href="http://localhost:8000/creme_config/my_settings/">Ma configuration</a> -
+                    <a href="http://localhost:8000/creme_core/clean/">Se déconnecter</a> -
+                    <a href="http://localhost:8000/creme_core/entity/trash">
+                         <img src="img/delete_16-224a36f1bfe1a28fbe3ae45c18a67bbe8825ebf4.png" alt="Corbeille" title="Corbeille">Corbeille
+                    </a>
+
+            </div>
+-->
+            <div class="widget major">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('div.research_box input[name=research]').bind('keydown', function(e) {
+                if (e.keyCode == '13') {
+
+                    creme.utils.handleResearch('sub_content', $(this).parent('span').parent('.research_box'));
+                }
+             });
+    });
+</script>
+<!--
+<div class="research_box">
+    <span>
+        <img border="0" title="Recherche" alt="Recherche" src="img/search_22-8ce68c86d109ea8592fa8925d659f58367bbd34b.png" align="top">
+        <select name="ct_id">
+            <option value="">Tout</option>
+            <option disabled="">------</option>
+
+                <option value="86">Action Commerciale</option>
+
+                <option value="66">Activité</option>
+
+                <option value="123">Avoir</option>
+
+                <option value="130">Bon de commande</option>
+
+                <option value="139">Campagne d'envois d'e-mails</option>
+
+                <option value="52">Classeur</option>
+
+                <option value="100">Contact</option>
+
+                <option value="116">Devis</option>
+
+                <option value="51">Document</option>
+
+                <option value="140">E-mail</option>
+
+                <option value="114">Facture</option>
+
+                <option value="103">Graphe</option>
+
+                <option value="109">Générateur récurrent</option>
+
+                <option value="49">Image</option>
+
+                <option value="126">Ligne</option>
+
+                <option value="113">Ligne produit</option>
+
+                <option value="115">Ligne service</option>
+
+                <option value="137">Liste de diffusion d'e-mails</option>
+
+                <option value="85">Modèle d'objectif commercial</option>
+
+                <option value="132">Opportunité</option>
+
+                <option value="143">Patron d'e-mail</option>
+
+                <option value="83">Plan commercial</option>
+
+                <option value="106">Produit</option>
+
+                <option value="69">Projet</option>
+
+                <option value="59">Rapport</option>
+
+                <option value="108">Service</option>
+
+                <option value="96">Société</option>
+
+                <option value="146">Ticket</option>
+
+                <option value="68">Tâche d'un projet</option>
+
+                <option value="135">Évènement</option>
+
+        </select>
+        <input type="text" name="research">
+        <input type="button" value="Rechercher" onclick="creme.utils.handleResearch(&#39;sub_content&#39;, $(this).parent(&#39;span&#39;).parent(&#39;.research_box&#39;));">
+    </span>
+</div>
+-->
+
+
+<!--
+<div class="quickform_box">
+    <span>
+        <img border="0" title="Création rapide" alt="Création rapide" src="img/quick_22-7eafd07257f3ba43460b883b95a7cc83502026c7.png" align="top">
+        <select name="entity_count">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
+        </select>
+        <select name="ct_id">
+            <option value="100">Contact</option><option value="51">Document</option><option value="49">Image</option><option value="96">Société</option>
+        </select>
+        <input type="button" value="Création rapide" onclick="creme.utils.handleQuickForms(&#39;/creme_core/quickforms&#39;, $(this).parent(&#39;span&#39;).parent(&#39;.quickform_box&#39;), [&#39;ct_id&#39;, &#39;entity_count&#39;]);">
+    </span>
+</div>
+-->
+
+            </div>
+<!--
+            <div class="widget last">
+                <a href="http://localhost:8000/"><img src="img/creme_header_50-1893070314d7f0c10bb064c2db6590e6fa3eb0a0.png" alt="Crème" border="0"></a>
+            </div>
+-->
+            <div class="spacer"></div>
+        </div>
+
+
+    <div id="content" class="main_content">
+
+
+<div id="last_viewed" class='screens-under-1100'>
+    <strong>Dernières fiches consultées:&nbsp; &nbsp;</strong>
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="./exemple-menu_files/exemple-menu.htm">Jean Bon</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/organisation/260">Phidias</a> &nbsp; &nbsp;
+    <a class="item" href="/billing/invoice/2758">Facture Septembre 2</a> &nbsp; &nbsp;
+    <a class="item" href="/billing/invoice/3028">Phidias Novembre 1</a> &nbsp; &nbsp;
+    <a class="item" href="/documents/document/228">Fichiers de jcaruana reçus par email - 0000d57aNone.txt (mail 227)</a> &nbsp; &nbsp;
+    <a class="item" href="/documents/document/83">Fichiers de jcaruana reçus par email - 000018e7None.txt (mail 82)</a> &nbsp; &nbsp;
+    <a class="item" href="/billing/invoice/2800">Phidias Octobre 2</a> &nbsp; &nbsp;
+    <a class="item" href="/reports/report/3093">Toutes les factures payables de l'année précédente</a> &nbsp; &nbsp;
+    <a class="item" href="/reports/graph/3094">Somme des totaux HT des factures de l'année précédente / mois</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/contact/7">Mélanie JUNG</a> &nbsp; &nbsp;
+    <a class="item" href="/billing/invoice/3060">Phidias Decembre 1</a> &nbsp; &nbsp;
+</div>
+
+
+<div id="preferred_menu" class='screens-under-1100'>
+    <strong>Menus rapides: </strong>
+    <a class="item" href="/opportunities/opportunities">Lister les opportunités</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/contacts">Lister les contacts</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/organisation/add">Ajouter une société</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/contact/add">Ajouter un contact</a> &nbsp; &nbsp;
+    <a class="item" href="/persons/organisations">Lister les sociétés</a> &nbsp; &nbsp;
+    <a class="item" href="/billing/invoices">Lister les factures</a> &nbsp; &nbsp;
+</div>
+
+<!--
+<div id="preferred_menu">
+    <strong>Menus rapides: </strong>
+
+</div>
+ -->
+
+
+
+        <div id="sub_content">
+            <div class="detailview">
+    <div class="zone_spacer_5px model_buttons">
+        <ul class="button_list hbox">
+
+                <li>
+                    <a class="menu_button" href="http://localhost:8000/persons/organisations">
+                        <img src="img/listview_32-cbd9ab8d76dc839187755093562076b686a566ce.png" border="0" title="Retour à la liste" alt="Retour à la liste">
+                        Retour à la liste
+                    </a>
+                </li>
+
+
+
+        <li>
+
+
+    <a class="menu_button" href="http://localhost:8000/persons/organisation/add">
+        <img src="img/add_32-5a6da8dea52eb67d9df8101f17f0fe1dd74c1271.png" border="0" title="Ajouter" alt="Ajouter">
+        Ajouter une société
+    </a>
+
+</li>
+
+    <li>
+
+
+    <a onclick="creme.utils.confirmSubmit(this);" class="menu_button">
+        <span>
+            <img src="img/clone_32-7ff1d296b43372ec3809711790f593a617a3b668.png" title="Cloner &#39;RemplacezParVotreSociété&#39;" alt="Cloner">
+            Cloner
+            <form action="http://localhost:8000/creme_core/entity/clone" method="POST" style="display:none;">
+                <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div>
+                    <input type="hidden" name="id" value="3">
+            </form>
+        </span>
+    </a>
+
+</li>
+
+        </ul>
+    </div>
+
+
+        <table class="table_header" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td width="5%">
+
+        <img src="img/organisation_64-c4f0561802e42a0bdd3c7b82bd087f0252e55388.png" alt="Société" title="Société">
+
+</td>
+                <td width="70%">
+                    <h2>Société : Hybird</h2>
+                </td>
+                <td width="25%" align="right">
+                    <span>
+
+
+
+
+    <a href="http://localhost:8000/persons/organisation/edit/3">
+        <img src="img/edit_64-31f968df6ad3d06677fa223e196a52327075c60f.png" title="Modifier &#39;RemplacezParVotreSociété&#39;" alt="Modifier" /></a>
+
+
+
+        &nbsp;
+
+
+
+
+
+            <a onclick="creme.utils.confirmSubmit(this);">
+                <img src="img/delete_64-50860745408abc6d26c4a2ee73d4788c5161c3b3.png" title="Supprimer &#39;RemplacezParVotreSociété&#39;" alt="Supprimer">
+                <form method="POST" action="http://localhost:8000/creme_core/entity/delete/3" style="display:none;"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div></form>
+            </a>
+
+
+
+
+</span>
+                </td>
+            </tr>
+        </tbody></table>
+
+
+    <div class="zone_spacer_5px file_buttons">
+
+            <ul class="button_list hbox">
+
+    <li>
+
+    <a class="menu_button" href="http://localhost:8000/activities/activity/add_related/3">
+        <img src="img/calendar_32-b1b49d7ca5752250384b8c0741185b756574f567.png" alt="Erreur" title="Erreur">Ajouter une activité
+    </a>
+
+</li>
+
+    <li>
+
+    <a class="menu_button" href="http://localhost:8000/activities/activity/add_related/3?activity_type=activities-activitytype_meeting">
+        <img src="img/meeting_32-f7afcdce322a30f9cb872c0e7070a5e30bc97611.png" alt="Rendez-vous" title="Rendez-vous">Ajouter un rendez-vous
+    </a>
+
+</li>
+
+    <li>
+
+    <a class="menu_button" href="http://localhost:8000/activities/activity/add_related/3?activity_type=activities-activitytype_phonecall">
+        <img src="img/phone_32-251e6628c7303a0e6f3d2951c42982165fef215c.png" alt="Appel téléphonique" title="Appel téléphonique">Ajouter un appel téléphonique
+    </a>
+
+</li>
+
+    <li>
+
+    <a class="menu_button" href="http://localhost:8000/activities/activity/add_related/3?activity_type=activities-activitytype_task">
+        <img src="img/task_32-0eac062640cada12c0506ec60e4796e789e3aaf5.png" alt="Tâche" title="Tâche">Ajouter une tâche
+    </a>
+
+</li>
+
+    <li>
+
+
+
+        <a class="menu_button" onclick="creme.persons.post_become(this, 3);">Transformer en client<form method="POST" action="http://localhost:8000/persons/3/become_customer" style="display:none;"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div><input id="id_become" name="id"></form></a>
+
+</li>
+
+    <li>
+
+
+
+        <a class="menu_button" onclick="creme.persons.post_become(this, 3);">Transformer en suspect<form method="POST" action="http://localhost:8000/persons/3/become_suspect" style="display:none;"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div><input id="id_become" name="id"></form></a>
+
+</li>
+
+    <li>
+
+
+
+        <a class="menu_button" onclick="creme.persons.post_become(this, 3);">Transformer en client inactif<form method="POST" action="http://localhost:8000/persons/3/become_inactive_customer" style="display:none;"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div><input id="id_become" name="id"></form></a>
+
+</li>
+
+    <li>
+
+
+
+        <a class="menu_button" onclick="creme.persons.post_become(this, 3);">Transformer en fournisseur<form method="POST" action="http://localhost:8000/persons/3/become_supplier" style="display:none;"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="k8JSc8uMpmItgE7X5RxOrLJRLvaClrkm"></div><input id="id_become" name="id"></form></a>
+
+</li>
+
+    <li>
+
+
+
+    <a class="menu_button" href="http://localhost:8000/persons/contact/add_with_relation/3?callback_url=" onclick="this.href+=window.location.href">
+        <img src="img/contact_32-e68c510e15e4e67d7576a507c805f45a2431e9c1.png" border="0" title="Contact lié" alt="Contact lié">
+        Créer un contact lié
+    </a>
+
+</li>
+
+    <li>
+
+
+    <a class="menu_button" onclick="creme.merge.selectOtherEntityNRedirect(3);">
+        <img src="img/merge_32-3fdf583f7a5e675c7d58c133699a8fc9f920ccdc.png" border="0" title="Fusionner des fiches" alt="Fusionner des fiches">
+        Fusionner avec une autre fiche
+    </a>
+</li>
+
+    <li>
+
+
+
+    <a class="menu_button" href="http://localhost:8000/opportunities/opportunity/add_to/3">
+        <img src="img/opportunity_32-7d6ce73e76de360b60be5af542e38c1b37cbf7d1.png" border="0" title="Opportunité" alt="Opportunité">
+        Créer une opportunité reliée
+    </a>
+
+</li>
+
+    <li>
+
+
+
+    <a class="menu_button" onclick="creme.relations.handleAddFromPredicateEntity(&#39;/creme_core/relation/objects2link/rtype/tickets-subject_linked_2_ticket/entity/3/146&#39;, &#39;tickets-subject_linked_2_ticket&#39;, &#39;3&#39;);">
+        <img src="img/ticket_32-11a2657fbbfd3a2d53df591ccc8170bf5b6c8347.png" border="0" title="Ticket" alt="Ticket">
+        Lier à un ticket
+    </a>
+
+</li>
+
+    <li>
+
+
+
+    <a class="menu_button" onclick="creme.relations.handleAddFromPredicateEntity(&#39;/creme_core/relation/objects2link/rtype/commercial-subject_complete_goal/entity/3/86&#39;, &#39;commercial-subject_complete_goal&#39;, &#39;3&#39;);">
+        <img src="img/commercial_32-8353103fb039b4307b4cf233476fded2bd51a878.png" border="0" title="Action Commerciale" alt="Action Commerciale">
+        Remplit un but
+    </a>
+
+</li>
+
+    <li>
+
+
+
+
+        <a class="menu_button" onclick="creme.utils.showInnerPopup(&#39;/billing/quote/add/3/source/3&#39;);">
+            <img src="img/invoice_32-fdeff74a4d2950b5708bf3d72e3d8217d548c770.png" border="0" title="quote" alt="quote">
+            Nouveau devis
+        </a>
+
+</li>
+
+    <li>
+
+
+
+
+        <a class="menu_button" onclick="creme.utils.showInnerPopup(&#39;/billing/sales_order/add/3/source/3&#39;);">
+            <img src="img/invoice_32-fdeff74a4d2950b5708bf3d72e3d8217d548c770.png" border="0" title="salesorder" alt="salesorder">
+            Nouveau bon de commande
+        </a>
+
+</li>
+
+    <li>
+
+
+
+
+        <a class="menu_button" onclick="creme.utils.showInnerPopup(&#39;/billing/invoice/add/3/source/3&#39;);">
+            <img src="img/invoice_32-fdeff74a4d2950b5708bf3d72e3d8217d548c770.png" border="0" title="invoice" alt="invoice">
+            Nouvelle facture
+        </a>
+
+</li>
+
+
+            </ul>
+
+    </div>
+
+
+        <div class="zone_spacer_5px"></div>
+
+
+
+
+<!--
+<div class="ui-widget-overlay" style="z-index: 100;"></div>
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="ui-id-8" aria-labelledby="ui-id-9" style="position: absolute; height: auto; width: 957px; top: 334px; left: 469.5px; display: block; z-index: 101;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle"><span id="ui-id-9" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" title="Close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">Close</span></button></div><div id="ui-id-8" class="ui-dialog-content ui-widget-content" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;"><div class="ui-creme-dialog-frame" style="overflow: visible; position: static; min-height: 206px; width: auto;">
+
+
+<div class="searchnpick searchnpick-contacts" data-total-count="12345">
+    <div class="searchnpick-header">
+        <div>Recherche de contact</div>
+        <input type="search" placeholder="par nom ou société" />
+    </div>
+    <div class="searchnpick-search-container">
+        <div class="searchnpick-search-header">
+            <span class="searchnpick-search-summary">
+               Cherchez des contacts parmi les 12345 existants
+            </span>
+        </div>
+        <div class="searchnpick-results"></div>
+    </div>
+    <div class="searchnpick-selection-container" data-selection-empty="Aucun contact projet sélectionné" data-selection-singular="contact projet sélectionné" data-selection-plural="contacts projet sélectionnés">
+        <input type="hidden" name="searchnpick-selection" class="searchnpick-selection-field" />
+        <span class="searchnpick-selection-summary">5 contacts projet sélectionnés</span> pour l'opération "M & A à la vente - Hybird"
+        <div class="searchnpick-selections">
+            <label class="searchnpick-contact" data-selection-id="1">
+                <input class="searchnpick-selector" type="checkbox" checked />
+                <div class="searchnpick-contact-name">Alain CHICOUARD</div>
+            </label>
+            <label class="searchnpick-contact" data-selection-id="2">
+                <input class="searchnpick-selector" type="checkbox" checked />
+                <div class="searchnpick-contact-name">Alain JOURDAN</div>
+                <div class="searchnpick-contact-company">IMD</div>
+            </label>
+            <label class="searchnpick-contact" data-selection-id="3">
+                <input class="searchnpick-selector" type="checkbox" checked />
+                <div class="searchnpick-contact-name">Alain MADELIN</div>
+            </label>
+            <label class="searchnpick-contact" data-selection-id="4">
+                <input class="searchnpick-selector" type="checkbox" checked />
+                <div class="searchnpick-contact-name">Alain DELOIN</div>
+                <div class="searchnpick-contact-company">A+Metrologie</div>
+            </label>
+            <label class="searchnpick-contact" data-selection-id="5">
+                <input class="searchnpick-selector" type="checkbox" checked />
+                <div class="searchnpick-contact-name">Alain TERIEUR</div>
+                <div class="searchnpick-contact-company">A+B=C</div>
+            </label>
+         </div>
+    </div>
+    <div class="searchnpick-selection-container" data-selection-empty="Aucun contact projet sélectionné" data-selection-singular="contact projet sélectionné" data-selection-plural="contacts projet sélectionnés">
+        <input type="hidden" name="searchnpick-selection" class="searchnpick-selection-field" />
+        <span class="searchnpick-selection-summary">Aucun contact projet sélectionné</span> pour l'opération "M & A à la vente - Hybird"
+        <div class="searchnpick-selections searchnpick-empty-selection"></div>
+    </div>
+</div>
+
+
+</div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" name="send" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">Modifier les contacts projet </span></button><button type="button" name="cancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">Annuler</span></button></div></div></div>
+-->
+
+<div class="north">
+
+    <div class='block block-full-width'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <span class='block-title'>Bloc</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          &nbsp;
+        </div>
+    </div>
+
+</div>
+
+<div class="column west">
+
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <span class='block-title'>Bloc</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          &nbsp;
+        </div>
+    </div>
+
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec icône au titre" alt="Bloc avec icône au titre" />
+                <span class='block-title' title='Bloc avec icône au titre'>Bloc avec icône au titre</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          &nbsp;
+        </div>
+    </div>
+
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec boutons" alt="Bloc avec boutons" />
+                <span class='block-title' title='Bloc avec boutons'>Bloc avec boutons</span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-add' title="Envoyer un nouveau message">
+                    <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Envoyer un nouveau message" alt="Envoyer un nouveau message" />
+                    <span class='block-header-button-title'>Envoyer un nouveau message</span>
+                </a>
+                <a href="" class='block-header-button action-type-link' title="Ajouter de nouvelles relations à la société Hybird">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Ajouter de nouvelles relations à la société Hybird" alt="Ajouter de nouvelles relations à la société Hybird" />
+                    <span class='block-header-button-title'>Nouvelles relations</span>
+                </a>
+                <a href="" class='block-header-button action-type-delete' title="Supprimer toutes les relations de la société Hybird">
+                    <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Supprimer toutes les relations de la société Hybird" alt="Supprimer toutes les relations de la société Hybird" />
+                    <span class='block-header-button-title'>Supprimer toutes les relations</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="block-content">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec bouton icône" alt="Bloc avec bouton icône" />
+                <span class='block-title' title='Bloc avec bouton icône'>Bloc avec bouton icône</span>
+            </div>
+            <div class='block-header-buttons'>
+                <div class='block-header-button js-hook' title="Cacher les champs vides" alt="Cacher les champs vides">
+                    <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Cacher les champs vides" alt="Cacher les champs vides" />
+                </div>
+            </div>
+        </div>
+        <div class='block-content'>
+          &nbsp;
+        </div>
+    </div>
+
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec boutons au titre long" alt="Bloc avec boutons au titre long" />
+                <span class='block-title' title='Bloc avec boutons au titre long'>Bloc avec boutons au titre long</span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-add' title="Envoyer un e-mail qui sera lié à la société Hybird">
+                    <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Envoyer un e-mail qui sera lié à la société Hybird" alt="Envoyer un e-mail qui sera lié à la société Hybird" />
+                    <span class='block-header-button-title'>Envoyer un nouvel e-mail lié</span>
+                </a>
+                <a href="" class='block-header-button action-type-add' title="Envoyer un email en utilisant un patron">
+                    <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Envoyer un email en utilisant un patron" alt="Envoyer un email en utilisant un patron" />
+                    <span class='block-header-button-title'>Envoyer un e-mail (avec un patron)</span>
+                </a>
+                <a href="" class='block-header-button' title="Relier la société Hybird à un e-mail existant">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Relier la société Hybird à un e-mail existant" alt="Relier la société Hybird à un e-mail existant" />
+                    <span class='block-header-button-title'>Lier à un e-mail existant</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="block-content">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class='block block-table'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu à header" alt="Bloc avec contenu à header" />
+                <span class='block-title' title='Bloc avec contenu à header'>Bloc avec contenu à header</span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-link' title="Relier la société Hybird à un document comptable existant">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Relier la société Hybird à un document comptable existant" alt="Relier la société Hybird à un document comptable existant" />
+                    <span class='block-header-button-title'>Lier à un document comptable</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+<!--                        <td>12/12/2015</td>-->
+                        <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                  </tr>
+                  <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-tiles'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu paginé" alt="Bloc avec contenu paginé" />
+                <span class='block-title' title='Bloc avec contenu paginé'>Bloc avec contenu paginé</span>
+            </div>
+        </div>
+        <div class='block-content is-paginated'>
+            <div class="block-tile">
+              <span class="block-tile-name">Nom</span>
+              <span class="block-tile-value">Hybird</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Forme juridique</span>
+              <span class="block-tile-value">S.A.R.L</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Secteur d'activités</span>
+              <span class="block-tile-value">Développement informatique et agence de top models sexy</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Date de création</span>
+              <span class="block-tile-value">01/02/2017</span>
+            </div>
+
+            <div class="block-tile">
+              <span class="block-tile-name">Effectif</span>
+              <span class="block-tile-value">7</span>
+            </div>
+
+
+            <div class="block-tile">
+              <span class="block-tile-name">Capital</span>
+              <span class="block-tile-value">Pas beaucoup €</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">SIREN</span>
+              <span class="block-tile-value">123 456 789</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Code NAF</span>
+              <span class="block-tile-value">666 666 789 01</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">SIRET</span>
+              <span class="block-tile-value">ABC 17 57 &ndash; X</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">RCS/RM</span>
+              <span class="block-tile-value">—</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">TVA Intra</span>
+              <span class="block-tile-value">17 A 567890</span>
+            </div>
+              <div class="block-tile">
+              <span class="block-tile-name">Assujetti à la TVA</span>
+              <span class="block-tile-value">
+                  <input type="checkbox" value="True" checked="" disabled="">
+                  <span>Oui</span>
+              </span>
+            </div>
+
+            <div class="block-tile">
+              <span class="block-tile-name">Revenu annuel</span>
+              <span class="block-tile-value">Pas assez €</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Logo</span>
+              <span class="block-tile-value">—</span>
+            </div>
+
+            <div class="block-tile block-tile-multiline-value">
+              <span class="block-tile-name">Description</span>
+              <span class="block-tile-value">membre du jury, a été presque convaincu<br/>
+          Projet pour Octobre/Novembre, semble assez interessé, il etait interloqué par le Python qu'il ne connaissait pas. Creme serait installé sur leur infra.<br/>
+          en création d'entreprise , petit besoin mais veut connexion avec son site ecommerce pour génération facture automatisé<br/>
+          <br/>
+          Spécialiste des Bases de Données<br/>
+          Présidente Cercle du Marketing Direct Rhône - Alpes<br/>
+          <br/>
+
+          05/10/12 : la resp. n'a pas encore eu le tps de consulter notre catalogue. Elle me demande de rappeler en fin de semaine prochaine<br/>
+          <br/>
+          12/10/12 : l'interlocutrice me précise qu'elle va subir une opération et ne reprendra le travaille qu'à partir du 06/11. CALL-BACK semaine 46 (12/11)<br/>
+          14/11/12 : la cliente est tjs interessée et me demande de rappeler demain car elle n'a pas les docs sur place. CALL BACK le 15/11/12<br/>
+          27/11/12 : la cliente m'indique qu'elle n'a pas recu la fiche tarifaire. Je lui renvois. Elle me demande mon numéro pr pvr me recontacter elle mm. CALL BACK le 11/12/12<br/>
+          25/01/13 : la cliente m'explique que c'est actuellement les soldes elle qu'elle n'a pas de besoins mais me me demande de l'a rappeler MI-FEVRIER</span>
+            </div>
+
+            <hr/>
+
+            <div class="block-tile">
+              <span class="block-tile-name">Création de la fiche</span>
+              <span class="block-tile-value">22/07/2013 11:36</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Dernière modification</span>
+              <span class="block-tile-value">21/10/2013 13:11</span>
+            </div>
+            <div class="block-tile">
+              <span class="block-tile-name">Propriétaire</span>
+              <span class="block-tile-value">Rémy R.</span>
+            </div>
+        </div>
+        <div class='block-footer'>
+            <div class='block-pagination'>
+                <a class="block-pagination-previous" rel="prev start" href="">Page précédente</a>
+                <a rel="prev start" href="">1</a>
+                <span class="block-pagination-current">2</span>
+                <a rel="next" href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <span class="block-pagination-choose">…</span>
+                <a href="">17</a>
+                <a href="">18</a>
+                <span class="block-pagination-next is-disabled">Page suivante</span>
+            </div>
+        </div>
+    </div>
+
+    <div class='block block-table'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu à header" alt="Bloc avec contenu à header" />
+                <span class='block-title'>Bloc avec contenu à header et paginé</span>
+            </div>
+        </div>
+        <div class='block-content is-paginated'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les documents par statut'>Statut</span></th>
+                        <th>Type</th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td>Devis</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td>Facture</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td>Facture</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td>Facture</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td>Facture</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class='block-footer'>
+            <div class='block-pagination'>
+                <a class="block-pagination-previous" rel="prev start" href="">Page précédente</a>
+                <a rel="prev start" href="" title="Afficher les 5 premiers documents">1</a>
+                <span class="block-pagination-current">2</span>
+                <a rel="next" href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <span class="block-pagination-choose">…</span>
+                <a href="">17</a>
+                <a href="">18</a>
+                <span class="block-pagination-next is-disabled">Page suivante</span>
+            </div>
+        </div>
+    </div>
+
+    <div class='block block-table is-loading is-loading-bar'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/wait-ea87c0883361a773d485428852b88e36291a63b2.gif" border="0" title="Chargement du bloc avec progress background — Chargement ..." alt="Chargement du bloc avec progress background — Chargement ..." />
+                <span class='block-title' title='Chargement du bloc avec progress background — Chargement ...'>
+                    Chargement du bloc avec progress background <span class='block-loading-indicator'><span class='typography-mdash'>—</span> Chargement ...</span>
+                    </span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-link' title="Relier la société Hybird à un document comptable existant">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Relier la société Hybird à un document comptable existant" alt="Relier la société Hybird à un document comptable existant" />
+                    <span class='block-header-button-title'>Lier à un document comptable</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+<!--                        <td>12/12/2015</td>-->
+                        <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                  </tr>
+                  <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-table is-loading is-loading-border'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/wait-ea87c0883361a773d485428852b88e36291a63b2.gif" border="0" title="Chargement du bloc avec progress border — Chargement ..." alt="Chargement du bloc avec progress border — Chargement ..." />
+                <span class='block-title' title='Chargement du bloc avec progress border — Chargement ...'>
+                    Chargement du bloc avec progress border <span class='block-loading-indicator'><span class='typography-mdash'>—</span> Chargement ...</span>
+                </span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-link' title="Relier la société Hybird à un document comptable existant">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Relier la société Hybird à un document comptable existant" alt="Relier la société Hybird à un document comptable existant" />
+                    <span class='block-header-button-title'>Lier à un document comptable</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+<!--                        <td>12/12/2015</td>-->
+                        <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                  </tr>
+                  <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-graph'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc graphique" alt="Bloc graphique" />
+                <span class='block-title'>Bloc graphique <span class='typography-mdash'>—</span> Factures par an</span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="https://hycrm.hybird.org/reports/graph/2625" class='block-header-button action-type-link' title="Accéder à la fiche du graphique Factures par an">
+                    <svg class='block-header-icon' xmlns="http://www.w3.org/2000/svg" _width="12" _height="12" viewBox="0 0 18 18"><path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z"/></svg>
+
+                    <span class='block-header-button-title'>Accéder à la fiche du graphique</span>
+                </a>
+                <a href="" class='block-header-button action-type-reload js-hook' title="Recharger le graphique Factures par an">
+                    <svg class='block-header-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9 13.5c-2.49 0-4.5-2.01-4.5-4.5S6.51 4.5 9 4.5c1.24 0 2.36.52 3.17 1.33L10 8h5V3l-1.76 1.76C12.15 3.68 10.66 3 9 3 5.69 3 3.01 5.69 3.01 9S5.69 15 9 15c2.97 0 5.43-2.16 5.9-5h-1.52c-.46 2-2.24 3.5-4.38 3.5z"/></svg>
+
+                    <span class='block-header-button-title'>Recharger</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <div class='block-graph-header clearfix'>
+                <div class='graph-controls graph-controls-type'>
+                    <span class='graph-control-name'>Graphique <span class='typography-colon'>:</span></span>
+                    <a href="" class='graph-control-value js-hook' title="Sélectionner le type de visualisation du graphique (popover ou icônes)">Histogramme</a>
+                </div>
+                <div class='graph-controls graph-controls-sort'>
+                    <span class='graph-control-name'>Tri <span class='typography-colon'>:</span></span>
+                    <a href="" class='graph-control-value js-hook' title="Sélectionner l'ordre de tri des années d'émission des factures (popover ou icônes)">Ascendant</a>
+                </div>
+
+                <div class='graph-relation'><span class='graph-relation-name'>Colonne volatile <span class='typography-colon'>:</span></span> a été reçu par <span class='graph-relation-entity'>Hybird</span></div>
+            </div>
+            <div class='block-graph-container'>
+                <img src='img/graph-mockup.png' />
+            </div>
+        </div>
+    </div>
+
+    <div class='block block-scrollable'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu scrollant" alt="Bloc avec contenu scrollant" />
+                <span class='block-title'>Bloc avec contenu scrollant</span>
+            </div>
+        </div>
+        <div class='block-content block-scrollable-container' style='max-height: 150px'> <!-- contrainte arbitraire -->
+            <img src='img/graph-mockup.png' style='min-height: 200px; width: 100%' /> <!-- simulation de contenu fluide (w:100%) qui dépasse la contrainte de hauteur -->
+        </div>
+    </div>
+
+    <div class='block block-table block-scrollable'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu à header fixé et scrollant" alt="Bloc avec contenu à header fixé et scrollant" />
+                <span class='block-title' title="Bloc avec contenu à header fixé et scrollant">Bloc avec contenu à header fixé et scrollant</span>
+            </div>
+        </div>
+        <div class='block-content block-scrollable-container js-hook' style='max-height: 200px'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column>
+                            <span class='block-table-sortable' title='Trier les documents par nom'>Nom</span>
+                        </th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th>
+                            <span class='block-table-sortable' title='Trier les documents par statut'>Statut</span>
+                        </th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!--
+    <div class='block block-table block-scrollable'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu à header et footer" alt="Bloc avec contenu à header et footer" />
+                <span class='block-title' title="Bloc avec contenu à header et footer">Bloc avec contenu à header et footer</span>
+            </div>
+        </div>
+        <div class='block-content block-scrollable-container js-hook' style='max-height: 200px'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column>
+                            <span class='block-table-sortable' title='Trier les documents par nom'>Nom</span>
+                        </th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th>
+                            <span class='block-table-sortable' title='Trier les documents par statut'>Statut</span>
+                        </th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                        <td>12/12/2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                    <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td>10/12/2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td data-type='money'>Total: 12 503 €</td>
+                        <td>5</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+-->
+
+    <div class='block block-table block-selectable'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec sélection" alt="Bloc avec sélection" />
+                <span class='block-title' title='Bloc avec sélection'>
+                    Bloc avec sélection <span class='block-selection-indicator' title='2 documents comptables sélectionnés sur les 3'><span class='typography-mdash'>—</span> 2 documents sélectionnés</span>
+                </span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-link' title="Délier les 2 documents comptables sélectionnés">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Délier les 2 documents comptables sélectionnés" alt="Délier les 2 documents comptables sélectionnés" />
+                    <span class='block-header-button-title'>Délier les 2 documents</span>
+                </a>
+                <a href="" class='block-header-button' title="Modifier les 2 documents comptables sélectionnés">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Modifier les 2 documents comptables sélectionnés" alt="Modifier les 2 documents comptables sélectionnés" />
+                    <span class='block-header-button-title'>Modifier les 2 documents</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-selectable-selector-column>
+                            <input type='checkbox' title='Sélectionner les 3 documents comptables' />
+                        </th>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les 3 documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des 3 documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les 3 documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les 3 documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class='is-selected'>
+                      <td data-selectable-selector-column>
+                          <input type='checkbox' title='Désélectionner le Devis DE1 (Opport 1)' checked />
+                      </td>
+                      <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                      <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>En attente<br/>Et sur 2 lignes</td>
+                      <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Devis</td>
+                  </tr>
+                  <tr class='is-selected'>
+                      <td data-selectable-selector-column>
+                          <input type='checkbox' title='Désélectionner le Devis 123 (Opport 17)' checked />
+                      </td>
+                      <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                      <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>Accepté</td>
+                      <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Devis</td>
+                  </tr>
+                  <tr>
+                      <td data-selectable-selector-column>
+                          <input type='checkbox' title='Sélectionner la Facture 123 (Opport 2)' />
+                      </td>
+                      <td data-table-primary-column>Facture 123 (Opport 2)</td>
+                      <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>Accepté</td>
+                      <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Facture</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-table'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec contenu à actions" alt="Bloc avec contenu à actions" />
+                <span class='block-title' title='Bloc avec contenu à actions'>Bloc avec contenu à actions</span>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                        <th data-table-action-column colspan="2">Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                        <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+<!--                        <td>12/12/2015</td>-->
+                        <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>En attente<br/>Et sur 2 lignes</td>
+                        <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Devis</td>
+                        <td data-table-action-column>
+                            <a href="" class="block-table-action js-hook" title="Modifier le Devis DE1 (Opport 1)"><img src="img/edit_22-e4d07b42585ebbec76611d2a9071bd7dad395b02.png" /></a>
+                        </td>
+                        <td data-table-action-column><a href="" class="block-table-action js-hook" title="Délier le Devis DE1 (Opport 1) de la société Hybird"><img src="img/unlink_22-5752db640c6da303b3b4f589e73d6404520eb89e.png" /></a></td>
+                  </tr>
+                  <tr>
+                        <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                        <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                        <td>Accepté</td>
+                        <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                        <td>Facture</td>
+                        <td data-table-action-column>
+                            <a href="" class="block-table-action js-hook" title="Modifier le Devis 123 (Opport 17)"><img src="img/edit_22-e4d07b42585ebbec76611d2a9071bd7dad395b02.png" /></a>
+                        </td>
+                        <td data-table-action-column><a href="" class="block-table-action js-hook" title="Délier le Devis 123 (Opport 17) de la société Hybird"><img src="img/unlink_22-5752db640c6da303b3b4f589e73d6404520eb89e.png" /></a></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-list activity-list-block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="" alt="" />
+                <span class='block-title' title=''>Bloc liste <span class='typography-mdash'>—</span> Activités</span>
+            </div>
+        </div>
+        <div class='block-content'>
+            <div class='block-list-item activity-item'>
+                <div class='activity-group activity-summary-group'>
+                    <div class='activity-group-key'>
+                        <span class='activity-schedule'><span class='activity-schedule-beginning'>07/09/2014 9h30</span> – 12h45</span>
+                    </div>
+                    <div class='activity-group-value'>
+                        <span class='activity-type'>Appel téléphonique</span>
+                        <svg class='activity-icon activity-type-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <span class='activity-status'> <span class='typography-mdash'>—</span> Activité Prévue</span>
+                    </div>
+                    <div class='activity-warning' title="2 défauts de qualité des données : 1) L'activité a une date passée mais est en statut 'Prévue' 2) L'activité a un bilan mais est en statut 'Prévue'">
+                        <svg class='activity-icon activity-warning-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M9 1.03c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zM10 13H8v-2h2v2zm0-3H8V5h2v5z"/></svg>
+                        <span class='activity-warning-label'>2 défauts</span>
+                    </div>
+                    <div class='activity-action'>
+                        <a href="" class='action-type-link js-hook' title="Délier l'activité Appeler Contact Cilasoft de la société Hybird"><img src="img/unlink_22-5752db640c6da303b3b4f589e73d6404520eb89e.png" border="0" title="Délier l'activité Appeler Contact Cilasoft de la société Hybird" alt="Délier l'activité Appeler Contact Cilasoft de la société Hybird" /></a>
+                    </div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'></div>
+                    <div class='activity-group-value'>
+                        <span class='activity-title'><a href='https://hycrm.hybird.org/activities/activity/9297'>Appeler Contact Cilasoft</a></span>
+                    </div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>2 Sujets</div>
+                    <div class='activity-group-value'><a href='https://hycrm.hybird.org/persons/organisation/14' class='activity-relation'>Société Cilasoft</a> et <a href='https://hycrm.hybird.org/opportunities/opportunity/16' class='activity-relation'>Opportunité Vendre un Crème à Cilasoft</a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>3 Participants</div>
+                    <div class='activity-group-value'><a href='https://hycrm.hybird.org/persons/contact/15' class='activity-relation' title='Mme Guilène ABID de la société Cilasoft'>Guilène ABID</a>, <a href='https://hycrm.hybird.org/persons/contact/3271' class='activity-relation'>Romain FUMAROLI</a> et <a href='https://hycrm.hybird.org/persons/contact/2' class='activity-relation'>Jean-Michel ARMAND</a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>Bilan</div>
+                    <div class='activity-group-value'>Ils vont comparer notre solution avec une autre elle n'a pas voulu me dire laquelle, rappel en Septembre les choses avancent lentement chez eux, ils ont tous les contacts pour nous joindre.</div>
+                </div>
+            </div>
+
+            <div class='block-list-item activity-item'>
+                <div class='activity-group activity-summary-group'>
+                    <div class='activity-group-key'>
+                        <span class='activity-schedule'><span class='activity-schedule-beginning'>07/09/2014 à 10h30</span></span>
+                    </div>
+                    <div class='activity-group-value'>
+                        <span class='activity-type'>Rendez-vous</span>
+                        <svg class='activity-icon activity-type-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M13 9H9v4h4V9zm2-7h-1V1h-2v1H6V1H4v1H3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H4V6h10v8z"/></svg>
+                        <span class='activity-status'> <span class='typography-mdash'>—</span> Activité Terminée</span>
+                    </div>
+                    <div class='activity-action'><a href="" class='action-type-link js-hook' title="Délier l'activité Boire une Monk Spirit de la société Hybird"><img src="img/unlink_22-5752db640c6da303b3b4f589e73d6404520eb89e.png" border="0" title="Délier l'activité Boire une Monk Spirit de la société Hybird" alt="Délier l'activité Boire une Monk Spirit de la société Hybird" /></a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'></div>
+                    <div class='activity-group-value'>
+                        <span class='activity-title'><a href='https://hycrm.hybird.org/activities/activity/9297'>Boire une Monk Spirit</a></span>
+                    </div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>1 Participant</div>
+                    <div class='activity-group-value'><a href='https://hycrm.hybird.org/persons/contact/2' class='activity-relation'>Jean-Michel ARMAND</a></div>
+                </div>
+            </div>
+
+            <div class='block-list-item activity-item'>
+                <div class='activity-group activity-summary-group'>
+                    <div class='activity-group-key'>
+                        <span class='activity-schedule'><span class='activity-schedule-beginning'>14/09/2015 à 15h46</span></span>
+                    </div>
+                    <div class='activity-group-value'>
+                        <span class='activity-type'>Tâche</span>
+                        <svg class='activity-icon activity-type-icon' style='fill: #000;' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-opacity=".9" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <div class='activity-action'><a href="" class='action-type-link js-hook' title="Délier l'activité Invitation Salon Solutions et point sur projet Dynamics de la société Hybird"><img src="img/unlink_22-5752db640c6da303b3b4f589e73d6404520eb89e.png" border="0" title="Délier l'activité Invitation Salon Solutions et point sur projet Dynamics de la société Hybird" alt="Délier l'activité Invitation Salon Solutions et point sur projet Dynamics de la société Hybird" /></a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'></div>
+                    <div class='activity-group-value'>
+                        <span class='activity-title'>
+                           <a href='https://hycrm.hybird.org/activities/activity/9048'>Invitation Salon Solutions et point sur projet Dynamics</a>
+                       </span>
+                    </div>
+
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>2 Sujets</div>
+                    <div class='activity-group-value'><a href='https://hycrm.hybird.org/persons/organisation/6026' class='activity-relation'>Société Gocad Services</a> et <a href='https://hycrm.hybird.org/opportunities/opportunity/6067' class='activity-relation'>Opportunité Gocad Services</a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>2 Participants</div>
+                    <div class='activity-group-value'><a href='https://hycrm.hybird.org/persons/contact/3271' class='activity-relation'>Romain FUMAROLI</a> et <a href='https://hycrm.hybird.org/persons/contact/2' class='activity-relation'>Jean-Michel ARMAND</a></div>
+                </div>
+
+                <div class='activity-group activity-info-group'>
+                    <div class='activity-group-key'>Prochaine action</div>
+                    <div class='activity-group-value'>
+                        <span class='activity-type'>Tâche</span>
+                        <svg class='activity-icon activity-type-icon' style='fill: #000;' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-opacity=".9" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <span class='activity-schedule'><span class='activity-schedule-beginning'>25/10/2015 à 09h12</span></span>
+                        <span class='activity-title'>
+                            <a href='https://hycrm.hybird.org/activities/activity/9108'>Checkup Gocad Services</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='block block-table block-reorderable'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="" alt="" />
+                <span class='block-title' title='Bloc réordonnable'>
+                    Bloc réordonnable <span class='typography-mdash'>—</span> en drag<span class='typography-hyphen'>-</span>and<span class='typography-hyphen'>-</span>droppant le grabber <svg class='icon block-reorderable-handle-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+                </span>
+            </div>
+        </div>
+        <div class='block-content'>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th data-table-primary-column><span class='block-table-sortable' title='Trier les 3 documents par nom'>Nom</span></th>
+                        <th>
+                            <span class='block-table-sortable block-table-sorted' data-sort-order='desc'
+                                  title="Inverser le tri par échéance des 3 documents">Échéance</span>
+                        </th>
+                        <th><span class='block-table-sortable' title='Trier les 3 documents par statut'>Statut</span></th>
+                        <th data-type="money">
+                            <span class='block-table-sortable' title='Trier les 3 documents par total hors-taxe'>Total HT</span>
+                        </th>
+                        <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody class='block-reorderable-items'>
+                  <tr>
+                      <td data-reorderable-handle-column title='Glissez-déposez pour réordonner le Devis 123 (Opport 17)'><svg class='icon block-reorderable-handle-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg></td>
+                      <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                      <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>Accepté</td>
+                      <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Devis</td>
+                  </tr>
+                  <tr>
+                      <td data-reorderable-handle-column title='Glissez-déposez pour réordonner le Devis DE1 (Opport 1) pour la société Gérès'><svg class='icon block-reorderable-handle-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg></td>
+                      <td data-table-primary-column><a href="http://localhost:8000/billing/quote/19" title="Devis DE1 (Opport 1) pour la société Gérès">DE1 (Opport 1)</a></td>
+                      <td data-type='date'>12<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>En attente<br/>Et sur 2 lignes</td>
+                      <td data-type='money'>63 700 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Devis</td>
+                  </tr>
+                  <tr>
+                      <td data-reorderable-handle-column title='Glissez-déposez pour réordonner le Devis 123 (Opport 17)'><svg class='icon block-reorderable-handle-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg></td>
+                      <td data-table-primary-column>Devis 123 (Opport 17)</td>
+                      <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>Accepté</td>
+                      <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Devis</td>
+                  </tr>
+
+                  <tr class=''>
+                      <td data-reorderable-handle-column title='Glissez-déposez pour réordonner la Facture 123 (Opport 2)'><svg class='icon block-reorderable-handle-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg></td>
+                      <td data-table-primary-column>Facture 123 (Opport 2)</td>
+                      <td data-type='date'>10<span class='data-type-date-separator'>/</span>12<span class='data-type-date-separator'>/</span>2015</td>
+                      <td>Accepté</td>
+                      <td data-type='money'>4 950 <span class='data-type-currency-symbol'>€</span></td>
+                      <td>Facture</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class='block block-map'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="" alt="" />
+                <span class='block-title' title=''>Bloc adresses + map</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de facturation</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+              </div>
+              <div class='map-container'>
+                  &nbsp;
+              </div>
+          </div>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de livraison</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+              </div>
+              <div class='map-container'>
+                  &nbsp;
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class='block block-full-width block-map'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="" alt="" />
+                <span class='block-title' title=''>Bloc adresses + map</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de facturation</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+                  <div class='address-options'>
+                      <div class='address-option'>
+                          <span class='adress-option-key'>Département</span>
+                          <span class='adress-option-value'>13</span>
+                      </div>
+                      <div class='address-option'>
+                          <span class='adress-option-key'>état</span>
+                          <span class='adress-option-value'>Californie</span>
+                      </div>
+                      <div class='address-option'>
+                          <span class='adress-option-key'>Pays</span>
+                          <span class='adress-option-value'>France</span>
+                      </div>
+                  </div>
+              </div>
+<!--
+              <div class='map-container'>
+                  &nbsp;
+              </div>
+-->
+          </div>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de livraison</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+<script>
+    // when the experiments are done, move this where it should be
+    $(function() {
+        $('.block-table.block-scrollable table').floatThead ({
+            scrollContainer: function ($table) {
+//                        console.log ('locking table headers to container', $table.closest ('.block-scrollable-container'));
+                return $table.closest ('.block-scrollable-container.js-hook');
+            }
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        // Sigh...
+        // jQuery UI 1.11 Sortable: the 'start' event is sent *after* the dragged item has been modified to absolute positioning,
+        // which destroys the table layout. So: hijack the start of the process to send an event before this happens.
+        // HACK: can break in later versions than 1.11
+        var oldMouseStart = $.ui.sortable.prototype._mouseStart;
+        $.ui.sortable.prototype._mouseStart = function (event, overrideHandle, noActivation) {
+            this._trigger("beforeStart", event, this._uiHash());
+            oldMouseStart.apply(this, [event, overrideHandle, noActivation]);
+        };
+        // Sigh... - end
+
+        $('.block-table.block-reorderable .block-reorderable-items').sortable ({
+            placeholder: 'block-reorderable-placeholder',
+            handle: '[data-reorderable-handle-column]',
+            beforeStart: function (e, ui) {
+                var widths = ui.item.find('td').map (function() {
+                    return this.offsetWidth;
+                }).get();
+
+                var height = ui.item.height();
+
+                ui.item.data ('creme-layout-state', {
+                    height: height,
+                    widths: widths
+                });
+            },
+            start: function (e, ui) {
+                ui.item.appendTo(this).addClass ('is-dragging');
+
+                // As soon as jQuery UI starts the draggable interaction: the item is positioned absolutely, ruining the table layout.
+                // So: restore the item to its original layout state
+
+                var state = ui.item.data ('creme-layout-state');
+
+                ui.item.find('td').each (function (index) {
+                    $(this).css ('width', state.widths [index])
+                });
+
+                // The placeholder suffers the same problem, it has no content so the table is relaid out and the columns widths are lost
+                // So: make the placeholder size match the item's original size more closely
+                ui.placeholder.find('td').each (function (index, element) {
+                    // 1): pretend columns with the same widths are still in the table
+                    $(this).css ('width', state.widths [index]);
+                });
+
+                // 2: pretend the row still has the same height, in order to not offset the siblings
+                ui.placeholder.height (state.height);
+
+//                ui.placeholder[0].innerHTML = '<td colspan="6">Drop here to reorder</td>';
+//                console.log ('after - placeholder: %s, should be: %s', ui.placeholder.height(), state.height, ui.placeholder[0].outerHTML);
+//                console.log ('');
+            },
+            stop: function (e, ui) {
+                ui.item.removeClass ('is-dragging');
+                ui.item.find('td').removeAttr ('style');
+            }
+        });
+    })
+
+</script>
+
+</div>
+<div class="column east last">
+    <div class='block'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <span class='block-title'>Bloc</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          &nbsp;
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="south">
+    <div class='block block-full-width block-map'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="" alt="" />
+                <span class='block-title' title=''>Bloc adresses + map</span>
+            </div>
+        </div>
+        <div class='block-content'>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de facturation</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+              </div>
+              <div class='map-container'>
+                  &nbsp;
+              </div>
+          </div>
+          <div class='address-map'>
+              <div class='address-container'>
+                  <span class='address-title'>Adresse de livraison</span>
+                  <div class='address'>
+                      Hôtel Technologique<br/>
+                      45 rue Joliot-Curie<br/>
+                      13013 Marseille CEDEX 13
+                  </div>
+              </div>
+              <div class='map-container'>
+                  &nbsp;
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class='block block-phases block-full-width'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc avec header décoré en frise" alt="Bloc avec header décoré en frise" />
+                <span class='block-title' title='Bloc avec header décoré en frise'>Bloc avec header décoré en frise</span>
+            </div>
+            <div class='block-header-buttons'>
+                <a href="" class='block-header-button action-type-link' title="Défriser les lardons">
+                    <img class='block-header-icon' src="img/link_22-5516e4a85f6ae1db90184755d1efd9811ee12549.png" border="0" title="Défriser les lardons" alt="Défriser les lardons" />
+                    <span class='block-header-button-title'>Défriser les lardons</span>
+                </a>
+            </div>
+        </div>
+        <div class='block-content'>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 0</span></div>
+                <ul class='phase-items'>
+                    <li>Item 1</li>
+                    <li class="phase-item-validated">Item 2 avec une description un peu longue qui peut wrapper
+                        avec une description un peu longue qui peut wrapper</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 1</span></div>
+                <ul class='phase-items'>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                    <li>Item 6</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 2</span></div>
+                <ul class='phase-items'>
+                    <li class="phase-item-validated">Item 1</li>
+                    <li class="phase-item-validated">Item 2 avec une description un peu longue qui peut wrapper</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 3</span></div>
+                <ul class='phase-items'>
+                    <li>Item</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                    <li class="phase-item-validated">Item  avec une description un peu longue qui peut wrapper
+                        avec une description un peu longue qui peut wrapper</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                    <li>Item blabla</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 4</span></div>
+                <ul class='phase-items'>
+                    <li>Item 1</li>
+                    <li>Item 2 avec une description un peu longue qui peut wrapper</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 5</span></div>
+                <ul class='phase-items'>
+                    <li>Item</li>
+                    <li>Item avec une description un peu longue qui peut plus s'empêcher de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper de wrapper</li>
+                    <li>Item avec une description un peu longue qui peut wrapper</li>
+                    <li>Item avec une description un peu longue qui peut wrapper</li>
+
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"><span class='phase-title'>Phase 6</span></div>
+                <ul class='phase-items'>
+                    <li>Item 1</li>
+                    <li class="phase-item-validated">Item 2 avec une description un peu longue qui peut wrapper</li>
+                </ul>
+            </div>
+            <div class='block-phase'>
+                <div class="phase-title-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class='block block-widget-phases block-full-width'>
+        <div class='block-header'>
+            <div class='block-title-container'>
+                <img class='block-header-icon' src="img/add_22-65bfd1b92f99b165e2245700819ff67ec9454706.png" border="0" title="Bloc de démonstration de widget" alt="Bloc de démonstration de widget" />
+                <span class='block-title' title='Bloc de démonstration de widget'>Bloc de démonstration de widget (ne pas utiliser le bloc, mais le widget)</span>
+            </div>            
+        </div>
+        <div class='block-content'>
+            <div class='widget-phases'>
+                <div class='phases-activities-container'>
+                    <div class='activities'>
+                        <a href='' title="Afficher les 5 activités effectuées durant la phase 'Premier contact non encore pris'">
+                            5
+                            <svg class='icon icon-calendar' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                                <path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/>
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class='activities'></div>
+                    <div class='activities'></div>
+                    <div class='activities'>
+                        <a href='' title="Afficher les 12 activités effectuées durant la phase 'CDC reçu, construction Propal'">
+                            12
+                            <svg class='icon icon-calendar' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+                                <path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/>
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class='activities'></div>
+                    <div class='activities'></div>
+                    <div class='activities'></div>
+                </div>
+                <div class='phases-container'>
+                    <div class='phase phase-active'>
+                        <div class='phase-content'>
+                            <span class='phase-duration'>152 j</span>
+                        </div>
+                    </div>
+                    <div class='phase phase-active'>
+                        <div class='phase-content'></div>
+                    </div>
+                    <div class='phase phase-active is-current'>
+                        <div class='phase-content'>
+                            <span class='phase-duration'>17 j</span>
+                        </div>
+                    </div>
+                    <div class='phase phase-inactive'>
+                        <div class='phase-content'>
+                            <span class='phase-duration'>1 j</span>
+                        </div>
+                    </div>
+                    <div class='phase phase-inactive'>
+                        <div class='phase-content'></div>
+                    </div>
+                    <div class='phase phase-inactive'>
+                        <div class='phase-content'></div>
+                    </div>
+                    <div class='phase phase-inactive'>
+                        <div class='phase-content'></div>
+                    </div>
+                </div>
+                <div class='phases-switcher-container'>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Revenir en <em class='switch-to-phase'>Premier contact non encore pris</em>
+                    </div>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Revenir en <em class='switch-to-phase'>Premier Contact OK</em>
+                    </div>
+                    <div class='phases-switcher is-current is-showing'>
+                        En <em>Discussion / Recueil de besoins</em> depuis le <em>10/10/2018</em>
+                    </div>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Passer en <em class='switch-to-phase'>CDC reçu, construction Propal</em>
+                    </div>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Passer en <em class='switch-to-phase'>Devis / Pilote</em>
+                    </div>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Passer en <em class='switch-to-phase'>Quasi Perdue</em>
+                    </div>
+                    <div class='phases-switcher'>
+                        <svg class='icon icon-arrow' xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>
+                        </svg>
+                        Passer en <em class='switch-to-phase'>On a fait du caca, ne pas relancer</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // widget-phases
+    $(function() {
+        var widget = $('.widget-phases');
+        var phases = widget.find('.phase');
+                
+        var switchers = widget.find('.phases-switcher');
+        
+        // position the phase switchers (done in js because the widths are dynamic and elements overlap their siblings)
+        // note: this unfortunately needs to be rerun when the viewport changes width
+        var positionSwitchers = function() {
+            switchers.each(function(idx, node) {
+                var phase = $(phases[idx]);
+
+                var phaseX = phase.offset().left;
+                var phaseWidth = phase.width();
+
+                var switcher = $(node);
+                var switcherMarginWidth = 22;            
+                var switcherWidth = switcher.width() + switcherMarginWidth;
+
+                var containerWidth = switcher.parent().width();
+
+                // compute switcher positions: around the phase center
+                var posX = phaseX + (phaseWidth - switcherWidth) / 2 - switcherMarginWidth;
+
+                // clamp the x position of the switcher so it doesn't overflow its container
+                if (posX + switcherWidth > containerWidth) {
+                    posX = switcherMarginWidth + containerWidth - switcherWidth;
+                }
+
+                if (posX < switcherMarginWidth) {
+                    posX = switcherMarginWidth;
+                }
+
+                switcher.css('transform', 'translate(' + posX + 'px, 0)');
+            });
+        };
+        
+        positionSwitchers();
+        
+        // for prototyping purposes
+        // - reposition the switchers when the viewport is resized
+        // warning: do not copy this as-is, the event listener s not debounced
+        $(window).resize(positionSwitchers);
+        
+        // handle dynamic phase selection: change sequential phase backgrounds, and show the phase switcher
+        widget.on('mouseover', '.phase', function(e) {
+            var target = $(this);
+            
+            // no transition to the current phase
+            if (target.is('.is-current')) {
+                return;
+            }
+            
+            phases.removeClass('phase-selection');
+            
+            // handle selection styling for the hovering phase, and its phase sequence
+            target.addClass('phase-selection');
+            
+            if (target.is('.phase-inactive')) {
+                // this is a switch to a currently inactive phase: show all skipped inactive phases, if any
+                target.prevAll('.phase-inactive').addClass('phase-selection');
+            } else {
+                // this is a switch to a previously active phase: do nothing as all previously active
+                // phases are currently styled in css
+            }
+            
+            // show the switcher tooltip for the hovering phase
+            switchers.removeClass('is-showing');
+            
+            var switcher = $(switchers[target.index()]);            
+            switcher.addClass('is-showing');
+        });
+        
+        phases.on('mouseout', function() {
+            phases.removeClass('phase-selection');
+            
+            // show default switcher
+            switchers.filter(':not(.is-current)').removeClass('is-showing');
+            switchers.filter('.is-current').addClass('is-showing');
+        });
+    });
+</script>
+
+
+<!--
+<script type="text/javascript">
+    $(document).ready(function() {
+        //creme.blocks.deps ???
+        creme.utils.blocks_deps = {
+
+                "block_persons-other_address": "block_creme_core-history,block_persons-address",
+
+                "modelblock_persons-organisation": "block_creme_core-history,block_persons-orga_coordinates",
+
+                "block_creme_core-customfields": "",
+
+                "block_billing-received_invoices": "block_creme_core-history,block_billing-received_billing_document",
+
+                "block_emails-mails_history": "block_creme_core-history",
+
+                "block_activities-future_activities": "block_creme_core-history,block_activities-past_activities",
+
+                "block_creme_core-relations": "block_creme_core-history",
+
+                "block_assistants-todos": "block_creme_core-history",
+
+                "block_persons-address": "block_creme_core-history,block_persons-other_address",
+
+                "block_assistants-alerts": "block_creme_core-history",
+
+                "specificblock_creme_config-persons-subject_customer_supplier": "block_creme_core-history",
+
+                "block_billing-received_billing_document": "block_creme_core-history,block_billing-received_invoices",
+
+                "block_persons-orga_coordinates": "block_creme_core-history,modelblock_persons-organisation",
+
+                "block_opportunities-target_organisations": "block_creme_core-history",
+
+                "block_persons-managers": "block_creme_core-history,block_persons-employees",
+
+                "block_billing-payment_information": "",
+
+                "block_activities-past_activities": "block_creme_core-history,block_activities-future_activities",
+
+                "block_assistants-memos": "block_creme_core-history",
+
+                "block_creme_core-properties": "block_creme_core-history",
+
+                "block_assistants-messages": "block_creme_core-history",
+
+                "specificblock_creme_config-persons-object_customer_supplier": "block_creme_core-history",
+
+                "block_commercial-approaches": "block_creme_core-history",
+
+                "block_persons-employees": "block_creme_core-history,block_persons-managers",
+
+                "block_creme_core-history": ""
+
+        };
+
+        //TODO: in a .js file ??
+        creme.utils.getBlocksDeps = function(block_name) {
+            var deps = creme.utils.blocks_deps[block_name];
+
+            if (typeof(deps) == "undefined") {
+                deps = "";
+            }
+
+            return deps;
+        };
+    })
+</script>
+-->
+
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div id="footer">
+        <a href="http://hybird.org/">À propos d'Hybird</a>&nbsp;—&nbsp;2009 – 2013 &nbsp;&nbsp;&nbsp;Creme v1.4 alpha <i>&nbsp;&nbsp;&nbsp;(Django 1.4.5)</i>&nbsp;&nbsp;&nbsp;Crème glacée
+    </div>
+-->
+
+    <div class='page-decoration'>
+        <div></div>
+        <span title='Cui !'>
+            <svg class='icon-hybird' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20">
+                <path d="M16.36,8.196c0.714,0.068,1.219,0.346,1.762,0.587c1.04-1.811,1.492-4.212,1.678-6.879c0.064-0.122,0.009-0.364,0.028-0.532c0.063-0.158,0.009-0.438,0.027-0.643c0.065-0.076,0.011-0.271,0.028-0.392c0.008-0.158,0.002-0.522-0.056-0.224c-0.548,1.77-1.002,3.812-1.902,5.118c0.326-0.635,0.496-1.425,0.56-2.322c0.064-0.103,0.01-0.325,0.028-0.476c0.046-0.335,0.046-0.866,0-1.202c0-0.252,0.01-0.514-0.056-0.699c0.015,0.108-0.051,0.137-0.029,0.252c-0.391,1.612-0.688,3.319-1.398,4.614c0-0.056,0-0.112,0-0.167c0.065-0.076,0.011-0.271,0.029-0.392c0.064-0.215,0.009-0.551,0.028-0.812c-0.02-0.261,0.036-0.597-0.028-0.811c-0.002-0.438,0.015-0.892-0.057-1.259c0.001,0.065-0.049,0.082-0.027,0.167c-0.794,2.488-1.642,4.923-3.077,6.769c0.61-0.331,1.211-0.674,2.126-0.699C16.137,8.196,16.247,8.196,16.36,8.196z"/>
+                <path d="M19.156,10.015c-0.903-0.691-1.685-1.364-3.076-1.287c-1.335,0.074-2.107,0.892-2.992,1.454c0.055,0.236,0.403,0.47,0.363,0.615c-2.134-1.083-3.509-2.923-4.222-5.425c0.013-0.089-0.052-0.1-0.029-0.195c-0.064,0.409-0.009,0.94-0.027,1.397C7.909,5.283,7.011,3.627,6.489,1.596C6.456,1.543,6.452,1.464,6.432,1.4C6.367,1.978,6.41,2.69,6.459,3.246c0.083,1.576,0.28,3.039,0.839,4.14C7.032,7.101,6.862,6.722,6.655,6.378C6.587,6.261,6.544,6.117,6.459,6.015C6.126,5.21,5.768,4.433,5.509,3.554C5.42,3.651,5.452,3.87,5.425,4.029c-0.064,0.122-0.01,0.364-0.028,0.531c-0.047,0.168-0.047,0.53,0,0.699C5.416,5.4,5.361,5.613,5.425,5.707c0.124,1.629,0.661,2.845,1.397,3.859c-0.268-0.085-0.468-0.239-0.67-0.392C6.07,9.126,6.022,9.044,5.957,8.979c-0.047-0.047-0.1-0.088-0.14-0.141c-0.012-0.024-0.025-0.05-0.056-0.056c-0.526-0.667-0.945-1.44-1.23-2.349c0.344,2.21,1.049,4.301,2.265,5.733c0.029,0.072,0.111,0.093,0.14,0.167c0.114,0.091,0.217,0.193,0.308,0.308c0.056,0.009,0.054,0.075,0.111,0.084c0.878,0.791,1.914,1.423,3.328,1.679c-0.109,0.142-0.397,0.104-0.587,0.167c-0.168,0-0.336,0-0.504,0c-0.332-0.1-0.825,0.382-1.119,0.644c-0.324,0.288-0.581,0.53-0.838,0.755c-0.576,0.502-1.094,1.095-1.65,1.51c-0.888,0.663-2.005,1.207-2.992,1.791C1.979,19.868,0.982,20.461,0,21.032c0.002,0.054,0.093-0.032,0.168,0c0.233-0.018,0.54,0.037,0.727-0.027c0.149,0,0.298,0,0.448,0c0.26-0.047,0.619,0.004,0.868-0.056c0.148,0,0.297,0,0.447,0c0.093,0,0.186,0,0.279,0c0.624,0.056,1.213,0.147,1.79,0.251c0.027,0,0.055,0,0.084,0c-0.005-0.023,0.011-0.026,0.028-0.027c0.114-0.092,0.216-0.193,0.307-0.308c0.038-0.094,0.164-0.098,0.196-0.196c1.029-0.938,2.201-1.887,3.412-2.769c0.209-0.152,0.359-0.33,0.588-0.363c0.186-0.02,0.447,0.037,0.587-0.028c1.319-0.084,2.47-0.555,3.439-1.146c0.952-0.581,1.934-1.147,2.657-1.902c0.476-0.497,0.823-1.113,1.313-1.594c0.049-0.063,0.116-0.108,0.168-0.168c0.119-0.143,0.25-0.273,0.393-0.392c0.067-0.045,0.123-0.101,0.167-0.168c0.407-0.387,0.98-0.604,1.706-0.672c0.084,0,0.168,0,0.252,0c0.039,0.063,0.195,0.012,0.279,0.028c0.62,0.006,1.057,0.194,1.454,0.419c0-0.019,0-0.037,0-0.056C21.217,11.166,19.899,10.582,19.156,10.015z"/>
+            </svg>
+        </span>
+        <div></div>
+    </div>
+
+    <div class='footer'>
+        <div class='footer-baseline'>
+            <strong><a href='http://cremecrm.com'>Crème</a></strong> est un logiciel libre, cuisiné en France depuis 2008, par <strong><a href='http://hybird.org'>Hybird</a></strong>
+            <span class='footer-baseline-version'>— Version 1.5 / Crème glacée</span>
+        </div>
+
+        <div class='footer-columns clearfix'>
+            <div class='footer-column footer-column-creme'>
+                <div class='column-content'>
+                    <span class='footer-column-title'>Crème</span>
+                    <ul>
+                        <li><a href=''>Documentation</a></li>
+                        <li><a href=''>Support Reamaze</a></li>
+                        <li><a href=''>Forum</a></li>
+                        <li class='creme-site'>— <a href='http://cremecrm.com'>cremecrm.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class='footer-column footer-column-client'>
+                <div class='column-content'>
+                    <span class='footer-column-title'>Néo Télécoms</span>
+                    <div class='footer-client-logo'>
+                        <img src='img/logo-zayo.png' />
+                    </div>
+                    <ul>
+                        <li>Support au <svg class="icon icon-telephone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path data-brackets-id="133815" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg> 01 23 45 67 89</li>
+                        <li><a href=''>Contacter l'administrateur</a></li>
+                        <li>— <a href='http://www.fr.zayo.com'>fr.zayo.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class='footer-column footer-column-hybird'>
+                <div class='column-content'>
+                    <span class='footer-column-title'>
+                        Hybird
+                        <span title='Cui !'>
+                            <svg class='icon-hybird' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20">
+                                <path d="M16.36,8.196c0.714,0.068,1.219,0.346,1.762,0.587c1.04-1.811,1.492-4.212,1.678-6.879c0.064-0.122,0.009-0.364,0.028-0.532c0.063-0.158,0.009-0.438,0.027-0.643c0.065-0.076,0.011-0.271,0.028-0.392c0.008-0.158,0.002-0.522-0.056-0.224c-0.548,1.77-1.002,3.812-1.902,5.118c0.326-0.635,0.496-1.425,0.56-2.322c0.064-0.103,0.01-0.325,0.028-0.476c0.046-0.335,0.046-0.866,0-1.202c0-0.252,0.01-0.514-0.056-0.699c0.015,0.108-0.051,0.137-0.029,0.252c-0.391,1.612-0.688,3.319-1.398,4.614c0-0.056,0-0.112,0-0.167c0.065-0.076,0.011-0.271,0.029-0.392c0.064-0.215,0.009-0.551,0.028-0.812c-0.02-0.261,0.036-0.597-0.028-0.811c-0.002-0.438,0.015-0.892-0.057-1.259c0.001,0.065-0.049,0.082-0.027,0.167c-0.794,2.488-1.642,4.923-3.077,6.769c0.61-0.331,1.211-0.674,2.126-0.699C16.137,8.196,16.247,8.196,16.36,8.196z"/>
+                                <path d="M19.156,10.015c-0.903-0.691-1.685-1.364-3.076-1.287c-1.335,0.074-2.107,0.892-2.992,1.454c0.055,0.236,0.403,0.47,0.363,0.615c-2.134-1.083-3.509-2.923-4.222-5.425c0.013-0.089-0.052-0.1-0.029-0.195c-0.064,0.409-0.009,0.94-0.027,1.397C7.909,5.283,7.011,3.627,6.489,1.596C6.456,1.543,6.452,1.464,6.432,1.4C6.367,1.978,6.41,2.69,6.459,3.246c0.083,1.576,0.28,3.039,0.839,4.14C7.032,7.101,6.862,6.722,6.655,6.378C6.587,6.261,6.544,6.117,6.459,6.015C6.126,5.21,5.768,4.433,5.509,3.554C5.42,3.651,5.452,3.87,5.425,4.029c-0.064,0.122-0.01,0.364-0.028,0.531c-0.047,0.168-0.047,0.53,0,0.699C5.416,5.4,5.361,5.613,5.425,5.707c0.124,1.629,0.661,2.845,1.397,3.859c-0.268-0.085-0.468-0.239-0.67-0.392C6.07,9.126,6.022,9.044,5.957,8.979c-0.047-0.047-0.1-0.088-0.14-0.141c-0.012-0.024-0.025-0.05-0.056-0.056c-0.526-0.667-0.945-1.44-1.23-2.349c0.344,2.21,1.049,4.301,2.265,5.733c0.029,0.072,0.111,0.093,0.14,0.167c0.114,0.091,0.217,0.193,0.308,0.308c0.056,0.009,0.054,0.075,0.111,0.084c0.878,0.791,1.914,1.423,3.328,1.679c-0.109,0.142-0.397,0.104-0.587,0.167c-0.168,0-0.336,0-0.504,0c-0.332-0.1-0.825,0.382-1.119,0.644c-0.324,0.288-0.581,0.53-0.838,0.755c-0.576,0.502-1.094,1.095-1.65,1.51c-0.888,0.663-2.005,1.207-2.992,1.791C1.979,19.868,0.982,20.461,0,21.032c0.002,0.054,0.093-0.032,0.168,0c0.233-0.018,0.54,0.037,0.727-0.027c0.149,0,0.298,0,0.448,0c0.26-0.047,0.619,0.004,0.868-0.056c0.148,0,0.297,0,0.447,0c0.093,0,0.186,0,0.279,0c0.624,0.056,1.213,0.147,1.79,0.251c0.027,0,0.055,0,0.084,0c-0.005-0.023,0.011-0.026,0.028-0.027c0.114-0.092,0.216-0.193,0.307-0.308c0.038-0.094,0.164-0.098,0.196-0.196c1.029-0.938,2.201-1.887,3.412-2.769c0.209-0.152,0.359-0.33,0.588-0.363c0.186-0.02,0.447,0.037,0.587-0.028c1.319-0.084,2.47-0.555,3.439-1.146c0.952-0.581,1.934-1.147,2.657-1.902c0.476-0.497,0.823-1.113,1.313-1.594c0.049-0.063,0.116-0.108,0.168-0.168c0.119-0.143,0.25-0.273,0.393-0.392c0.067-0.045,0.123-0.101,0.167-0.168c0.407-0.387,0.98-0.604,1.706-0.672c0.084,0,0.168,0,0.252,0c0.039,0.063,0.195,0.012,0.279,0.028c0.62,0.006,1.057,0.194,1.454,0.419c0-0.019,0-0.037,0-0.056C21.217,11.166,19.899,10.582,19.156,10.015z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    <ul>
+                        <li class='hybird-site'>— <a href='http://hybird.org'>hybird.org</a></li>
+                        <li class='hybird-phone'>
+                            <svg class="icon icon-telephone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path data-brackets-id="133815" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+                            04 91 11 87 78
+                        </li>
+                        <li class='hybird-contact'>
+                            <svg class="icon icon-email" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <a href='mailto:contact@hybird.org?subject=Contact Crème CRM&body=%0d%0aEnvoyé depuis url.com'>contact@hybird.org</a>
+                        </li>
+                        <li class='hybird-address'>
+                            Hôtel Technologique <br/>
+                            45 rue Frédéric Joliot Curie <br/>
+                            13013 MARSEILLE
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+//            creme.blocks.bindEvents();
+        });
+
+        $ (function ()
+        {
+          var menu = $ ('.ui-creme-navigation'),
+              items = menu.children ('li');
+
+          items.click (function (event)
+          {
+            var currentActivatedItem = menu.children ('li.submenuActivated');
+            var itemToActivate = $ (event.currentTarget);
+
+            if (currentActivatedItem.length > 0) {
+              currentActivatedItem.removeClass ('submenuActivated');
+              menu.removeClass ('submenuActivated'); // for the different background color on hovered items effect, when there is one activated submenu already
+            }
+
+            if (currentActivatedItem.length == 0 || currentActivatedItem.index() != itemToActivate.index()) {
+              itemToActivate.addClass ('submenuActivated');
+              menu.addClass ('submenuActivated'); // for the different background color on hovered items effect, when there is one activated submenu already
+            }
+          });
+
+        });
+    </script>
+
+    <script type="text/javascript" src="js/searchnpick.js"></script>
+
+</body>
+</html>

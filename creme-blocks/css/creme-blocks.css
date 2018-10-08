@@ -1,0 +1,1725 @@
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    background: #fcfcfc;
+}
+
+/* creme wtf */
+a img {
+    transition: none;
+}
+
+a img:hover {
+    opacity: 1;
+}
+/* creme wtf - end */
+
+/* blocks */
+
+.block {
+    background: white;
+    border-left: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+
+    display: inline-block;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+
+    width: 100%;
+
+/*
+    overflow-y: auto;
+    overflow-x: hidden;
+*/
+}
+
+.block + .block {
+    margin-top: 15px;
+}
+
+.block .block-header {
+    background: #f5f5f5;
+    display: inline-block;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #666;
+    font-weight: 600;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    height: 26px;
+
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.block .block-content {
+    padding: 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.block .block-content.is-paginated {
+    padding-bottom: 0;
+}
+
+.block .block-title-container {
+    flex: 1;
+    padding-left: 10px;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #dedede;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+
+    min-width: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+}
+
+/* blocks end */
+
+/* block header */
+
+/*
+.block .block-header-icon {
+    height: 10px;
+    min-width: 10px;
+    max-width: 10px;
+}
+*/
+
+/* tmp: svg tests*/
+.block img.block-header-icon {
+    height: 10px;
+    min-width: 10px;
+    max-width: 10px;
+}
+
+
+.block .block-title-container .block-header-icon {
+    margin-right: 5px;
+}
+
+.block .block-header-buttons {
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: -1px;
+}
+
+.block .block-header-button {
+    display: inline-flex;
+    align-items: center;
+
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #dedede;
+
+    padding: 0 15px;
+    text-decoration: none;
+
+    position: relative;
+    margin-left: -1px;
+
+    cursor: pointer;
+
+    color: #666;
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    transition: all 0.15s ease-in-out;
+}
+
+.block .block-header-button:first-child {
+    margin-left: 0;
+}
+
+.block .block-header-button:last-child {
+    border-right: 1px solid #d9d9d9;
+}
+
+.block .block-header-button::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+    top: -1px;
+    width: 1px;
+    background: -webkit-linear-gradient(transparent, #aaa);
+    background:    -moz-linear-gradient(transparent, #aaa);
+    background:      -o-linear-gradient(transparent, #aaa);
+    background:         linear-gradient(transparent, #aaa);
+}
+
+.block .block-header-button-title {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.block .block-header-button:hover {
+    color: #414141;
+    background: currentColor;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    z-index: 1;
+}
+
+.block .block-header-button:last-child:hover {
+    border-right: 1px solid currentColor;
+}
+
+
+.block .block-header-button:hover::before {
+    display: none;
+}
+
+.block .block-header-button:hover .block-header-button-title {
+    color: white;
+}
+
+.block .block-header-button:hover .block-header-icon {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+}
+
+/* block header - end */
+
+/* buttons - action types test */
+/* todo: find better name/namespace for enums like this ? creme-actions-* ? is-action-link ? */
+.block .block-header-button.action-type-add {
+    color: #3bab07; /* hsl(101, 92%, 35%) */
+}
+
+.block .block-header-button.action-type-add:hover {
+    color: #44c408; /* hsl(101, 92%, 40%) */
+}
+
+.block .block-header-button.action-type-link {
+    color: #479ef5; /* hsl(210, 90%, 62%) */
+}
+
+.block .block-header-button.action-type-delete {
+    color: #fa4242; /* hsl(0, 95%, 62%) */
+}
+
+/* buttons - action types test - end */
+
+/* button icon alignment/image hijacking test */
+
+.block .block-title-container .block-header-icon[src*='add'] {
+    margin-left: -3px;
+}
+
+.block .block-header-icon[src*='add'] {
+    position: relative;
+    top: 1px;
+}
+
+.block .block-header-icon[src*='link'] {
+    position: relative;
+    top: 1px;
+}
+
+.block .block-header-button.action-type-delete .block-header-icon {
+    transform: rotate(45deg);
+}
+
+/* button icon alignment/image hijacking test - end */
+
+/* block menu test */
+
+/*
+.block .block-title {
+    cursor: pointer;
+}
+
+.block .block-title:hover {
+    text-decoration: underline;
+}
+*/
+
+/* block menu test - end */
+
+/* block types - table type */
+
+.block.block-table .block-content {
+    padding: 0;
+    _border-left: 0; /* reset left border of the block */
+    _border-right: 0; /* reset right border of the block */
+}
+
+/* .block-content padding and block left border distributed into the table's first column */
+.block-table tr > :first-child {
+    padding-left: 10px;
+    _border-left: 1px solid #d9d9d9; /* left border of the block */
+}
+
+/* distribute block right border into the table's last column */
+.block-table tr > :last-child {
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+/* todo: find out if it's necessary/useful to prefix all rules by .block.block-table or just use .block-table ? */
+
+.block-table table {
+    width: 100%;
+
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.block-table thead tr {
+    color: #666;
+/*
+    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid #dedede;
+*/
+    background: #fcfcfc;
+}
+
+.block-table thead th {
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: default;
+    color: #777;
+}
+
+.block-table tbody tr {
+    font-size: 13px;
+    vertical-align: top;
+    border-bottom: 1px solid #ededed;
+}
+
+/* thead tr's border-bottom distributed in here to allow overrides */
+.block-table tbody tr:first-child {
+    border-top: 1px solid #ededed;
+    border-top: 1px solid #dedede;
+}
+
+.block-table tbody tr:nth-child(2n) {
+    background: #fcfcfc;
+}
+
+.block-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.block-table .block-content.is-paginated tbody tr:last-child {
+    border-bottom: 1px solid #dedede;
+}
+
+.block-table th,
+.block-table td {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.block-table thead .block-table-sortable {
+    position: relative;
+    cursor: pointer;
+    color: #222;
+}
+
+.block-table thead .block-table-sortable.block-table-sorted {
+    font-weight: 700;
+    color: #666;
+}
+
+.block-table thead .block-table-sortable::after {
+    content: '';
+    display: none;
+    position: absolute;
+
+    color: #999;
+
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+
+    bottom: 3px;
+    left: 100%;
+
+    margin-bottom: 2px;
+    margin-left: 4px;
+
+    border-top: 0;
+    border-bottom: 4px solid currentColor;
+}
+
+.block-table thead .block-table-sortable.block-table-sorted::after {
+    display: block;
+}
+
+.block-table thead .block-table-sorted[data-sort-order='asc']::after {
+    border-top: 0;
+    border-bottom: 4px solid currentColor;
+}
+
+.block-table thead .block-table-sorted[data-sort-order='desc']::after {
+    border-top: 4px solid currentColor;
+    border-bottom: 0;
+}
+
+.block-table thead .block-table-sortable:hover::after {
+    display: inline-block;
+}
+
+/* block types - table type - end */
+
+/* action buttons in tables */
+
+.block-table [data-table-action-column] {
+    text-align: center;
+    padding: 0;
+}
+
+.block-table tbody [data-table-action-column] {
+     width: 25px;
+}
+
+.block-table .block-table-action {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 10px 3px 10px;
+}
+
+/* action buttons in tables - end */
+
+/* exemples de hijacking de rendu dans les blocs tables: 1) pour les types de données des champs, 2) pour les champs/colonnes principales */
+
+.block-table [data-type='money'] {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.block-table [data-type='money'] .data-type-currency-symbol {
+    color: #666;
+}
+
+.block-table [data-type='date'] .data-type-date-separator {
+    color: #888;
+}
+
+.block-table [data-table-primary-column] {
+    font-weight: 600;
+}
+
+.block-table thead [data-table-primary-column],
+.block-table thead [data-table-primary-column] .block-table-sortable {
+    font-weight: 700;
+    color: #666;
+}
+
+/* exemples de hijacking de rendu de types de données - end */
+
+/* block content types - pagination */
+
+.block .block-footer {
+    padding: 5px 10px;
+
+    _border-left: 1px solid #d9d9d9; /* right border of the block */
+    _border-right: 1px solid #d9d9d9; /* right border of the block */
+}
+
+.block .block-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid #dedede;
+    padding-top: 7px;
+    padding-bottom: 2px;
+}
+
+.block-table .block-pagination {
+    padding-top: 2px;
+    border: 0;
+}
+
+.block .block-pagination a,
+.block .block-pagination span {
+    margin-left: -1px;
+    padding: 3px 10px;
+    border: 1px solid #dedede;
+
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+
+    cursor: pointer;
+}
+
+.block-pagination > :first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.block-pagination > :last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.block .block-pagination .block-pagination-current {
+    font-weight: 700;
+    background: #ededed;
+    z-index: 1;
+}
+
+.block .block-pagination .block-pagination-previous.is-disabled,
+.block .block-pagination .block-pagination-next.is-disabled {
+    color: #ccc;
+    background: #fcfcfc;
+    cursor: default;
+}
+
+.block .block-pagination a:hover {
+    color: #fff;
+    background: #414141;
+    border-color: #414141;
+    z-index: 1;
+}
+
+/* block content types - pagination - end */
+
+/* block types - tiles type */
+
+.block-tiles .block-tile {
+    display: inline-block;
+    width: 33.33%;
+
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-left: -3px;
+
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.block-tiles.block-full-width .block-tile:not(.block-tile-multiline-value) {
+    width: 14.28%; /* 100% ÷ 7 */
+    width: 16.66%; /* 100% ÷ 6 */
+    width: calc(100% / 6);
+}
+
+.block-tiles .block-tile:last-child {
+  margin-right: 0;
+}
+
+.block-tiles .block-tile-name {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+}
+
+.block-tiles .block-tile-value {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+}
+
+.block-tiles .block-tile-multiline-value .block-tile-value {
+    font-weight: 400;
+}
+
+.block-tiles .block-tile-multiline-value {
+    display: block;
+    width: 100%;
+
+    margin-top: 3px;
+    border-top: 1px solid #dedede;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+.block-tiles .block-tile-value input {
+    margin-left: 0;
+}
+
+.block-tiles .block-tile-value input + span {
+    vertical-align: top;
+}
+
+/* block types - tiles type - end */
+
+/* block states - is loading */
+
+.block .block-title .block-loading-indicator {
+    display: none;
+}
+
+.block.is-loading .block-title .block-loading-indicator {
+    display: inline-block;
+}
+
+.block .block-loading-indicator {
+    font-weight: 700;
+}
+
+.block.is-loading .block-content {
+/*    opacity: 0.6;*/
+}
+
+/* tmp: icon alignment */
+.block.is-loading .block-header-icon[src*='wait'] {
+    position: relative;
+    top: 1px;
+}
+
+/* block states - is loading - end */
+
+/* block states - is loading - tests */
+/* if any of those tests are interesting, find real class names of value, and encode this feature in the block component class instead of its state is-loading class */
+
+/* using the block header background as a progress bar indicator */
+.block.is-loading.is-loading-bar .block-header {
+    position: relative;
+}
+
+.block.is-loading.is-loading-bar .block-header::before {
+    content: ' ';
+    position: absolute;
+    top: 1px;
+    width: 60%; /* toggle between the 2 states to see the transition */
+    width: 80%;
+    height: calc(100% - 2px);
+    background: hsla(210, 90%, 62%, 0.15);
+
+    transition: width 0.3s ease-in-out;
+}
+
+/* using the block header border as a progress indicator */
+/* the block's left border collides with this background like everything else, if this experiment is interesting, distribute the left border inside the components so the progress loading border can be drawn over it */
+.block.is-loading.is-loading-border {
+    position: relative;
+}
+
+/*
+.block.is-loading.is-loading-border .block-loading-indicator {
+    color: hsl(210, 90%, 62%);
+    color: hsl(210, 90%, 45%);
+}
+*/
+
+.block.is-loading.is-loading-border::before {
+    content: ' ';
+    position: absolute;
+
+    width: 40%; /* toggle between the 2 states to see the transition */
+    width: 60%;
+    height: 2px;
+
+    top: 25px; /* at the top of the block content */
+    top: 24px; /* at the bottom of the block header */
+
+    background: #479ef5; /* hsl(210, 90%, 62%) */
+    z-index: 1;
+
+
+    /* shadow: With or without you, I can't live © U2 1987 */
+/*
+    -webkit-box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+       -moz-box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+            box-shadow: 0 2px 1px 1px hsla(210, 90%, 62%, 0.15);
+*/
+
+    transition: width 0.3s ease-in-out;
+}
+
+/* block states - is loading - tests - end */
+
+/* block types - graph type */
+
+.block svg.block-header-icon {
+    fill: currentColor;
+    height: 14px;
+/*    margin-right: -3px;*/
+    position: relative;
+    top: 1px;
+}
+
+.block.block-graph .block-content {
+    padding: 0;
+}
+
+.block-graph .block-graph-header {
+    padding: 3px 10px;
+    background: #fcfcfc;
+    border-bottom: 1px solid #dedede;
+}
+
+.block-graph .block-graph-container {
+    padding: 0 10px;
+}
+
+.block-graph .block-graph-header .graph-controls {
+    float: left;
+    cursor: default;
+}
+
+.block-graph .block-graph-header .graph-controls-sort {
+    margin-left: 15px;
+}
+
+.block-graph .block-graph-header .graph-control-name {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+}
+
+/* ? */
+.block-graph .block-graph-header .graph-control-value {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.block-graph .block-graph-header .graph-controls:hover .graph-control-value {
+    text-decoration: underline;
+}
+
+/* ? - end */
+
+.block-graph .block-graph-header .graph-relation {
+    float: right;
+}
+
+.block-graph .block-graph-header .graph-relation-name {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+}
+
+.block-graph .block-graph-header .graph-relation-entity {
+    font-weight: 600;
+}
+
+/* block types - graph type - end */
+
+/* block types - scrollable type */
+
+.block-scrollable .block-scrollable-container {
+    /*a default max-height: 200px could be added here to limit every block's height, but block by block overrides would actually be added to the container's style attribute in the html template */
+}
+
+/* when the header is fixed, the bottom border (which is normally distributed into the first row) needs to be specified */
+.block-table.block-scrollable thead tr {
+    border-bottom: 1px solid #dedede;
+}
+
+/* block types - scrollable type - end */
+
+/* block types - selectable type */
+
+.block-selectable .block-selection-indicator {
+    font-weight: 700;
+    color: #5799db; /* hsl(210, 65%, 60%) */
+}
+
+/* todo: use an attribute selector or a class for this kind of things ? */
+.block-table.block-selectable [data-selectable-selector-column] {
+    width: 15px;
+}
+
+.block-table.block-selectable thead [data-selectable-selector-column] {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.block-table.block-selectable tr.is-selected {
+    border-top: 1px solid #5cadff; /* hsl(210, 100%, 68%) */
+    border-bottom: 1px solid #5cadff; /* hsl(210, 100%, 68%) */
+
+    background: rgba(71, 158, 245, 0.07); /* hsla(210, 90%, 62%, 0.07) */
+}
+
+/* block types - selectable type - end */
+
+/* block types - reorderable type */
+
+/* todo: naming ? block-reorderable-handle-icon, icon-reorderable-handle ? */
+
+.icon.block-reorderable-handle-icon {
+    width: 15px;
+    height: 15px;
+
+    top: 2px;
+    color: #888;
+}
+
+/* tmp: to show the icon in the title. useless in production */
+.block-reorderable .block-title .block-reorderable-handle-icon {
+    top: 3px;
+    left: 2px;
+}
+
+.block-reorderable [data-reorderable-handle-column] {
+    width: 15px;
+    cursor: move;
+}
+
+.block-table.block-reorderable .block-reorderable-placeholder {
+    background: #f2f2f2;
+    outline: 1px dashed #bbb;
+    font-size: 1px;
+}
+
+.block-table.block-reorderable tr.is-dragging {
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+/* counter experiment
+.block-reorderable {
+    counter-reset: reorderable-items-counter;
+}
+
+.block-table.block-reorderable .block-reorderable-items tr {
+    counter-increment: reorderable-items-counter;
+}
+
+.block-reorderable [data-reorderable-handle-column] {
+    cursor: move;
+
+    width: 35px;
+    padding-right: 0;
+}
+
+.block-table.block-reorderable [data-reorderable-handle-column]::after {
+    content: counter(reorderable-items-counter);
+
+    position: relative;
+    top: -1px;
+    left: 3px;
+
+    font-size: 11px;
+    color: #666;
+}
+
+.block-table.block-reorderable tr.is-dragging [data-reorderable-handle-column]::after {
+    display: none;
+}
+
+*/
+
+/* block types - reorderable type - end */
+
+/* block types - list of cards */
+/* block types - list of cards - end */
+
+/* block list type - activities */
+
+/* activity counter experiment: */
+/*
+.block.activity-list-block {
+    counter-reset: activity-items-counter;
+}
+*/
+
+.activity-list-block .block-content {
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 15px;
+/*    padding-bottom: 20px;*/
+}
+
+.activity-list-block .activity-item {
+    font-size: 13px;
+}
+
+.activity-list-block .activity-item + .activity-item {
+    margin-top: 20px;
+    border-top: 1px solid #dedede;
+    border-top: 1px solid #ccc;
+}
+
+.activity-list-block .activity-group {
+    display: flex;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.activity-list-block .activity-group + .activity-group {
+    margin-top: 5px;
+}
+
+.activity-list-block .activity-group-key {
+    min-width: 160px;
+
+    /* activity counter experiment: */
+/*
+    min-width: 170px;
+    margin-left: 15px;
+*/
+}
+
+.activity-list-block .activity-group-value {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.activity-list-block .activity-info-group .activity-group-key {
+    align-self: flex-start;
+    padding-top: 2px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.activity-list-block .activity-summary-group {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    background: #fcfcfc;
+    border-bottom: 1px solid #dedede;
+}
+
+.activity-list-block .activity-schedule {
+/*    margin-right: 11px;*/
+}
+
+.activity-list-block .activity-schedule-beginning {
+    font-weight: 600;
+}
+
+.activity-list-block .activity-type {
+    margin-right: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.activity-list-block .activity-title {
+    font-weight: 600;
+}
+
+.activity-list-block .activity-status {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    _color: #FF4136; /* red */
+    _color: #FF851B; /* orange */
+}
+
+.activity-list-block .activity-action {
+    margin-left: 15px;
+    padding-left: 5px;
+}
+
+.activity-list-block .activity-action img {
+    height: 14px;
+    position: relative;
+    top: 3px;
+}
+
+.activity-list-block .activity-warning {
+    color: #FF4136; /* red */
+    color: #FF851B; /* orange */
+    cursor: default;
+}
+
+.activity-list-block .activity-warning .activity-warning-icon {
+    width: 16px;
+    height: 16px;
+
+    margin-top: -2px;
+    position: relative;
+    top: 4px;
+
+    fill: currentColor;
+}
+
+.activity-list-block .activity-warning-label {
+    display: inline-block;
+
+    margin-left: 3px;
+    padding-top: 2px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.activity-list-block .activity-relation {
+    font-weight: 600;
+    color: #333;
+}
+
+.activity-list-block .activity-group .activity-type-icon {
+    width: 14px;
+    height: 14px;
+
+    margin-top: -2px;
+    position: relative;
+    top: 3px;
+
+    fill: #666;
+}
+
+/* activity counter experiment */
+/*
+.activity-list-block .activity-summary-group .activity-group-key {
+    margin-left: 0;
+}
+
+.activity-list-block .activity-summary-group::before {
+    counter-increment: activity-items-counter;
+    content: counter(activity-items-counter);
+
+    width: 15px;
+    position: relative;
+    top: 2px;
+
+    color: #333;
+    font-weight: 700;
+    font-size: 11px;
+}
+*/
+
+/* block list type - activities - end */
+
+/* hack: uppercase punctuation characters alignment ... */
+
+.block .block-title .typography-mdash {
+    position: relative;
+    top: -1px;
+}
+
+.block .block-title .typography-hyphen {
+    position: relative;
+    top: -1px;
+}
+
+.block-graph .block-graph-header .typography-colon {
+    position: relative;
+    top: -1px;
+}
+
+.activity-list-block .typography-mdash {
+    position: relative;
+    top: -1px;
+}
+
+/* uppercase punctuation characters alignment ... - end */
+
+
+/* clearfix */
+
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* clearfix - end */
+
+/* end of page decoration */
+
+.icon-hybird {
+    width: 22px;
+    height: 20px;
+
+    fill: currentColor;
+    position: relative;
+    top: 2px;
+
+    transition: transform 0.5s ease-in-out 5s;
+}
+
+.icon-hybird:hover {
+    transform: rotate(720deg);
+}
+
+.page-decoration {
+    margin: 0 15px;
+    color: #bbb;
+}
+
+.page-decoration > * {
+    display: inline-block;
+}
+
+.page-decoration div {
+    width: calc(50% - 20px);
+    border-top: 1px solid currentColor;
+    height: 7px;
+}
+
+.page-decoration .icon-hybird {
+    margin: 0 5px;
+}
+
+/* end of page decoration - end */
+
+/* giant footer */
+
+.footer {
+    margin-top: 20px;
+
+    padding-top: 30px;
+    padding-bottom: 25px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    color: #fff;
+    font-weight: 600;
+
+    background-color: #414141;
+    background-image: url(../img/footer-pattern.png);
+    background-position: left -30px;
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+.footer:hover {
+    background-color: #333;
+}
+
+.footer .footer-baseline strong {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #479ef5;
+}
+
+.footer .footer-baseline-version {
+/*    float: right;*/
+
+    margin-left: 10px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer .footer-baseline a {
+    color: inherit;
+}
+
+.footer a:hover {
+    color: #479ef5;
+}
+
+.footer ul {
+    list-style: none;
+    margin: 5px 0;
+    padding: 0;
+}
+
+.footer-columns {
+    margin-top: 40px;
+}
+
+.footer-columns .footer-column {
+    float: left;
+    width: 25%;
+}
+
+.footer-columns .footer-column-client {
+    width: 50%;
+}
+
+.footer-columns .column-content {
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.footer-columns .footer-column-creme .column-content {
+    margin: 0;
+}
+
+.footer .column-content::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: #bfbfbf;
+    top: -10px;
+}
+
+.footer .footer-column-title {
+    display: inline-block;
+    position: relative;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.footer .footer-column-title .icon-hybird {
+    position: absolute;
+    right: -25px;
+    top: -5px;
+}
+
+.footer .footer-column-creme li,
+.footer .footer-column-client li {
+    margin-top: 5px;
+}
+
+.footer .footer-client-logo {
+    max-height: 40px;
+    margin: 10px 0;
+}
+
+.footer .footer-client-logo img {
+    max-height: 40px;
+    background: white;
+}
+
+.footer .hybird-phone {
+    margin-top: 10px;
+}
+
+.footer .hybird-address {
+    margin-top: 10px;
+}
+
+/* giant footer - end */
+
+/* generic icons experiments */
+
+svg.icon {
+    position: relative;
+    fill: currentColor;
+}
+
+.icon.icon-telephone {
+    width: 14px;
+    height: 14px;
+
+    top: 2px;
+}
+
+.footer .footer-column-client .icon-telephone {
+    margin-left: 5px;
+}
+
+.footer .footer-column-hybird .icon-telephone {
+    margin-right: 2px;
+}
+
+.icon.icon-email {
+    width: 14px;
+    height: 14px;
+
+    top: 3px;
+    opacity: 0.92;
+}
+
+.footer .footer-column-hybird .icon-email {
+    margin-right: 2px;
+}
+
+.icon.icon-telephone:hover {
+    animation: shake 0.1s steps(2) 5 5s,
+               shake 0.1s steps(2) 8 6.5s,
+               shake 0.1s steps(2) 5 8s;
+}
+
+@keyframes shake {
+  from { transform: translateX(-1px); }
+  to   { transform: translateX(1px); }
+}
+
+.footer-column-hybird .icon-hybird:hover {
+    animation: gtfo 0.5s ease-in-out;
+}
+
+/* generic icons experiments - end */
+
+.north, .west {
+    margin-bottom: 15px;
+}
+
+.east.column.last {
+    padding-left: 13px;
+}
+
+.south {
+    margin-bottom: 15px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+
+    margin: 5px 0;
+
+    border: 0;
+    border-top: 1px solid currentColor;
+    padding: 0;
+
+    color: #ccc;
+}
+
+.block hr {
+    color: #dedede;
+    margin: 0 0 10px 0;
+}
+
+/* block types - address maps */
+
+.block-map {
+}
+
+.block-map .block-content {
+    padding-top: 12px;
+    padding-bottom: 14px;
+}
+
+.block-map .address-map {
+    display: flex;
+}
+
+.block-map .address-map + .address-map {
+    margin-top: 15px;
+    border-top: 1px solid #dedede;
+    padding-top: 15px;
+}
+
+.block-map .address-container {
+    flex: 0.5;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.block-map .map-container {
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #eee;
+    min-height: 80px;
+}
+
+.block-map .address-title {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+
+    vertical-align: top;
+
+    position: relative;
+    top: -1px;
+
+    color: #777;
+    color: #444;
+}
+
+.block-map .address {
+    font-size: 13px;
+}
+
+.block-map.block-full-width .block-content {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 17px;
+}
+
+.block-map.block-full-width .address-map {
+    display: inline-flex;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.block-map.block-full-width .address-map + .address-map {
+    margin: 0;
+    border-top: 0;
+    padding-top: 0;
+
+    border-left: 1px solid #dedede;
+    padding-left: 20px;
+}
+
+/* variant - optional fields */
+.block-map .address-options {
+    margin-top: 10px;
+}
+
+.block-map .address-option + .address-option {
+    margin-top: 5px;
+}
+
+.block-map .adress-option-key {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+}
+
+.block-map .adress-option-value {
+    display: block;
+    font-size: 13px;
+}
+
+/* block types - address maps - end */
+
+/* block types - header with phases */
+
+.block-phases {
+}
+
+.block-phases .block-content {
+    display: flex;
+    padding: 10px;
+    padding-bottom: 13px;
+}
+
+.block-phases .block-phase {
+    display: inline-flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.block-phases .phase-title-container {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+}
+
+.block-phases .phase-title-container::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 30px solid currentColor;
+    border-bottom: 15px solid transparent;
+}
+
+.block-phases .phase-title {
+    flex: 1;
+    padding: 0 10px;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+
+    color: currentColor;
+}
+
+.block-phases .phase-items {
+    flex: 1;
+
+    list-style-type: none;
+
+    margin: 10px 0 0 0;
+    padding: 5px 0 0 0;
+
+    border-left: 1px solid #dedede;
+}
+
+.block-phases .block-phase:first-child .phase-items {
+    border-left: none;
+}
+
+/* chevrons: a chevron is simulated giving the same color to: the .block-phase title + the next .block-phase title ::before triangle */
+
+.block-phases .block-phase:nth-child(odd) .phase-title-container {
+    background: #0074D9;
+    color: white;
+}
+
+.block-phases .block-phase:nth-child(even) .phase-title-container::before {
+    color: #0074D9;
+}
+
+.block-phases .block-phase:nth-child(even) .phase-title-container {
+    background: #44c408;
+    color: white;
+}
+
+.block-phases .block-phase:nth-child(odd) .phase-title-container::before {
+    color: #44c408;
+}
+
+/* chevrons - end */
+
+/* first and last children: simulate empty areas */
+
+.block-phases .block-phase:first-child .phase-title-container::before {
+    color: white;
+}
+
+.block-phases .block-phase:last-child .phase-title-container::before {
+    background: white;
+}
+
+.block-phases .block-phase:last-child {
+    max-width: 30px;
+}
+
+/* first and last children - end */
+
+/* validated items */
+
+.block-phases .phase-items li {
+    display: flex;
+
+    margin: 0 20px;
+    padding: 2px 0;
+}
+
+.block-phases .phase-items li::before {
+    content: " • ";
+    margin-right: 12px;
+    font-weight: 700;
+    color: #666;
+}
+
+.block-phases .phase-items .phase-item-validated {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    padding: 5px 5px 7px 10px;
+
+    color: white;
+    font-weight: 600;
+}
+
+.block-phases .phase-items .phase-item-validated::before {
+    color: white;
+}
+
+.block-phases .block-phase:nth-child(odd) .phase-item-validated {
+    background: #0074D9;
+}
+
+.block-phases .block-phase:nth-child(even) .phase-item-validated {
+    background: #44c408;
+}
+
+/* validated items - end */
+
+/* block types - header with phases - end */
+
+/* widget types - sequential phases without list items */
+
+/* marker class for this prototype, this widget is not made to be used in a block by itself */
+.block-widget-phases {    
+}
+
+.widget-phases .phases-container {
+    display: flex;
+    padding: 10px;
+}
+
+.widget-phases .phase {
+    flex: 1;
+    min-width: 75px;
+    
+    padding-left: 13px;
+    
+    position: relative;
+    height: 26px;
+    
+    display: flex;
+    
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.widget-phases .phase + .phase {
+    margin-left: 7px;
+}
+
+.widget-phases .phase-content {
+    flex: 1;
+    background: currentColor;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+}
+
+/* phase shapes: arrows and rectangles */
+
+/* rectangle left tip in the first phase */
+.widget-phases .phase:first-child {
+    padding-left: 0;
+}
+
+.widget-phases .phase:first-child .phase-content {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+/* rectangle right tip in the last phase */
+.widget-phases .phase:last-child .phase-content {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* left arrow tip in intermediary phases */
+.widget-phases .phase:not(:first-child):before {
+    content: "";
+    position: absolute;
+    
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+
+    border-left: 13px solid transparent;
+    border-top: 13px solid currentColor;
+    border-bottom: 13px solid currentColor;
+}
+
+/* right arrow tip in intermediary phases */
+.widget-phases .phase:not(:last-child):after {
+    content: "";
+    position: absolute;
+    
+    right: -13px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    
+    border-left: 13px solid currentColor;    
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+}
+
+/* phase shapes - end */
+
+/* phase colors */
+
+.widget-phases .phase.phase-active {
+    color: #3498DB;
+}
+
+.widget-phases .phase.phase-inactive {
+    color: hsla(204, 70%, 53%, 0.35);
+}
+
+.widget-phases .phase.phase-inactive.phase-selection {
+    color: hsla(204, 70%, 53%, 0.75);
+}
+
+.widget-phases .phase.phase-active.phase-selection ~ .phase.phase-active {
+    color: hsla(204, 70%, 53%, 0.60);
+}
+
+.widget-phases .phase-duration {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* phase colors - end */
+
+/* phase activities */
+
+.widget-phases .phases-activities-container {
+    margin: 0 10px;
+    display: flex;
+}
+
+.widget-phases .activities {
+    flex: 1;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+/*    outline: 1px solid red;*/
+    position: relative;
+}
+
+.widget-phases .activities + .activities {
+    margin-left: 13px;
+}
+
+.widget-phases .activities a {
+    color: #888;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.widget-phases .activities .icon-calendar {
+    top: 3px;
+}
+
+.widget-phases .activities a:hover {
+    color: #444;
+    text-decoration: none;
+}
+
+/* phase activities - end */
+
+/* phase switcher */
+
+.widget-phases .phases-switcher-container {
+    margin: 0 10px;
+    
+    position: relative;
+    min-height: 20px;
+    
+    display: flex;
+}
+
+.widget-phases .phases-switcher {
+    position: absolute;
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.widget-phases .phases-switcher.is-showing {
+    opacity: 1;
+}
+
+.widget-phases .phases-switcher .icon-arrow {
+    top: -2px;
+    left: -22px;
+    position: absolute;
+    color: #0074D9;
+}
+
+.widget-phases em {
+    font-style: normal;
+    font-weight: 600;    
+}
+
+/* phase switcher - end */

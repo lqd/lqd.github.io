@@ -1,0 +1,746 @@
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html, body {
+/*    font: 12px 'Open Sans', sans-serif;*/
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    background: #fcfcfc;
+}
+
+body {
+    background: #EDEDED;
+    background: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#fcfcfc), to(#EDEDED));
+    background: -moz-linear-gradient(top, #fcfcfc 0%, #EDEDED 10%);
+
+    background: #fafafa;
+    background: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#fcfcfc), to(#fafafa));
+    background: -moz-linear-gradient(top, #fcfcfc 0%, #fafafa 10%);
+
+/*
+    background: #fafafa;
+    background: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#fff), to(#fafafa));
+    background: -moz-linear-gradient(top, #fff 0%, #fafafa 10%);
+*/
+}
+
+/* blocks */
+
+.block {
+  background: white;
+  /*border: 1px solid rgb(204, 204, 204);*/
+  border: 1px solid #D9D9D9;
+  display: inline-block;
+
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+          box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+
+/*  margin-right: 15px;   la marge est fixe ici, mais devrait faire partie du layout en grille de la page. Elle est malheureusement présente à chaque fin de ligne de blocks layoutés */
+  width: 100%;
+
+}
+
+.block + .block {
+  margin-top: 10px;
+}
+
+.table_detail_view .block_header .label th, .table_detail_view .block_header .label {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: rgb(100, 100, 100);
+    font-weight: 600;
+}
+
+.block-header {
+  /*background: rgb(241, 237, 234);*/
+  background: #F5F5F5;
+  display: inline-block;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgb(100, 100, 100);
+  font-weight: 600;
+  padding: 5px 0px 5px 10px;
+  border-bottom: 1px solid rgba(128, 125, 124, 0.15);
+}
+
+.block-content {
+  padding: 10px 4px 0 10px;
+}
+
+.block-property {
+  vertical-align: top;
+  _min-width: 90px;
+  width: 33.33%;
+  display: inline-block;
+/*  margin-top: 10px;*/
+  margin-bottom: 10px;
+
+  _margin-right: 20px; /* la marge est fixe ici, mais devrait faire partie du layout en grille du bloc. Elle est malheureusement présente à chaque fin de ligne de blocks de properties layoutés */
+/*  background: yellow;*/
+  margin-left: -3px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.north .block-property:not(.multiline-block-property-value) {
+    width: 14.28%; /* 100% ÷ 7 */
+    width: 16.66%; /* 100% ÷ 6 */
+    _width: 20%; /* 100% ÷ 5 */
+    _width: 25%; /* 100% ÷ 4 */
+    _width: 33.33%; /* 100% ÷ 3 */
+    _width: 50%; /* 100% ÷ 2 */
+
+/*
+    background: yellow;
+    border: 1px solid black;
+*/
+}
+
+.north {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .block-property {
+        width: 50%;
+/*        background: yellow;*/
+/*        border: 1px solid black;*/
+    }
+
+    .north .block-property:not(.multiline-block-property-value) {
+        width: 25%;
+/*
+        background: yellow;
+        border: 1px solid black;
+*/
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1400px) {
+    .north .block-property:not(.multiline-block-property-value) {
+        width: 14.28%;
+/*
+        background: yellow;
+        border: 1px solid black;
+*/
+    }
+}
+
+.multiline-block-property-value {
+    display: block;
+    _background: #f7f7f7; /* bg */
+    _outline: 5px solid #f7f7f7; /* bg bleeding outside */
+    background: #f0f0f0; /* bg */
+    _outline: 5px solid #f0f0f0; /* bg bleeding outside */
+/*    background: yellow;*/
+    width: 100%;
+    padding-top: 2px;
+    padding-bottom: 3px;
+
+    background: white;
+/*
+    background: hsl(0, 0%, 99%);
+    outline: 2px solid hsl(0, 0%, 99%);
+*/
+
+    margin-top: 3px;
+    border-top: 1px solid #d6d6d6;
+    padding-top: 10px;
+
+}
+
+.block-property:last-child {
+  margin-right: 0;
+}
+
+.block-property-key {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+  color: rgb(102, 102, 102);
+  color: hsl(0, 0%, 25%);
+}
+
+.block-property-value {
+  font-size: 13px;
+  color: hsl(0, 0%, 43%);
+  color: hsl(0, 0%, 5%);
+  font-weight: 600;
+
+  display: block;
+}
+
+.multiline-block-property-value .block-property-value {
+    font-weight: 400;
+}
+
+.block-property-value input {
+    margin-left: 0;
+}
+
+.block-property-value input + span {
+    vertical-align: top;
+}
+
+.block-container {
+  margin: 8px;
+  margin-top: 45px;
+}
+
+/* modify button tooltips */
+.block-property-key {
+    position: relative;
+}
+.modify-button {
+    min-width: 80px;
+    padding: 1px 7px 1px 5px;
+
+    position: absolute;
+    top: -2px;
+    right: 0;
+    transform: translateX(calc(15px + 100%));
+    z-index: 1;
+
+    background: #fafafa;
+    outline: 1px solid #ccc;
+
+    cursor: pointer;
+
+/*    box-shadow: 0 1px 5px rgba(0,0,0,0.5);*/
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: all 0.1s ease-in;
+}
+
+.block-property:hover .modify-button {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* blocks end */
+
+/* test - blocks header button */
+
+.block .block-header.block-header-with-buttons {
+    display: flex;
+    padding: 0;
+}
+
+.block .block-header-with-buttons .block-title {
+    flex: 1;
+}
+
+.block .block-header-with-buttons > :first-child {
+    padding: 5px 0px 5px 10px;
+}
+
+.block-header-with-buttons .block-header-buttons {
+    display: flex;
+}
+
+.block .block-header-button {
+    padding: 0 15px;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+/*    background: yellow;*/
+/*    border-left: 1px solid red;*/
+}
+
+.block .block-header-button {
+    position: relative;
+}
+
+.block .block-header:not(.block-header-with-reversed-buttons) .block-header-button:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  top: -1px;
+  width: 1px;
+  background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#aaa), to(transparent));
+  background-image: -webkit-linear-gradient(transparent, #aaa);
+  background-image: -moz-linear-gradient(transparent, #aaa);
+  background-image: -o-linear-gradient(transparent, #aaa);
+}
+
+.block .block-header-with-reversed-buttons .block-header-button + .block-header-button {
+/*    margin-left: 30px;*/
+}
+
+.block .block-header-button:last-child {
+/*    margin-right: 5px;*/
+}
+
+.block .block-header-button img {
+    height: 10px;
+    transition: none;
+}
+
+.block .block-header-button:hover img {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+}
+
+.block .block-header-button.link img {
+    height: 12px;
+}
+
+.block .block-header-button .block-header-button-title {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.block .block-header:not(.block-header-with-reversed-buttons) .block-header-button.add .block-header-button-title {
+    color: #666;
+    color: hsl(101, 92%, 40%);
+}
+
+.block .block-header:not(.block-header-with-reversed-buttons) .block-header-button.link .block-header-button-title {
+    color: #666;
+    color: hsl(210, 90%, 62%);
+}
+
+.block.block-gray-buttons .block-header .block-header-buttons .block-header-button .block-header-button-title {
+    color: #666;
+}
+
+.block .block-header.block-header .block-header-button:hover .block-header-button-title {
+    color: white;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button-title {
+    color: currentColor;
+}
+
+.block .block-header-button.add:hover {
+    background: hsl(101, 92%, 40%);
+    color: white;
+}
+
+.block .block-header-button.link:hover {
+    background: hsl(210, 90%, 62%);
+    color: white;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button {
+    border: 0;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button img {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+}
+
+.block .block-header-with-reversed-buttons .block-header-button.add {
+    padding-right: 5px;
+    background: hsl(101, 92%, 40%);
+    color: white;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button-separator:first-child ~ .block-header-button.add {
+    padding-left: 5px;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button.link {
+    padding-left: 5px;
+    background: hsl(210, 90%, 62%);
+    color: white;
+}
+
+.block .block-header-with-reversed-buttons .block-header-button-separator:first-child {
+    width: 26px;
+    border-top: 13px solid transparent;
+    border-left: 13px solid transparent;
+    border-right: 13px solid hsl(101, 92%, 40%);
+    border-bottom: 13px solid hsl(101, 92%, 40%);
+}
+
+.block .block-header-with-reversed-buttons .block-header-button-separator {
+    width: 26px;
+    border-top: 13px solid hsl(101, 92%, 40%);
+    border-left: 13px solid hsl(101, 92%, 40%);
+    border-right: 13px solid hsl(210, 90%, 62%);
+    border-bottom: 13px solid hsl(210, 90%, 62%);
+}
+
+.block .block-header-button:hover .block-header-button-title {
+/*    text-decoration: underline;*/
+}
+
+.block-header-with-reversed-buttons .block-header-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.block .block-header.block-header-with-reversed-buttons .block-header-button.link:hover .block-header-button-title {
+/*    color: hsl(210, 50%, 25%);*/
+/*    color: black;*/
+}
+
+.block-header-with-angled-buttons {
+    overflow: hidden;
+    position: relative;
+}
+
+.block-header-with-angled-buttons .block-header-button {
+    transform: skewX(-45deg);
+    padding: 0 20px !important;
+}
+
+.block-header-with-angled-buttons .block-header-button:last-child {
+    padding-right: 25px !important;
+}
+
+.block-header-with-angled-buttons .block-header-button * {
+    transform: skewX(45deg);
+}
+
+.block-header-with-angled-buttons .block-header-buttons {
+    position: absolute;
+
+    height: 100%;
+
+    top: 0;
+    right: 0;
+
+    right: calc(-13px + -2px); /* -13 = eyeball de la largeur du 'triangle' du trapèze, à 45° et la hauteur du bloc ; -2: padding pour éviter les artefacts sous FF, = au left du last-child */
+}
+
+.block-header-with-angled-buttons .block-header-button:last-child {
+    left: -2px;
+}
+
+.block-header-with-reversed-buttons .block-header-button .block-header-button-title,
+.block-header-with-reversed-buttons .block-header-button img {
+    z-index: 2;
+}
+
+.block-header-with-reversed-buttons .block-header-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    transition: all 0.1s ease;
+
+    top: 0;
+    left: -100%;
+
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.block-header-with-reversed-buttons .block-header-button:hover::after {
+    left: 0;
+}
+
+.block-header-with-reversed-buttons .block-header-button.link::after {
+    background: #0b73da;
+}
+
+.block-header-with-reversed-buttons .block-header-button.add::after {
+    background: hsl(101, 92%, 30%);
+    background: hsl(101, 92%, 35%);
+}
+
+/* test - blocks header button - end */
+
+.block + .table_detail_view {
+    margin-top: 10px
+}
+
+.east.column.last {
+    padding-left: 13px;
+}
+
+hr {
+   display: block;
+   height: 1px;
+   border: 0;
+
+/*   margin: 1em 0;*/
+   margin: 5px 0;
+   padding: 0;
+}
+
+.block hr {
+    border-top: 1px solid #d6d6d6;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.buttons a.view_more, .buttons a.view_less {
+    padding: 10px 13px;
+/*    background: red;*/
+}
+
+.table_detail_view.collapsed {
+    opacity: 0.8;
+}
+
+.table_detail_view.with-header:not(.collapsed) {
+    padding-bottom: 5px;
+}
+
+.table_detail_view.collapsed .block_header {
+    border-bottom: none;
+}
+
+.table_detail_view.with-header .header th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: rgb(100, 100, 100);
+    /*border: 1px solid black;*/
+/*    padding: 0 5px;*/
+    padding-left: 5px;
+    padding-top: 5px;
+/*     background: yellow;*/
+}
+.table_detail_view.with-header .content td {
+/*    border: 1px solid black;*/
+    padding: 0 5px;
+    padding-top: 5px;
+/*    background: orange;*/
+/*    font-size: 12px;*/
+}
+
+.table_detail_view.with-header .header [data-type=money], .table_detail_view.with-header td[data-type=money] {
+    text-align: right;
+}
+
+.table_detail_view.with-header .header [data-type=money] {
+    /* padding for € sign alignment, or sort arrow space */
+/*    padding-right: 14px;*/
+}
+
+.buttons a, .buttons button, .buttons span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+#block_creme_core-history .content td {
+    vertical-align: top;
+
+    padding: 0;
+    padding-bottom: 3px;
+    padding-left: 5px;
+}
+#block_creme_core-history .content td:first-child {
+    width: 130px;
+}
+#block_creme_core-history .content td:first-child div {
+    text-align: right;
+}
+
+#block_creme_core-history.striped .header {
+    background: #fcfcfc;
+}
+#block_creme_core-history.striped .content:nth-child(2n+1) {
+    background: #fcfcfc;
+}
+
+
+
+table.table, table.table_detail_view, table.table td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table td {
+    vertical-align: top;
+}
+.table td {
+    padding: 0;
+}
+.table td:first-child {
+    padding: 0 10px 5px 5px;
+    width: 18%;
+    min-width: 120px;
+}
+
+.table td:first-child div {
+    text-align: left;
+}
+.history-block .author {
+    font-weight: 600;
+/*    text-transform: uppercase;
+    font-size: 11px;*/
+}
+.history-block .field {
+    font-weight: 600;
+    /*text-transform: uppercase;
+    font-size: 11px;*/
+}
+.history-block .field_value {
+    font-weight: 600;
+    /*color: hsl(0, 0%, 35%);*/
+}
+.table th {
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: hsl(0, 0%, 50%);
+    /*border: 1px solid black;*/
+/*     background: yellow;*/
+}
+
+.history-block th a {
+    color: hsl(0, 0%, 40%);
+}
+
+.sort-indicator {
+    opacity: 0.5;
+    width: 11px;
+    margin-left: 2px;
+    padding-bottom: 1px;
+}
+
+.sorter {
+    margin-left: 5px;
+}
+
+th.sorted {
+}
+
+/* pipo */
+.block > thead {
+    background: #f0f0f0;
+}
+
+.block .block_header {
+    width: 100%;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.block .block_header .label th, .block .block_header .label {
+    color: rgb(100, 100, 100);
+}
+
+/* test - buttons with full color */
+
+.table_detail_view.collapsed {
+  opacity: 1;
+}
+
+.table_detail_view .block_header .label,
+.table_detail_view .block_header .actions {
+    width: auto;
+}
+
+.buttons a,
+.buttons button,
+.buttons span {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+/*    font-weight: 700;*/
+/*    letter-spacing: 0.4px;*/
+    border-width: 1px;
+    border-style: solid;
+
+    display: inline-block;
+    float: none;
+    clear: both;
+}
+
+.buttons a img,
+.buttons button img,
+.buttons span img {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+
+    transition: none;
+}
+
+.buttons a:hover img,
+.buttons button:hover img,
+.buttons span:hover img {
+    -webkit-filter: brightness(10);
+       -moz-filter: brightness(10);
+            filter: brightness(10);
+
+    transition: none;
+}
+
+
+/* blue */
+.buttons button.link,
+.buttons a.link {
+    background: hsl(210, 90%, 62%);
+    color: white;
+    border-color: hsl(210, 90%, 45%);
+
+    -moz-box-shadow: 0 0 5px hsla(210, 90%, 51%, 0.5);
+         box-shadow: 0 0 5px hsla(210, 90%, 51%, 0.5);
+}
+
+.buttons button.link:hover,
+.buttons a.link:hover {
+    background: hsl(210, 90%, 70%);
+    color: hsl(210, 50%, 25%);
+    border-color: #0b73da;
+}
+
+/* green */
+.buttons button.add,
+.buttons a.add,
+.buttons span.add {
+    background: hsl(101, 92%, 40%);
+    color: white;
+    border-color: hsl(101, 92%, 30%);
+
+    -moz-box-shadow: 0 0 5px hsla(101, 92%, 35%, 0.5);
+         box-shadow: 0 0 5px hsla(101, 92%, 35%, 0.5);
+}
+
+.buttons button.add:hover,
+.buttons a.add:hover,
+.buttons span.add:hover {
+    background: hsl(101, 92%, 42%);
+    color: hsl(90, 76%, 25%);
+    border-color: hsl(101, 92%, 30%);
+}
+
+/* red */
+a.negative img {
+    transform: rotate(45deg);
+}
+
+.buttons a.negative,
+button.negative {
+    background: hsl(7, 79%, 46%);
+    color: white;
+    border-color: hsl(7, 79%, 36%);
+
+    -moz-box-shadow: 0 0 5px hsla(7, 79%, 41%, 0.5);
+         box-shadow: 0 0 5px hsla(7, 79%, 41%, 0.5);
+}
+
+.buttons a.negative:hover,
+button.negative:hover {
+    background: hsl(7, 79%, 60%);
+    color: hsl(7, 50%, 20%);
+    border-color: hsl(7, 79%, 40%);
+}
+
+/* test - old blocks: separated rows */
+
+#block_creme_core-history.bordered tr.content {
+    border-bottom: 1px solid hsl(0, 0%, 93%);
+}
+
+#block_creme_core-history.bordered tr.content td {
+    padding-top: 4px;
+}

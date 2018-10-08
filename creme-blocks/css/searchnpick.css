@@ -1,0 +1,173 @@
+/* don't copy these */
+.ui-dialog {
+    width: 750px !important;
+}
+
+.searchnpick.searchnpick-contacts {
+    font: 13px / 1.2 'Open Sans', Helvetica, Arial;
+}
+
+/* don't copy these - end */
+
+/* SearchAndPick list widget */
+
+/* base and header */
+
+.searchnpick.searchnpick-contacts {
+    background: #f7f7f7;
+    padding: 10px;
+}
+
+.searchnpick .searchnpick-header {
+    display: flex;
+    align-items: baseline;
+    margin-top: 0px;
+}
+
+.searchnpick .searchnpick-header div {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-left: 7px;
+    font-weight: 600;
+    color: #444;
+}
+
+.searchnpick .searchnpick-header input {
+    flex: 1;
+    margin-left: 30px;
+    font-weight: 400;
+    font-family: 'Open Sans';
+    padding-left: 5px;
+    border: 1px solid #d6d6d6;
+}
+
+/* base and header - end */
+
+/* search */
+
+.searchnpick .searchnpick-search-container {
+    margin-top: 8px;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+}
+
+.searchnpick .searchnpick-search-header {
+    margin-left: 7px;
+    padding: 3px 0;
+}
+
+.searchnpick .searchnpick-result-counter {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.searchnpick .searchnpick-sort {
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8b8b8b;
+}
+
+/*
+.searchnpick-sort-key {
+    color: #333;
+}
+*/
+
+.searchnpick .searchnpick-results {
+    background: white;
+    margin-top: 5px;
+    /* width: 300px; */
+    height: 200px;
+    padding: 0 5px;
+    border: 1px solid #e6e6e6;
+    overflow-y: auto;
+}
+
+.searchnpick .searchnpick-results label:hover {
+    background: #f2f2f2;
+}
+
+/* search - end */
+
+/* selection list */
+
+.searchnpick .searchnpick-selection-container {
+    margin-top: 20px;
+}
+
+.searchnpick .searchnpick-selection-summary {
+    margin-left: 6px;
+}
+
+.searchnpick .searchnpick-selections {
+    margin: 0;
+    padding: 0 5px;
+
+    margin-top: 10px;
+
+    -webkit-columns: 3;
+       -moz-columns: 3;
+            columns: 3;
+
+    background: white;
+}
+
+.searchnpick .searchnpick-selections:not(.searchnpick-empty-selection) {
+    border: 1px solid #e6e6e6;
+    padding-bottom: 4px;
+}
+
+.searchnpick .searchnpick-selections .searchnpick-selector:not(:checked) ~ * {
+    opacity: 0.55;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.searchnpick .searchnpick-selection-summary {
+    font-weight: 600;
+}
+
+/* selection list - end */
+
+/* widget: contact */
+
+.searchnpick .searchnpick-contact {
+    display: inline-block;
+    width: 100%;
+    padding: 2px 0;
+    padding-bottom: 5px;
+    margin-top: 3px;
+
+    font-size: 0;
+}
+
+.searchnpick .searchnpick-contact .searchnpick-selector {
+    position: relative;
+    top: 3px;
+}
+
+.searchnpick .searchnpick-contact .searchnpick-contact-name {
+    display: inline-block;
+    color: #000;
+    font-size: 13px;
+    margin-left: 3px;
+}
+
+.searchnpick .searchnpick-contact .searchnpick-contact-company {
+    margin-top: 2px;
+    margin-left: 23px;
+
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+
+    color: #7c7c7c;
+}
+
+/* widget: contact - end */
+/* SearchAndPick list widget - end */
